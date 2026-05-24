@@ -1,5 +1,4 @@
-import { writeFile, mkdir } from 'fs/promises'
-import path from 'path'
+import { uploadToLiara } from '@/utils/liara-storage'
 import ConnectToDB from '@/configs/db'
 import posterModel from '@/models/poster'
 
@@ -11,49 +10,39 @@ export async function POST(req) {
     await ConnectToDB()
 
     const formData = await req.formData()
-
     const title = formData.get('title')
-  
-    const folderName = Date.now().toString()
-    const folderPath = path.join(process.cwd(), 'public/poster', folderName)
-    await mkdir(folderPath, { recursive: true })
-
 
     const saveFile = async (file) => {
       if (!file || typeof file.arrayBuffer !== 'function') return null
 
       const fileType = file.type
-      const fileExt = path.extname(file.name).toLowerCase()
+      const fileExt = file.name.toLowerCase().match(/\.[^.]*$/)?.[0] || ''
 
       if (!ALLOWED_TYPES.includes(fileType) || !ALLOWED_EXTENSIONS.includes(fileExt)) {
         console.warn(`فرمت غیرمجاز: ${file.name}`)
         return null
       }
 
-      const fileName = file.name
-      const filePath = path.join(folderPath, fileName)
-      const buffer = Buffer.from(await file.arrayBuffer())
-      await writeFile(filePath, buffer)
-      return fileName
+      try {
+        const uploadedFile = await uploadToLiara(file, file.name, 'posters')
+        return uploadedFile.url
+      } catch (error) {
+        console.error(`خطا در بارگذاری ${file.name}:`, error)
+        return null
+      }
     }
 
-    const posterImgName_xl = await saveFile(formData.get('posterImg_xl'))
-    const posterImgName_lg = await saveFile(formData.get('posterImg_lg'))
-    const posterImgName_md = await saveFile(formData.get('posterImg_md'))
-    const posterImgName_sm = await saveFile(formData.get('posterImg_sm'))
-
- 
-
-    const baseURL = `/poster/${folderName}`
+    const posterImg_xl = await saveFile(formData.get('posterImg_xl'))
+    const posterImg_lg = await saveFile(formData.get('posterImg_lg'))
+    const posterImg_md = await saveFile(formData.get('posterImg_md'))
+    const posterImg_sm = await saveFile(formData.get('posterImg_sm'))
 
     const poster = await posterModel.create({
       title,
-      posterImg_xl: posterImgName_xl ? `${baseURL}/${posterImgName_xl}` : null,
-      posterImg_lg: posterImgName_lg ? `${baseURL}/${posterImgName_lg}` : null,
-      posterImg_md: posterImgName_md ? `${baseURL}/${posterImgName_md}` : null,
-      posterImg_sm: posterImgName_sm ? `${baseURL}/${posterImgName_sm}` : null,
-
-    
+      posterImg_xl,
+      posterImg_lg,
+      posterImg_md,
+      posterImg_sm,
     })
 
     return Response.json(
@@ -65,9 +54,9 @@ export async function POST(req) {
   }
 }
 
-
 export async function GET() {
-    ConnectToDB()
-    const poster = await posterModel.find({}, '-_v')
-    return Response.json(poster)
+  ConnectToDB()
+  const poster = await posterModel.find({}, '-_v')
+  return Response.json(poster)
 }
+

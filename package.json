@@ -13,6 +13,7 @@
     "@ckeditor/ckeditor5-react": "^11.0.0",
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
+    "aws-sdk": "^2.1600.0",
     "aos": "^2.3.4",
     "axios": "^1.13.2",
     "bcryptjs": "^3.0.2",
