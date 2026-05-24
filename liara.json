@@ -3,5 +3,20 @@
   "port": 3000,
   "node": {
     "version": "20"
-  }
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".next",
+    ".git",
+    ".cache",
+    "public/uploads",
+    "public/poster",
+    "*.mp4",
+    "*.mov",
+    "*.avi",
+    "*.mkv",
+    ".env",
+    ".env.local"
+  ]
 }
+
