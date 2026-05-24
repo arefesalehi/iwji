@@ -1,0 +1,7 @@
+.Sidebar{
+  @apply  
+}
+
+.closeMenu{
+  @apply  m-2 w-[20px] h-[20px] text-blue-800
+}
