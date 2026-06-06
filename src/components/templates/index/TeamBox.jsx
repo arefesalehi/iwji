@@ -6,6 +6,8 @@ import { FaTwitter } from "react-icons/fa";
 
 
 const TeamBox = ({img, username, position}) => {
+  if (!img) return null
+
   return (
     <>
 

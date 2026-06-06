@@ -1,0 +1,153 @@
+# Build/dependency output
+node_modules
+.next
+.git
+.cache
+.turbo
+out
+
+# Local environment and one-off artifacts
+.env
+.env.local
+.env.development.local
+.env.production.local
+package-lock.json
+48309122.txt
+
+# Runtime/generated uploads. These should live in Liara Object Storage or be
+# created by the app at runtime, not bundled into every deploy.
+public/uploads
+public/registration
+public/articles
+public/gallery
+public/membership
+public/coursecalendar
+public/tickets
+public/catalog
+public/uploadfile
+
+# Heavy media formats that are not required by the current app bundle.
+*.mp4
+*.mov
+*.avi
+*.mkv
+public/poster/*/how-to-weld-menu-2-1920x570px-240815v1.gif
+
+# Static images in public/images that are not referenced by the source code.
+public/images/2560px-DVS_–_Deutscher_Verband_für_Schweißen_und_verwandte_Verfahren_Logo.svg.png
+public/images/256px-PDF_file_icon.svg.png
+public/images/abstract-background-template-modern-bright-white-swirled-deco-Top-472x267.jpg
+public/images/all-bong-L2oedF1AsH8-unsplash.jpg
+public/images/aman-jakhar-CrTTr9xF-w4-unsplash.jpg
+public/images/amin-khorsand-tAnzPbVXjQo-unsplash.jpg
+public/images/amir-hosseini-S3wdEB7KE4o-unsplash.jpg
+public/images/amirhossein-soltani-FcNMzgLRdlM-unsplash.jpg
+public/images/amirhossein-soltani-NmfiFzR5HSU-unsplash.jpg
+public/images/arman-taherian-c4pe3HEhnig-unsplash.jpg
+public/images/ashkan-forouzani-O6yO_Cj-IXM-unsplash.jpg
+public/images/Capture50.PNG
+public/images/ChatGPT Image Jul 12, 2025, 11_15_28 AM.png
+public/images/download.jfif
+public/images/download.jpg
+public/images/footer.PNG
+public/images/hanny-naibaho-1hE01VmbIOg-unsplash.jpg
+public/images/how-to-weld-menu-2-1920x570px-240815v1.gif
+public/images/iiw.png
+public/images/Introduction MF AN October 2024.jpg
+public/images/Iran Railway Map.jpg
+public/images/IWJI.png
+public/images/jonathan-chen-0G8M3LVT5Ds-unsplash.jpg
+public/images/josh-beech-2VzmIuDtSoU-unsplash.jpg
+public/images/logo17164918.png
+public/images/luca-onniboni-bUpwY7EdrlQ-unsplash-1024x683.jpg
+public/images/max-larochelle-KxJKPddlYOM-unsplash.jpg
+public/images/max-larochelle-QzP1GcDOSC8-unsplash.jpg
+public/images/mojtaba-mohammadi-fUSA1tU9_pM-unsplash.jpg
+public/images/morteza-jamei-QTE2lJnAnLk-unsplash.jpg
+public/images/Orange and White Modern Welding Services Banner.png
+public/images/Picture3.jpg
+public/images/Picture4.jpg
+public/images/Picture5.png
+public/images/Picture6.jpg
+public/images/Picture7.png
+public/images/Picture8.jpg
+public/images/Red and White Bold Online Course Poster.png
+public/images/sajjad-ahmadi-2ZW9iAKsrRM-unsplash.jpg
+public/images/sajjad-ahmadi-IyyBV85TiwI-unsplash.jpg
+public/images/sam-moqadam-brHB_Xk4jRA-unsplash.jpg
+public/images/Screenshot-2022-05-04-174644-500x706.png
+public/images/silver-paper.webp
+public/images/slide1-1 (1).jpg
+public/images/slide1-1024x347.jpg
+public/images/slide3-1024x347.jpg
+public/images/slide4-1024x347.jpg
+public/images/Wagon Pars.jpg
+public/images/WhatsApp Image 2021-12-19 at 16.29.20.jpeg
+public/images/WhatsApp Image 2021-12-19 at 16.29.35.jpeg
+public/images/WhatsApp Image 2021-12-19 at 16.29.59.jpeg
+public/images/White And Blue Modern Welding Services Banner (1600 x 450 px).png
+public/images/White And Blue Modern Welding Services Banner (2).png
+public/images/افتتاحیه انلاین (1500 × 555 px).png
+public/images/—Pngtree—arc welding of a steel_15512817.png
+public/images/—Pngtree—error 404 page not found_6501259.png
+public/images/class/20221124_133713.jpg
+public/images/class/20221124_133723.jpg
+public/images/class/20221124_133750.jpg
+public/images/class/20221124_133759.jpg
+public/images/class/20221124_133815.jpg
+public/images/class/20221124_133821.jpg
+public/images/class/20221124_133828.jpg
+public/images/class/20221124_133833.jpg
+public/images/class/20221124_133850.jpg
+public/images/class/20221124_133915.jpg
+public/images/class/20221124_133957.jpg
+public/images/class/20221124_134002.jpg
+public/images/class/20221124_140014.mp4
+public/images/class/20221124_140155.jpg
+public/images/class/20221124_140209.jpg
+public/images/class/20221124_140236.jpg
+public/images/class/20221124_140304.jpg
+public/images/class/20221124_140311.jpg
+public/images/class/20221124_140314.jpg
+public/images/class/20221124_140317.jpg
+public/images/site/31_header.jpg
+public/images/site/429f18f5-8e88-40f2-a842-73f0a68dc438_1280_733.jpg
+public/images/site/45c5e74a-2e4c-4564-923b-e332d210c219_1280_400.jpg
+public/images/site/5055ef84-dfa0-4e58-b001-51aa08942035_1280_733.jpg
+public/images/site/5973-12502133.jpg
+public/images/site/61805109.jpg
+public/images/site/83b90c19-5e41-4c94-9440-7f33f2a2bd38_1280_733.jpg
+public/images/site/8a2af628-b91b-4dfb-969f-29a943257c04_1280_733.jpg
+public/images/site/a8676708-cd05-4976-a0f0-cfa0cab31a3e.jpg
+public/images/site/alisa-reutova-rHzv5r-_CE8-unsplash.jpg
+public/images/site/asbht2020_scheugVerguss.jpg
+public/images/site/blanking.png
+public/images/site/c687faa2-0ce9-4fa2-bcad-fcec2b2be7be.jpg
+public/images/site/clayton-cardinalli-v457LSvrvuI-unsplash.jpg
+public/images/site/d0dcff0f-dc7d-48d3-8707-3e38536c6b8f.jpeg
+public/images/site/d563f937-f808-4540-96a4-6ba5a6d1e4b3.jpg
+public/images/site/figure-1-a_lg-1.gif
+public/images/site/hector-reyes-WRo7RQFpamA-unsplash.jpg
+public/images/site/ImageForArticle_1550_15819554724949174.png
+public/images/site/IMTS2018-F-SLMSolutions-2.jpg
+public/images/site/IWJI1.png
+public/images/site/jason-richard-Hlhc8gQUW6I-unsplash.jpg
+public/images/site/jonathan-chen-0G8M3LVT5Ds-unsplash.jpg
+public/images/site/max-larochelle-AvmWvuseawE-unsplash.jpg
+public/images/site/max-larochelle-c-vWdiICscA-unsplash.jpg
+public/images/site/max-larochelle-QzP1GcDOSC8-unsplash.jpg
+public/images/site/max-larochelle-tD-SDlQxfsY-unsplash.jpg
+public/images/site/max-larochelle-_RhL0DUidms-unsplash.jpg
+public/images/site/NDT.jpg
+public/images/site/new-method-of-manufacturing-using-powder-bed-additive-manufacturing-with-previewimage.jpg
+public/images/site/selim-arda-eryilmaz-Grg6bwZuBMs-unsplash.jpg
+public/images/site/spencer-davis-8DQz9z99GjU-unsplash.jpg
+public/images/site/thisisengineering-raeng-Kgn6Oh6_pnY-unsplash.jpg
+public/images/site/thisisengineering-raeng-rJWUwl16QY0-unsplash.jpg
+public/images/site/thisisengineering-raeng-SyRlD4s_amw-unsplash.jpg
+public/images/site/thisisengineering-raeng-xNT8lMad0YA-unsplash.jpg
+public/images/site/welding-innovation-850x475.jpg
+public/images/site/White And Blue Modern Welding Services Banner (1600 x 450 px).png
+public/images/site/White And Blue Modern Welding Services Banner.png
+public/images/site/yassine-khalfalli-_c70Nhh6p44-unsplash.jpg
+public/images/site/گواهی.png

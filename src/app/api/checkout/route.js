@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
-import { createPayment } from "../../../../utils/zarinpal";
+import { createPayment } from "@/utils/zarinpal";
 import Checkout from '@/models/checkout';
-import connectToDB from "../../../../utils/db";
+import connectToDB from "@/configs/db";
 
 export const POST = async (req) => {
   connectToDB();

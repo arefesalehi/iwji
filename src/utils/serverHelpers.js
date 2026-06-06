@@ -23,7 +23,7 @@ import { verifyAccessToken } from './auth'
 
 
 
-export const authUser = async () => {
+const authUser = async () => {
   await connectToDB();
 
   const cookieStore = await cookies();  

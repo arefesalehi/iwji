@@ -17,6 +17,9 @@ import { i18n } from 'next-i18next'
 
 const OurTeam = ({ ourTeam }) => {
   const { t} = useTranslation('ourteam')
+  const items = Array.isArray(ourTeam) ? ourTeam.filter(Boolean) : []
+
+  if (!items.length) return null
 
   return (
     <>
@@ -58,7 +61,7 @@ const OurTeam = ({ ourTeam }) => {
             modules={[Pagination, Autoplay]}
             className="mt-5 mySwiper"
           >
-            {ourTeam.map((team) => {
+            {items.map((team) => {
               return (
                 <>
                   <SwiperSlide  key={team._id}>

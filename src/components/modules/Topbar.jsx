@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { HomeIcon } from 'flowbite-react'
 import { FaLocationDot } from "react-icons/fa6";
 import { AiFillPhone } from "react-icons/ai";
 import { IoTimeSharp } from "react-icons/io5";

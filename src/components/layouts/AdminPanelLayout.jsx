@@ -28,6 +28,9 @@ const AdminPanelLayout =async ({ children }) => {
               <Topbar admin={JSON.parse(JSON.stringify(user))} />
               {children}
             </div>
+
+
+            
           </div>
         </div>
       </div>

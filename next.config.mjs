@@ -44,9 +44,7 @@ if (appUrl) {
 }
 
 const nextConfig = {
-  experimental: {
-    serverComponentsExternalPackages: ['mongoose'],
-  },
+  serverExternalPackages: ['mongoose'],
   images: {
     unoptimized: true,
     remotePatterns,
@@ -54,4 +52,3 @@ const nextConfig = {
 }
 
 export default nextConfig
-

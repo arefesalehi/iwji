@@ -10,13 +10,23 @@
     ".git",
     ".cache",
     "public/uploads",
-    "public/poster",
+    "public/registration",
+    "public/articles",
+    "public/gallery",
+    "public/membership",
+    "public/coursecalendar",
+    "public/tickets",
+    "public/catalog",
+    "public/uploadfile",
     "*.mp4",
     "*.mov",
     "*.avi",
     "*.mkv",
+    "public/poster/*/how-to-weld-menu-2-1920x570px-240815v1.gif",
     ".env",
-    ".env.local"
+    ".env.local",
+    "package-lock.json",
+    "48309122.txt",
+    ".turbo"
   ]
 }
-

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import Checkout from "@models/Checkout";
-import { verifyPayment } from "../../../../../utils/zarinpal";
+import Checkout from "@/models/checkout";
+import { verifyPayment } from "@/utils/zarinpal";
 
 export const GET = async (req) => {
   try {

@@ -1,5 +1,4 @@
 import React from 'react'
-import { HomeIcon } from 'flowbite-react'
 const MainSectionBox = ({ title, desc , img}) => {
     return (
             <div data-aos="fade-up" data-aos-duration="2000" className='lg:basis-[24%] md:basis-[49%] basis-[98%]   mb-5  lg:mb-0     px-3 z-100 min-h-[250px] h-auto pb-2 bg-white rounded-[30px] flex flex-col items-center '>

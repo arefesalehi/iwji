@@ -10,6 +10,10 @@ import { useTranslation } from 'react-i18next'
 
 const Projects = ({ cooperation }) => {
   const {t}=useTranslation('coorporation')
+  const items = Array.isArray(cooperation) ? cooperation.filter(Boolean) : []
+
+  if (!items.length) return null
+
   return (
     <>
       <div className="relative w-full h-[500px]">
@@ -48,7 +52,7 @@ const Projects = ({ cooperation }) => {
             modules={[Pagination , Autoplay]}
             className="mt-5 mySwiper"
           >
-            {cooperation.map((cooperate) => {
+            {items.map((cooperate) => {
               return (
                 <>
                   <SwiperSlide key={cooperate._id} >

@@ -2,15 +2,30 @@
 import React, { useEffect, useState } from 'react'
 
 const ResponsivePoster = ({ poster, className }) => {
-  const [currentSrc, setCurrentSrc] = useState(poster.posterImg_sm)
+  const fallbackSrc = '/images/rob-lambert-9Q_pLLP_jmA-unsplash.jpg'
+  const normalizeSrc = (src) => {
+    if (!src || typeof src !== 'string') return ''
+    return src.replace(/^https?:\/\/localhost:3000/i, '')
+  }
+  const pickSrc = (...sources) => {
+    const src = sources.map(normalizeSrc).find(Boolean)
+    return src || fallbackSrc
+  }
+  const [currentSrc, setCurrentSrc] = useState(
+    pickSrc(poster?.posterImg_sm, poster?.posterImg_md, poster?.posterImg_lg, poster?.posterImg_xl)
+  )
 
   useEffect(() => {
     const updateSrc = () => {
+      if (!poster) {
+        setCurrentSrc(fallbackSrc)
+        return
+      }
       const w = window.innerWidth
-      if (w >= 1280) setCurrentSrc(poster.posterImg_xl || poster.posterImg_lg)
-      else if (w >= 1024) setCurrentSrc(poster.posterImg_lg || poster.posterImg_md)
-      else if (w >= 768) setCurrentSrc(poster.posterImg_md || poster.posterImg_sm)
-      else setCurrentSrc(poster.posterImg_sm)
+      if (w >= 1280) setCurrentSrc(pickSrc(poster.posterImg_xl, poster.posterImg_lg, poster.posterImg_md, poster.posterImg_sm))
+      else if (w >= 1024) setCurrentSrc(pickSrc(poster.posterImg_lg, poster.posterImg_md, poster.posterImg_sm))
+      else if (w >= 768) setCurrentSrc(pickSrc(poster.posterImg_md, poster.posterImg_sm))
+      else setCurrentSrc(pickSrc(poster.posterImg_sm))
     }
 
     updateSrc()
@@ -21,8 +36,9 @@ const ResponsivePoster = ({ poster, className }) => {
   return (
     <img
       src={currentSrc}
-      alt={poster.title}
+      alt={poster?.title || 'poster'}
       className={`${className || ''}`}
+      onError={() => setCurrentSrc(fallbackSrc)}
     />
   )
 }

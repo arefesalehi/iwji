@@ -3,7 +3,7 @@
 
 'use client'
 
-import { ArrowLeftIcon, HomeIcon } from 'flowbite-react'
+import { ArrowLeftIcon } from '@heroicons/react/24/solid'
 import { MdKeyboardArrowDown } from 'react-icons/md'
 import React, { useRef, useState, useEffect } from 'react'
 import { IoMdPerson } from 'react-icons/io'

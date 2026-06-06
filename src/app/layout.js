@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import 'leaflet/dist/leaflet.css'
 import Navbar from "@/components/modules/Navbar";
@@ -15,16 +14,6 @@ import TopbarClient from '@/components/modules/TopbarClient'
 
 
 
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata = {
   title: "IWJI Site",
@@ -49,14 +38,10 @@ console.log('layout user==>', user);
 
   return (
     <html lang="fa" dir='rtl' >
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <AosInt />
         <TopbarClient />
         <NavbarClient   isLogin={user ? true : false} />
-   
-
         {children}
         <ScrollToTop/>
         <FooterClient />

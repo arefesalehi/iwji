@@ -7,12 +7,16 @@ import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 const Articles = ({ articles }) => {
         const { t, i18n} = useTranslation('article')
+  const items = Array.isArray(articles) ? articles.filter(Boolean) : []
+
+  if (!items.length) return null
+
   return (
     <>
       <div className="bg-gray-300 pb-10 w-full h-auto">
         <TitleContent title={t('articles')} />
         <div className="flex flex-wrap justify-evenly items-center container">
-          {articles.map((article) => {
+          {items.map((article) => {
             return <ArticleBox key={article._id} {...article} />
           })}
         </div>

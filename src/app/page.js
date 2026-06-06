@@ -22,34 +22,44 @@ import webinarModel from '@/models/webinarRegistration'
 const page = async () => {
   ConnectToDB()
 
-  const cooperation = await cooperationModel.find({})
-  const ourTeam = await ourteamModel.find({})
+  const cooperation = await cooperationModel.find({}).lean()
+  const ourTeam = await ourteamModel.find({}).lean()
   const comments = await commentModel.find({}).populate('author').lean()
    const articles = await articleModel.find({}).populate('creator', 'name email')
    .limit('3').lean();
-  console.log('articlele man=>', articles);
 
-  const course = await courseModel.findOne({ shortName: "IWE" }).sort({ createdAt: -1 })
+  const course = await courseModel.findOne({ shortName: "IWE" }).sort({ createdAt: -1 }).lean()
   
-   const webinar = await webinarModel.findOne({}).sort( {createdAt: -1 })
-   console.log('webinarrrrrrrrrrrrrrrrr', webinar);
+   const webinar = await webinarModel.findOne({}).sort( {createdAt: -1 }).lean()
    
-  const posters = await posterModel.find({})
+  const posters = await posterModel.find({}).lean()
+  const safePosters = posters.filter((poster) => (
+    poster && (poster.posterImg_sm || poster.posterImg_md || poster.posterImg_lg || poster.posterImg_xl)
+  ))
+  const safeCooperation = cooperation.filter((item) => item && item.img)
+  const safeOurTeam = ourTeam.filter((item) => item && item.img)
+  const safeArticles = articles.filter(Boolean)
+  const safeComments = comments.filter(Boolean)
   
 
   return (
     <>
 
-      <Header  posters={JSON.parse(JSON.stringify(posters))} />
+      <Header  posters={JSON.parse(JSON.stringify(safePosters))} />
       <div className="relative z-10"><MainSection /></div>
       
-      <Projects cooperation={JSON.parse(JSON.stringify(cooperation))} />
+      <Projects cooperation={JSON.parse(JSON.stringify(safeCooperation))} />
       <Services />
-      <OurTeam ourTeam={JSON.parse(JSON.stringify(ourTeam))} />
+      <OurTeam ourTeam={JSON.parse(JSON.stringify(safeOurTeam))} />
       <Features />
-      <NewCourse webinar={JSON.parse(JSON.stringify(webinar))}  course={JSON.parse(JSON.stringify(course))}/>
-      <Articles   articles={JSON.parse(JSON.stringify(articles))}/>
-      <CustomerComment comments={JSON.parse(JSON.stringify(comments))} />
+      {(course || webinar) && (
+        <NewCourse
+          webinar={webinar ? JSON.parse(JSON.stringify(webinar)) : null}
+          course={course ? JSON.parse(JSON.stringify(course)) : null}
+        />
+      )}
+      <Articles   articles={JSON.parse(JSON.stringify(safeArticles))}/>
+      <CustomerComment comments={JSON.parse(JSON.stringify(safeComments))} />
       <AdsLine />
       
 

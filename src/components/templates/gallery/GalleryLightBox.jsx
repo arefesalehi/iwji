@@ -103,7 +103,7 @@
 // }
 // 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import dynamic from 'next/dynamic'
 import 'yet-another-react-lightbox/styles.css'
 
@@ -114,7 +114,6 @@ const Lightbox = dynamic(() => import('yet-another-react-lightbox'), {
 const imagesPerPage = 6
 
 export default function GalleryLightBox({ category = 'all' }) {
-  const containerRef = useRef(null)
   const [allImages, setAllImages] = useState([])
   const [index, setIndex] = useState(-1)
   const [page, setPage] = useState(1)
@@ -136,32 +135,15 @@ export default function GalleryLightBox({ category = 'all' }) {
     fetchImages()
   }, [category, page])
 
-  useEffect(() => {
-    if (containerRef.current) {
-      const Macy = require('macy')
-      Macy({
-        container: containerRef.current,
-        trueOrder: false,
-        waitForImages: true,
-        margin: 16,
-        columns: 3,
-        breakAt: {
-          1024: 2,
-          768: 1,
-        },
-      })
-    }
-  }, [allImages])
-
   return (
     <div className="shadow-[0px_30px_90px_rgba(0,0,0,0.4)] p-4">
-      <div ref={containerRef} className="macy-container">
+      <div className="gap-4 columns-1 md:columns-2 lg:columns-3">
         {allImages.map((img, i) => (
           <img
             key={i}
             src={img.src}
             onClick={() => setIndex(i)}
-            className="shadow-[0px_5px_15px_rgba(0,0,0,0.35)] rounded-lg w-auto h-auto cursor-pointer"
+            className="inline-block shadow-[0px_5px_15px_rgba(0,0,0,0.35)] mb-4 rounded-lg w-full h-auto cursor-pointer break-inside-avoid"
             alt={img.title || `Image ${i + 1}`}
           />
         ))}

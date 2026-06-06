@@ -1,5 +1,5 @@
 import { isValidObjectId } from 'mongoose'
-import subdepartmentModel from '@/models/subDepartment'
+import subdepartmentModel from '@/models/subdepartment'
 import connectToDB from '@/configs/db'
 
 export async function GET(req, { params }) {

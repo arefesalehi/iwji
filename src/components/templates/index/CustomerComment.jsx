@@ -25,6 +25,7 @@ const images = [
 const CustomerComment = ({ comments }) => {
   const [current, setCurrent] = useState(0)
           const { t} = useTranslation('customercomment')
+  const items = Array.isArray(comments) ? comments.filter(Boolean) : []
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -81,7 +82,7 @@ const CustomerComment = ({ comments }) => {
             modules={[Keyboard, Scrollbar, Navigation, Pagination, Autoplay]}
             className="flex-wrap justify-center mt-[80px] mySwiper"
           >
-            {comments.map((comment) => {
+            {items.map((comment) => {
               return (
                 <>
                   <SwiperSlide className='flex justify-center items-center' key={comment._id}>
