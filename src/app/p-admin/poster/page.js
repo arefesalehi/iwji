@@ -3,13 +3,13 @@ import BreadCrumb from '@/components/templates/p-admin/BreadCrumb'
 import PosterBox from '@/components/templates/p-admin/PosterBox'
 import React from 'react'
 import posterModel from '@/models/poster'
+
 const page =async () => {
+  
   const posters = await posterModel.find({})
 
   return (
     <>
-
-
       <AdminPanelLayout>
         <BreadCrumb  links={[
         

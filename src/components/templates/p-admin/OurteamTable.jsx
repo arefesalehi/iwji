@@ -6,16 +6,12 @@ import { useRouter } from 'next/navigation'
 import Pagination from '@/components/modules/p-admin/Pagination'
 
 const OurteamTable = ({ ourteams, deleteUser }) => {
-const router = useRouter()
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
   const teamsPerPage = 5
   const indexOfLastArticle = currentPage * teamsPerPage
   const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
-  const currentteam = ourteams.slice(
-    indexOfFirstArticle,
-    indexOfLastArticle,
-  )
-
+  const currentteam = ourteams.slice(indexOfFirstArticle, indexOfLastArticle)
 
   return (
     <>
@@ -89,14 +85,11 @@ const router = useRouter()
 
                   <td className="flex px-6 py-16 text-right">
                     <span
-                    onClick={()=>deleteUser(team._id)}
-                
-                          className="bg-red-100 hover:bg-red-200 px-3 py-1 rounded text-red-700 text-sm"
+                      onClick={() => deleteUser(team._id)}
+                      className="bg-red-100 hover:bg-red-200 px-3 py-1 rounded text-red-700 text-sm"
                     >
                       حذف
                     </span>
-
-                  
                   </td>
                 </tr>
               )
@@ -104,11 +97,11 @@ const router = useRouter()
           </tbody>
         </table>
         <Pagination
-             currentPage={currentPage}
-            totalItems={ourteams.length}
-            itemsPerPage={5}
-            onPageChange={setCurrentPage}
-            label="هم تیمی"
+          currentPage={currentPage}
+          totalItems={ourteams.length}
+          itemsPerPage={5}
+          onPageChange={setCurrentPage}
+          label="هم تیمی"
         />
       </div>
     </>

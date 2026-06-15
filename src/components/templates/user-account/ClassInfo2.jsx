@@ -5,8 +5,7 @@ import RecordeAccardion2 from '@/components/templates/user-account/RecordAccardi
 import ScoreTable from './ScoreTable'
 import Coursecalendar from './Coursecalendar'
 import Classinformation from './Classinformation'
-import Recordinformation from './Recordinformation'
-import Scoreinformation from './Scoreinformation'
+
 
 const ClassInfo2 = ({ iweRegistration, scores }) => {
   return (

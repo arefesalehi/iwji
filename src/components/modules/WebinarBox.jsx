@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-const WebinarBox = ({webinar}) => {
-        const { t} = useTranslation('webinarbox')
+const WebinarBox = ({ webinar }) => {
+  const { t } = useTranslation('webinarbox')
   if (!webinar) return null
 
   return (
@@ -18,14 +18,17 @@ const WebinarBox = ({webinar}) => {
         <div className="p-5">
           <a href="#">
             <h5 className="mb-2 font-bold text-gray-900 dark:text-white text-base tracking-tight">
-           {webinar.webinarName || ''}
+              {webinar.webinarName || ''}
             </h5>
-             <p className='font-normal text-gray-700 text-xs'> {t('title')} </p>
+            <p className="font-normal text-gray-700 text-xs"> {t('title')} </p>
           </a>
           <div className="flex justify-between mt-5 font-normal text-gray-700 dark:text-gray-400 text-xs b-3">
-           
             <p className="font-semibold">{webinar.hour || ''}</p>
-            <p className="font-semibold">{webinar.date ? new Date(webinar.date).toLocaleDateString('fa-ir') : ''}</p>
+            <p className="font-semibold">
+              {webinar.date
+                ? new Date(webinar.date).toLocaleDateString('fa-ir')
+                : ''}
+            </p>
           </div>
 
           <div className="flex justify-between mt-5 pt-5 border-gray-200 border-t-2">
@@ -40,7 +43,7 @@ const WebinarBox = ({webinar}) => {
               href="#"
               className="inline-flex items-center px-3 py-2 rounded-lg focus:outline-none font-bold text-green-700 text-sm text-center"
             >
-              {webinar.price===0 ? t('free'):webinar.price}
+              {webinar.price === 0 ? t('free') : webinar.price}
             </a>
           </div>
         </div>

@@ -40,10 +40,10 @@ const MyPieCharts = ({
     { name: 'ثبت نامی دوره', value: registercourse?.length || 0 },
     { name: 'ثبت نامی عضویت در IIW ', value: iiwMembership?.length || 0 },
     { name: 'ثبت نامی وبینار ', value: webinarUsers?.length || 0 },
-  ] 
+  ]
   return (
     <ResponsiveContainer width="100%" height="80%">
-      <PieChart width={400} height={400} >
+      <PieChart width={400} height={400}>
         <Pie
           data={data}
           cx="50%"
@@ -53,18 +53,15 @@ const MyPieCharts = ({
           outerRadius={80}
           fill="#8884d8"
           dataKey="value"
-        
         >
           {data.map((entry, index) => (
             <Cell
-              
               key={`cell-${entry.name}`}
               fill={COLORS[index % COLORS.length]}
             />
           ))}
         </Pie>
         <Legend verticalAlign="bottom" align="center" layout="horizontal" />
-
       </PieChart>
     </ResponsiveContainer>
   )

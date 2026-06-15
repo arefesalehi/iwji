@@ -12,7 +12,12 @@ const ResponsivePoster = ({ poster, className }) => {
     return src || fallbackSrc
   }
   const [currentSrc, setCurrentSrc] = useState(
-    pickSrc(poster?.posterImg_sm, poster?.posterImg_md, poster?.posterImg_lg, poster?.posterImg_xl)
+    pickSrc(
+      poster?.posterImg_sm,
+      poster?.posterImg_md,
+      poster?.posterImg_lg,
+      poster?.posterImg_xl,
+    ),
   )
 
   useEffect(() => {
@@ -22,9 +27,25 @@ const ResponsivePoster = ({ poster, className }) => {
         return
       }
       const w = window.innerWidth
-      if (w >= 1280) setCurrentSrc(pickSrc(poster.posterImg_xl, poster.posterImg_lg, poster.posterImg_md, poster.posterImg_sm))
-      else if (w >= 1024) setCurrentSrc(pickSrc(poster.posterImg_lg, poster.posterImg_md, poster.posterImg_sm))
-      else if (w >= 768) setCurrentSrc(pickSrc(poster.posterImg_md, poster.posterImg_sm))
+      if (w >= 1280)
+        setCurrentSrc(
+          pickSrc(
+            poster.posterImg_xl,
+            poster.posterImg_lg,
+            poster.posterImg_md,
+            poster.posterImg_sm,
+          ),
+        )
+      else if (w >= 1024)
+        setCurrentSrc(
+          pickSrc(
+            poster.posterImg_lg,
+            poster.posterImg_md,
+            poster.posterImg_sm,
+          ),
+        )
+      else if (w >= 768)
+        setCurrentSrc(pickSrc(poster.posterImg_md, poster.posterImg_sm))
       else setCurrentSrc(pickSrc(poster.posterImg_sm))
     }
 

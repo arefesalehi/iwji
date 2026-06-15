@@ -11,32 +11,24 @@ const page = async () => {
     .populate('courseId')
 
 
-
-    
-
-  console.log('registerCourse:', registerCourse);
-
   const iweRegistrationObj = registerCourse.find(
     course => course.courseId.shortName === 'IWT'
   );
 
   const iweRegistration = iweRegistrationObj || null;
-  console.log('iweRegistration=>', iweRegistration);
-
-// student._id همونیه که توی iweRegistrationObj._id ذخیره شده
-const scores = await scoreModel.find({
-  student: iweRegistrationObj._id,
-  course: iweRegistrationObj.courseId
-})
-.populate({
-  path: 'student',
-  populate: { path: 'userId' }   // اینجا یوزر هم بیاد
-})
-.populate('course')
 
 
+  // student._id همونیه که توی iweRegistrationObj._id ذخیره شده
+  const scores = await scoreModel.find({
+    student: iweRegistrationObj._id,
+    course: iweRegistrationObj.courseId
+  })
+    .populate({
+      path: 'student',
+      populate: { path: 'userId' }
+    })
+    .populate('course')
 
-console.log('scoreeeeeeee=>', scores);
 
 
   return (

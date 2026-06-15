@@ -10,7 +10,7 @@ const Gallery = () => {
   const [file, setFile] = useState(null)
   const [all, setAll] = useState([])
 
-  // دریافت همه تصاویر از API
+
   const getAll = async () => {
     try {
       const res = await fetch('/api/gallery')
@@ -25,7 +25,7 @@ const Gallery = () => {
     getAll()
   }, [])
 
-  // ارسال فرم
+
   const submitHandler = async (e) => {
     e.preventDefault()
     if (!file) return alert('لطفاً یک فایل انتخاب کنید')
@@ -37,7 +37,10 @@ const Gallery = () => {
     formData.append('imageFile', file)
 
     try {
-      const res = await fetch('/api/gallery', { method: 'POST', body: formData })
+      const res = await fetch('/api/gallery', {
+        method: 'POST',
+        body: formData,
+      })
       const data = await res.json()
       if (res.ok) {
         swal('عکس با موفقیت ثبت شد', '', 'success').then(() => getAll())
@@ -56,10 +59,15 @@ const Gallery = () => {
 
   return (
     <div className="bg-white m-auto rounded-lg w-[90%]">
-      <form onSubmit={submitHandler} className="m-auto py-10 rounded-lg w-[90%]">
+      <form
+        onSubmit={submitHandler}
+        className="m-auto py-10 rounded-lg w-[90%]"
+      >
         <div className="gap-6 grid md:grid-cols-2 mb-6">
           <div>
-            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">عنوان</label>
+            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">
+              عنوان
+            </label>
             <input
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -70,7 +78,9 @@ const Gallery = () => {
             />
           </div>
           <div>
-            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">توضیحات</label>
+            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">
+              توضیحات
+            </label>
             <input
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -80,7 +90,9 @@ const Gallery = () => {
             />
           </div>
           <div>
-            <label className="block mb-2 font-medium text-gray-900 dark:text-white text-sm">دسته بندی</label>
+            <label className="block mb-2 font-medium text-gray-900 dark:text-white text-sm">
+              دسته بندی
+            </label>
             <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
@@ -94,7 +106,9 @@ const Gallery = () => {
             </select>
           </div>
           <div>
-            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">آپلود تصویر</label>
+            <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">
+              آپلود تصویر
+            </label>
             <input
               onChange={(e) => setFile(e.target.files[0])}
               type="file"

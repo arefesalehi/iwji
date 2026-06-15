@@ -14,9 +14,9 @@ import { redirect } from 'next/navigation';
 
 const page = async () => {
 
-
     const user = await authUser()
     console.log('user account user==>', user);
+
     if (!user) {
         redirect('/login-register')
     }
@@ -39,7 +39,6 @@ const page = async () => {
                         rgba(255, 255, 0, 0.2) 0px -3px 5px`}
                         title='دوره های من' color='bg-yellow-400'
                         count={courseRegisteration?.length}
-                        // courseRegisteration={JSON.parse(JSON.stringify(courseRegisteration))}
                         icon={<SiCoursera className='w-[35px] h-[35px]' />}
                     />
                     <PishkhanCards

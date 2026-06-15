@@ -62,9 +62,11 @@ const MembershipText = () => {
             {t('registrationTitle')}
           </h1>
           <p className="text-lg">{t('registrationTitle')}</p>
-          <ul className='mt-5 md:mt-0'>
+          <ul className="mt-5 md:mt-0">
             <li>
-              <a href="" className=''>{t('registrationSteps1')}</a>
+              <a href="" className="">
+                {t('registrationSteps1')}
+              </a>
             </li>
             <li>
               <a href="">{t('registrationSteps2')}</a>

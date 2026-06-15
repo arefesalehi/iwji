@@ -4,7 +4,7 @@ import SingleService from '@/components/templates/services/SingleService'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 const page = () => {
-    const {t} =useTranslation('services')
+    const { t } = useTranslation('services')
     return (
         <>
             <BreadCrumb title={t('breadcrumb')} img='/images/fakurian-design-lOl78pdT9hc-unsplash.jpg' />
@@ -17,7 +17,7 @@ const page = () => {
             />
             <SingleService
                 reverse
-               title={t('title2')}
+                title={t('title2')}
                 desc1={t('desc4')}
                 desc2={t('desc5')}
                 desc3={t('desc6')}
@@ -26,7 +26,7 @@ const page = () => {
             />
 
             <SingleService
-               title={t('title3')}
+                title={t('title3')}
                 desc1={t('desc8')}
                 desc2={t('desc9')}
                 desc3={t('desc10')}
@@ -36,7 +36,7 @@ const page = () => {
 
             <SingleService
                 reverse
-              title={t('title4')}
+                title={t('title4')}
                 desc1={t('desc11')}
                 desc2={t('desc12')}
                 desc3={t('desc13')}

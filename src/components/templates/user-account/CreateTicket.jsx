@@ -9,8 +9,7 @@ const CreateTicket = ({ departments }) => {
   const [file, setFile] = useState('')
 
   const sendTicket = async () => {
-    
-     if (!title || !department || !body) {
+    if (!title || !department || !body) {
       alert('لطفاً همه فیلدها را پر کنید')
       return
     }
@@ -27,14 +26,13 @@ const CreateTicket = ({ departments }) => {
     })
 
     const data = await res.json()
-    if(res.ok){
+    if (res.ok) {
       swal({
-        title:'تیکت شما با موفقیت ثبت شد',
-        icon:'success',
-        buttons:'ok'
+        title: 'تیکت شما با موفقیت ثبت شد',
+        icon: 'success',
+        buttons: 'ok',
       })
     }
-
   }
 
   return (

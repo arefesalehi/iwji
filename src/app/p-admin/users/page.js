@@ -1,132 +1,3 @@
-
-
-
-// import AdminPanelLayout from '@/components/layouts/AdminPanelLayout'
-// import BreadCrumb from '@/components/templates/p-admin/BreadCrumb'
-// import UserTable from '@/components/templates/p-admin/UserTable'
-// import userModel from '@/models/user'
-// import courseRegisteration from '@/models/courseRegisteration'
-// import iiwRegistrationModel from '@/models/IIWMembership'
-// import React from 'react'
-
-// const page = async () => {
-//   // دریافت کاربران سایت و ثبت‌نام‌ها
-//   const users = await userModel.find({})
-
-//   // تلاش برای populate کردن courseId/iiwId (اگر schema رفرنس داشته باشه) — اگر خطا داد، fallback به بدون populate
-//   let courseRegistrations
-//   try {
-//     courseRegistrations = await courseRegisteration.find({}).populate('courseId')
-//   } catch (e) {
-//     courseRegistrations = await courseRegisteration.find({})
-//   }
-
-//   let iiwRegistrations
-//   try {
-//     iiwRegistrations = await iiwRegistrationModel.find({}).populate('iiwId')
-//   } catch (e) {
-//     iiwRegistrations = await iiwRegistrationModel.find({})
-//   }
-
-//   // ساخت lookup براساس userId (ممکنه یک user چند ثبت‌نام داشته باشه)
-//   const courseRegsByUserId = {}
-//   courseRegistrations.forEach(cr => {
-//     const uid = cr.userId ? String(cr.userId) : null
-//     if (!uid) return
-//     if (!courseRegsByUserId[uid]) courseRegsByUserId[uid] = []
-//     courseRegsByUserId[uid].push(cr)
-//   })
-
-//   const iiwRegsByUserId = {}
-//   iiwRegistrations.forEach(ir => {
-//     const uid = ir.userId ? String(ir.userId) : null
-//     if (!uid) return
-//     if (!iiwRegsByUserId[uid]) iiwRegsByUserId[uid] = []
-//     iiwRegsByUserId[uid].push(ir)
-//   })
-
-//   // ساخت نهایی لیست کاربران (فقط کاربران سایت)
-//   const mergedUsers = users.map(user => {
-//     const uid = String(user._id)
-
-//     const userCourseRegs = courseRegsByUserId[uid] || []
-//     const userIIWRegs = iiwRegsByUserId[uid] || []
-
-//     // استخراج نام دوره‌ها (از populate یا فیلد داخلی)
-//     const courseNames = userCourseRegs
-//       .map(cr => {
-//         if (!cr) return null
-//         // اول تلاش کن از courseId populate شده نام بگیری
-//         if (cr.courseId) {
-//           return cr.courseId.name || cr.courseId.title || cr.courseId.courseName || null
-//         }
-//         // fallback به فیلد داخل ثبت‌نام
-//         return cr.courseName || cr.name || null
-//       })
-//       .filter(Boolean) // حذف مقادیر null/undefined
-//       .map(n => String(n).trim())
-//       .filter(Boolean)
-
-//     // حذف تکراری‌ها و نگهداری ترتیب
-//     const uniqueCourseNames = Array.from(new Set(courseNames))
-
-//     // مشابه برای IIW (ممکنه چند عضویت)
-//     const iiwNames = userIIWRegs
-//       .map(ir => {
-//         if (!ir) return null
-//         if (ir.iiwId) {
-//           return ir.iiwId.name || ir.iiwId.title || ir.iiwId.iiwName || null
-//         }
-//         return ir.iiwName || null
-//       })
-//       .filter(Boolean)
-//       .map(n => String(n).trim())
-//       .filter(Boolean)
-
-//     const uniqueIIWNames = Array.from(new Set(iiwNames))
-
-//     const fullName =
-//       (user.name && String(user.name).trim()) ||
-//       (`${user.firstName ?? ''} ${user.lastName ?? ''}`.trim()) ||
-//       (`${user.userName ?? ''} ${user.familyName ?? ''}`.trim()) ||
-//       (user.email && String(user.email).trim()) ||
-//       'نامشخص'
-
-//     return {
-//       id: String(user._id),
-//       fullName,
-//       email: user.email ?? '',
-//       phoneNumber: user.phone ?? '',
-//       role: user.role ?? '',
-//       // courseNames: آرایه نام دوره‌ها، courseNamesDisplay: رشته قابل نمایش در جدول
-//       courseNames: uniqueCourseNames,
-//       courseNamesDisplay: uniqueCourseNames.length > 0 ? uniqueCourseNames.join(', ') : null,
-//       isCourseRegistered: uniqueCourseNames.length > 0,
-//       iiwNames: uniqueIIWNames,
-//       iiwNamesDisplay: uniqueIIWNames.length > 0 ? uniqueIIWNames.join(', ') : null,
-//       isiiwRegistered: uniqueIIWNames.length > 0,
-//     }
-//   })
-
-//   const finalUserList = mergedUsers
-
-//   return (
-//     <AdminPanelLayout>
-//       <BreadCrumb
-//         links={[
-//           { id: 1, title: 'پنل ادمین', href: '/p-admin' },
-//           { id: 2, title: 'کاربران و همکاری ها', href: '' },
-//           { id: 3, title: 'تمامی کاربران', href: '/p-admin/users' },
-//         ]}
-//       />
-//       <UserTable users={finalUserList} />
-//     </AdminPanelLayout>
-//   )
-// }
-
-// export default page
-
-
 import AdminPanelLayout from '@/components/layouts/AdminPanelLayout'
 import BreadCrumb from '@/components/templates/p-admin/BreadCrumb'
 import UserTable from '@/components/templates/p-admin/UserTable'
@@ -212,7 +83,7 @@ const page = async () => {
   console.log('course registrations not matched to site user (sample count):', unmatchedCourseRegs.length)
   console.log('iiw registrations not matched to site user (sample count):', unmatchedIIWRegs.length)
   if (unmatchedCourseRegs.length > 0) {
-    console.log('sample unmatched course regs:', unmatchedCourseRegs.slice(0,5).map(r => ({
+    console.log('sample unmatched course regs:', unmatchedCourseRegs.slice(0, 5).map(r => ({
       id: r._id,
       userId: r.userId ? String(r.userId) : null,
       emailGuess: getEmailFromReg(r),
@@ -222,7 +93,7 @@ const page = async () => {
     })))
   }
   if (unmatchedIIWRegs.length > 0) {
-    console.log('sample unmatched iiw regs:', unmatchedIIWRegs.slice(0,5).map(r => ({
+    console.log('sample unmatched iiw regs:', unmatchedIIWRegs.slice(0, 5).map(r => ({
       id: r._id,
       userId: r.userId ? String(r.userId) : null,
       emailGuess: getEmailFromReg(r),

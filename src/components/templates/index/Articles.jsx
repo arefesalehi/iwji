@@ -6,7 +6,7 @@ import { IoMdArrowDropleft, IoMdArrowDropright } from 'react-icons/io'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 const Articles = ({ articles }) => {
-        const { t, i18n} = useTranslation('article')
+  const { t, i18n } = useTranslation('article')
   const items = Array.isArray(articles) ? articles.filter(Boolean) : []
 
   if (!items.length) return null
@@ -26,7 +26,12 @@ const Articles = ({ articles }) => {
             href="/articles"
             className="flex justify-center items-center bg-red-800 mt-5 px-8 py-2 rounded-[10px] text-white"
           >
-           {t('viewAllPosts')} {i18n.language==='fa' ? <IoMdArrowDropleft />  : <IoMdArrowDropright /> }
+            {t('viewAllPosts')}{' '}
+            {i18n.language === 'fa' ? (
+              <IoMdArrowDropleft />
+            ) : (
+              <IoMdArrowDropright />
+            )}
           </Link>
         </div>
       </div>

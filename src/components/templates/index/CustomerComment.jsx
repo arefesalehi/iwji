@@ -1,5 +1,3 @@
-
-
 'use client'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
@@ -9,9 +7,13 @@ import 'swiper/css/scrollbar'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 
-import { Keyboard, Scrollbar, Navigation, Pagination, Autoplay } from 'swiper/modules'
-import CummentBox from './CummentBox'
-import TitleContent from './TitleContent'
+import {
+  Keyboard,
+  Scrollbar,
+  Navigation,
+  Pagination,
+  Autoplay,
+} from 'swiper/modules'
 import CommentBox from '../courses/CommentBox'
 import { useTranslation } from 'react-i18next'
 import { i18n } from 'next-i18next'
@@ -24,7 +26,7 @@ const images = [
 
 const CustomerComment = ({ comments }) => {
   const [current, setCurrent] = useState(0)
-          const { t} = useTranslation('customercomment')
+  const { t } = useTranslation('customercomment')
   const items = Array.isArray(comments) ? comments.filter(Boolean) : []
 
   useEffect(() => {
@@ -37,7 +39,7 @@ const CustomerComment = ({ comments }) => {
 
   return (
     <>
-      <div  className="relative w-full h-[600px] overflow-hidden">
+      <div className="relative w-full h-[600px] overflow-hidden">
         <Image
           src={images[current]}
           fill
@@ -49,11 +51,15 @@ const CustomerComment = ({ comments }) => {
 
         <div className="z-30 absolute inset-0 flex justify-center mt-16 h-[50px]">
           <h2 className="px-4 font-bold text-white text-3xl text-center">
-           {t('testimonialsTitle')}
+            {t('testimonialsTitle')}
           </h2>
         </div>
 
-        <div data-aos="fade-up" data-aos-duration="1000" className="z-20 absolute inset-0 flex justify-between items-center container">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="z-20 absolute inset-0 flex justify-between items-center container"
+        >
           <Swiper
             slidesPerView={1}
             centeredSlides={false}
@@ -62,7 +68,6 @@ const CustomerComment = ({ comments }) => {
             keyboard={{
               enabled: true,
             }}
-
             breakpoints={{
               769: {
                 slidesPerView: 2,
@@ -75,9 +80,9 @@ const CustomerComment = ({ comments }) => {
             //     clickable: true,
             // }}
             autoplay={{
-              delay:2000
+              delay: 2000,
             }}
-               dir={i18n?.dir && i18n.dir() === 'rtl'? 'rtl' : 'ltr'}
+            dir={i18n?.dir && i18n.dir() === 'rtl' ? 'rtl' : 'ltr'}
             loop={true}
             modules={[Keyboard, Scrollbar, Navigation, Pagination, Autoplay]}
             className="flex-wrap justify-center mt-[80px] mySwiper"
@@ -85,8 +90,11 @@ const CustomerComment = ({ comments }) => {
             {items.map((comment) => {
               return (
                 <>
-                  <SwiperSlide className='flex justify-center items-center' key={comment._id}>
-                    <CommentBox  {...comment} />
+                  <SwiperSlide
+                    className="flex justify-center items-center"
+                    key={comment._id}
+                  >
+                    <CommentBox {...comment} />
                   </SwiperSlide>
                 </>
               )

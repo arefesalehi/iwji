@@ -12,7 +12,6 @@ const page = () => {
                         <CartBox />
                         <CartBox />
                         <CartBox />
-
                     </div>
 
 
@@ -26,7 +25,7 @@ const page = () => {
                                 <span>20000 تومان</span>
                             </div>
                             <div className='flex mt-10 gap-2'> <input type="text" className='rounded-lg border-1 border-gray-400' />
-                            <span className='p-2 rounded-lg bg-green-600 text-white'>اعمال</span></div>
+                                <span className='p-2 rounded-lg bg-green-600 text-white'>اعمال</span></div>
 
                             <div className=' w-full flex justify-between mt-20  mb-5 items-center '>
                                 <span>  قابل پرداخت</span>
@@ -36,11 +35,6 @@ const page = () => {
                             <button className='bg-green-600 text-white w-full rounded-xl py-2'>تکمیل سفارش</button>
 
                         </div>
-
-
-
-
-
 
                     </div>
                 </div>

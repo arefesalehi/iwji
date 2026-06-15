@@ -99,7 +99,7 @@ const clickHandler=async(e)=>{
           <div className="gap-6 grid md:grid-cols-2 mb-6">
             <div>
               <label
-                for="company"
+                htmlFor="company"
                 className="block mb-3 font-bold text-gray-900 dark:text-white text-sm"
               >
                 عنوان
@@ -109,7 +109,7 @@ const clickHandler=async(e)=>{
               onChange={(e)=>setTitle(e.target.value)}
                 type="text"
                 id="company"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="Flowbite"
                 required
               />
@@ -126,7 +126,7 @@ const clickHandler=async(e)=>{
               onChange={(e)=>setDesc(e.target.value)}
                 type="text"
                 id="phone"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="123-45-678"
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
                 required
@@ -145,7 +145,7 @@ const clickHandler=async(e)=>{
               onChange={(e)=>setImg(e.target.files[0])}
                 type="file"
                 id="first_name"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="John"
                 required
               />

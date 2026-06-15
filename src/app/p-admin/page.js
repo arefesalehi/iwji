@@ -11,7 +11,9 @@ import ticketModel from '@/models/ticket'
 import commentModel from '@/models/comment'
 import IIWMembership from '@/models/IIWMembership'
 import webinarModel from '@/models/webinarRegistration'
+
 const page = async () => {
+  
   const AdminUser = await authUser()
   const users = await userModel.find({})
   const registercourse = await registercourseModel.find({})
@@ -26,11 +28,11 @@ const page = async () => {
       <AdminPanelLayout>
         <BreadCrumb links={[
 
-        { id: 1, title: 'پنل ادمین', href: '/p-admin' },
+          { id: 1, title: 'پنل ادمین', href: '/p-admin' },
           { id: 2, title: 'پیشخوان', href: '' },
-     
 
-      ]}/>
+
+        ]} />
         <Info
           AdminUser={JSON.parse(JSON.stringify(AdminUser))}
           users={JSON.parse(JSON.stringify(users))}

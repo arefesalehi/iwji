@@ -6,8 +6,8 @@ import Image from 'next/image'
 import React from 'react'
 import galleryModel from '@/models/gallery'
 import Technicalservices from '@/components/templates/services/Technicalservices';
-const page =async () => {
-      const gallery = await galleryModel.find({}).sort({ _id: -1 })
+const page = async () => {
+    const gallery = await galleryModel.find({}).sort({ _id: -1 })
         .limit(6);
     return (
         <>
@@ -15,8 +15,8 @@ const page =async () => {
                 <Image src='/images/White And Blue.png' className='w-full h-[450px]' width={1000} height={400} alt='pic' />
             </div>
 
-<Technicalservices  gallery={JSON.parse(JSON.stringify(gallery))}/>
-        
+            <Technicalservices gallery={JSON.parse(JSON.stringify(gallery))} />
+
 
         </>
     )

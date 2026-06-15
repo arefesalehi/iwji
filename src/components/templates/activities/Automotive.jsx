@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Image from 'next/image'
 import { i18n } from 'next-i18next'
 const Automotive = () => {
-  const { t , i18n } = useTranslation('automotive')
+  const { t, i18n } = useTranslation('automotive')
   return (
     <>
       <div className="container">
@@ -19,7 +19,11 @@ const Automotive = () => {
             <p className="font-bold text-red-800 leading-[30px]">
               {t('section1Title')}
             </p>
-            <p className={`  text-justify leading-[30px] ${i18n.language==='fa'?"sm:pl-5 pr-0" :"sm:pr-5"}`}>
+            <p
+              className={`  text-justify leading-[30px] ${
+                i18n.language === 'fa' ? 'sm:pl-5 pr-0' : 'sm:pr-5'
+              }`}
+            >
               {t('section1Desc')}
             </p>
           </div>
@@ -49,10 +53,18 @@ const Automotive = () => {
             </div>
           </div>
           <div className="md:mt-1 lg:mt-20 mb-5 w-full basis-1/2">
-            <p className={`font-bold text-red-800 leading-[30px] ${i18n.language==='fa'?"" :"pl-5"}`}>
+            <p
+              className={`font-bold text-red-800 leading-[30px] ${
+                i18n.language === 'fa' ? '' : 'pl-5'
+              }`}
+            >
               {t('section2Title')}
             </p>
-            <p className={`  text-justify leading-[30px] ${i18n.language==='fa'?"sm:pr-5 pr-0" :"sm:pl-5"}`}>
+            <p
+              className={`  text-justify leading-[30px] ${
+                i18n.language === 'fa' ? 'sm:pr-5 pr-0' : 'sm:pl-5'
+              }`}
+            >
               {t('section2Desc')}
             </p>
           </div>

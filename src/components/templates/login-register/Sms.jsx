@@ -75,7 +75,7 @@ export default function Sms({ phone, type = 'login', hideOtp, name, email }) {
           type === 'login'
             ? `ورود شما موفق بود`
             : 'ثبت نام و ورود با موفقیت انجام شد',
-          { icon: 'success' }
+          { icon: 'success' },
         ).then(() => {
           hideOtp && hideOtp()
           router.replace('/user-account')

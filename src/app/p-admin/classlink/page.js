@@ -4,17 +4,16 @@ import ClassLinkBox from '@/components/templates/p-admin/ClassLinkBox'
 import React from 'react'
 import courseRegisterationModel from '@/models/courseRegisteration'
 import CourseModel from '@/models/course'
-import UserModel from '@/models/user' // Import User model if needed
+import UserModel from '@/models/user' 
 
 const page = async () => {
-  // Populate user data when fetching registrations
+
   const courseRegisterations = await courseRegisterationModel.find({})
-    .populate('userId', 'name email') // Add this populate
+    .populate('userId', 'name email') 
     .populate('courseId', 'name')
     .lean();
 
   const courses = await CourseModel.find({})
-
   const courseOptions = courses.map((course) => ({
     _id: course._id.toString(),
     title: course.name,

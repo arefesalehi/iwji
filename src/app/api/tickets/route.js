@@ -52,3 +52,27 @@ export async function POST(req) {
     return Response.json({ message: err.message }, { status: 500 })
   }
 }
+
+
+
+
+
+export async function GET() {
+  try {
+    await ConnectToDB()
+
+    const tickets = await ticketModel
+      .find({})
+      .populate('department')
+      .populate('user')
+
+    return Response.json(
+      JSON.parse(JSON.stringify(tickets))
+    )
+  } catch (err) {
+    return Response.json(
+      { message: err.message },
+      { status: 500 }
+    )
+  }
+}

@@ -1,12 +1,11 @@
-
 'use client'
 import React from 'react'
 import Image from 'next/image'
 import { FaStar } from 'react-icons/fa'
-import DOMPurify from 'dompurify';
-import { useTranslation } from 'react-i18next';
+import DOMPurify from 'dompurify'
+import { useTranslation } from 'react-i18next'
 const ArticleBody = ({ article }) => {
-    const {t} = useTranslation('article')
+  const { t } = useTranslation('article')
   return (
     <>
       <div className="ml-5 basis-full md:basis-4/5">
@@ -22,8 +21,7 @@ const ArticleBody = ({ article }) => {
             <span className="flex ml-3">
               <FaStar />{' '}
               <p className="mr-1">
-               {new Date(article.createdAt).toLocaleDateString('fa-IR')}
-
+                {new Date(article.createdAt).toLocaleDateString('fa-IR')}
               </p>
             </span>
             <span className="flex ml-3">
@@ -36,12 +34,17 @@ const ArticleBody = ({ article }) => {
         </div>
 
         <h1 className="mt-20 font-bold text-3xl"> {article.title}</h1>
-        <p className="mt-10 text-justify leading-[30px]">{article.description}</p>
-         
+        <p className="mt-10 text-justify leading-[30px]">
+          {article.description}
+        </p>
 
         <div className="justify-center items-center bg-gray-200 mt-5 w-full h-[200px] fex"></div>
-           <p   dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.articlebody) }}  className="mt-10 text-justify leading-[30px]"></p>
-      
+        <p
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(article.articlebody),
+          }}
+          className="mt-10 text-justify leading-[30px]"
+        ></p>
       </div>
     </>
   )

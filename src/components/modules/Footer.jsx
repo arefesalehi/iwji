@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 import React from 'react'
-import { FaPhoneVolume } from 'react-icons/fa'
 import { IoLogoInstagram, IoLogoLinkedin } from 'react-icons/io'
 import { FaTelegramPlane } from 'react-icons/fa'
 import { FaWhatsapp } from 'react-icons/fa'
@@ -13,10 +12,6 @@ const Footer = () => {
   const { t } = useTranslation('footer')
   return (
     <div className="relative bg-red-500 w-full h-[900px] md:h-[400px]">
-      {/* <Image width={800} height={400}
-          className='w-full h-full object-cover'
-          src='/images/picography-business-man-laptop-wireframes-small-2-768x512.jpg' /> */}
-
       <div
         className="relative bg-cover bg-center bg-fixed w-full h-[900px] md:h-[400px]"
         style={{

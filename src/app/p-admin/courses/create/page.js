@@ -4,12 +4,18 @@ import CreateCourse from '@/components/templates/p-admin/CreateCourse'
 import React from 'react'
 import categoryModel from '@/models/category'
 import courseModel from '@/models/course'
+
+
 const page =async () => {
+
+
     const categories = await categoryModel.find({})
-      const allCourses = await courseModel.find({})
+    const allCourses = await courseModel.find({})
+
+
+
   return (
     <>
-
     <AdminPanelLayout>
         <BreadCrumb  links={[
 
@@ -19,8 +25,6 @@ const page =async () => {
         ]}/>
         <CreateCourse  allCourses={JSON.parse(JSON.stringify(allCourses))} categories={JSON.parse(JSON.stringify(categories))}/>
     </AdminPanelLayout>
-
-
     </>
   )
 }

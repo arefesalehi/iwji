@@ -3,43 +3,40 @@ import React from 'react'
 import TitleContent from './TitleContent'
 import TeamBox from './TeamBox'
 import { useRef, useState } from 'react'
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-// Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/pagination'
 
-// import required modules
 import { Pagination, Autoplay } from 'swiper/modules'
 import { useTranslation } from 'react-i18next'
 import { i18n } from 'next-i18next'
 
 const OurTeam = ({ ourTeam }) => {
-  const { t} = useTranslation('ourteam')
+  const { t } = useTranslation('ourteam')
   const items = Array.isArray(ourTeam) ? ourTeam.filter(Boolean) : []
 
   if (!items.length) return null
 
   return (
     <>
-      <div data-aos="fade-up" data-aos-duration="2000" className="w-full h-[600px]">
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        className="w-full h-[600px]"
+      >
         <TitleContent title={t('ourteam')} />
 
         <div className="flex justify-between container">
           <Swiper
-        
             rewind={true}
             slidesPerView={1}
             spaceBetween={10}
-            // pagination={{
-            //   clickable: true,
-            // }}
             autoplay={{
               delay: 2000,
             }}
             loop={true}
-            dir={i18n?.dir && i18n.dir() === 'rtl'? 'rtl' : 'ltr'}
+            dir={i18n?.dir && i18n.dir() === 'rtl' ? 'rtl' : 'ltr'}
             breakpoints={{
               640: {
                 slidesPerView: 2,
@@ -64,7 +61,7 @@ const OurTeam = ({ ourTeam }) => {
             {items.map((team) => {
               return (
                 <>
-                  <SwiperSlide  key={team._id}>
+                  <SwiperSlide key={team._id}>
                     <TeamBox {...team} />
                   </SwiperSlide>
                 </>

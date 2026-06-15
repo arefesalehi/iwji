@@ -3,10 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 const PishkhanCards = ({ title, color, count, icon, shadowcolor }) => {
   const [isHovered, setIsHovered] = useState(false)
-
-  const shadowValue = isHovered
-    ? 'none'
-    : shadowcolor
+  const shadowValue = isHovered ? 'none' : shadowcolor
   return (
     <>
       <div

@@ -1,4 +1,3 @@
-
 'use client'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
@@ -8,18 +7,19 @@ const Pagination = ({
   totalItems,
   itemsPerPage,
   onPageChange,
-  label = 'آیتم', // 👈 پیش‌فرض، اگر چیزی نفرستی
+  label = 'آیتم', 
 }) => {
   const totalPages = Math.ceil(totalItems / itemsPerPage)
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
-const {t} =useTranslation('pagination')
+  const { t } = useTranslation('pagination')
   return (
     <nav
-      className="flex md:flex-row flex-column flex-wrap justify-between items-center bg-white px-5 py-10 pt-4"
+      className="flex md:flex-row flex-wrap flex-column justify-between items-center bg-white px-5 py-10 pt-4"
       aria-label="Table navigation"
     >
       <span className="px-5 text-gray-500 text-sm">
-       {t('show')}{''}
+        {t('show')}
+        {''}
         <span className="font-semibold">
           {(currentPage - 1) * itemsPerPage + 1}-
           {Math.min(currentPage * itemsPerPage, totalItems)}

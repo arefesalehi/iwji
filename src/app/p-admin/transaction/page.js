@@ -7,18 +7,18 @@ import courseregisterModel from '@/models/courseRegisteration'
 import CourseModel from '@/models/course'
 const page = async () => {
     const courseRegister = await courseregisterModel.find({})
-    .populate('userId', 'name email') // Add this populate
-    .populate('courseId', 'name')
-    console.log('courseregisterModel==>', courseRegister);
+        .populate('userId', 'name email')
+        .populate('courseId', 'name')
 
-     const courses = await CourseModel.find({})
-    
-      const courseOptions = courses.map((course) => ({
+
+    const courses = await CourseModel.find({})
+
+    const courseOptions = courses.map((course) => ({
         _id: course._id.toString(),
         title: course.name,
-      }))
+    }))
 
-      
+
 
     return (
         <>
@@ -31,8 +31,7 @@ const page = async () => {
 
                 ]} />
 
-                <TransactionTable courseRegister={JSON.parse(JSON.stringify(courseRegister))}  />
-
+                <TransactionTable courseRegister={JSON.parse(JSON.stringify(courseRegister))} />
 
             </AdminPanelLayout>
 

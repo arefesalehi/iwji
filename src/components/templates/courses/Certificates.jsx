@@ -1,11 +1,9 @@
 'use client'
 import React from 'react'
-import SideComponent from '@/components/modules/SideComponent'
 import SideGallery from '@/components/modules/SideGallery'
 import Sidepromote from '@/components/modules/Sidepromote'
 import Image from 'next/image'
 import BreadCrumb from '@/components/modules/BreadCrumb'
-import SideConsulting from '@/components/modules/SideConsulting'
 import { useTranslation } from 'react-i18next'
 const Certificates = ({ gallery, lastMembership, membership }) => {
   const { t } = useTranslation('certificates')
@@ -34,10 +32,14 @@ const Certificates = ({ gallery, lastMembership, membership }) => {
           </div>
 
           <h1 className="mt-10 font-bold text-3xl"> </h1>
-          <p className="mt-10 text-justify leading-[30px]">{t('certificatePage.intro1')}</p>
+          <p className="mt-10 text-justify leading-[30px]">
+            {t('certificatePage.intro1')}
+          </p>
           <div className="justify-center items-center bg-gray-200 mt-5 w-full h-[200px] fex"></div>
 
-          <p className="mt-10 text-justify leading-[30px]">{t('certificatePage.intro2')}</p>
+          <p className="mt-10 text-justify leading-[30px]">
+            {t('certificatePage.intro2')}
+          </p>
 
           <h1 className="mt-10 font-bold text-3xl">
             {' '}

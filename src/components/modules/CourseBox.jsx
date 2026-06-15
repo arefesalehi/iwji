@@ -28,22 +28,18 @@ const CourseBox = ({ name, description, href, shortName }) => {
                 className="inline-flex items-center bg-red-800 hover:bg-red-900 dark:bg-blue-600 dark:hover:bg-blue-700 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-white text-sm text-center"
               >
                 اطلاعات دوره
-            
               </Link>
 
-               <Link
+              <Link
                 href={`/user-account/myCourses/classinfo/${shortName}`}
                 className="inline-flex items-center bg-red-800 hover:bg-red-900 dark:bg-blue-600 dark:hover:bg-blue-700 px-3 py-2 rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 font-medium text-white text-sm text-center"
               >
                 اطلاعات کلاس
-               
               </Link>
             </div>
           </div>
         </div>
       </div>
-
-       
     </>
   )
 }

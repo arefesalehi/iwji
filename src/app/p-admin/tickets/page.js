@@ -7,20 +7,19 @@ import { authUser } from '@/utils/serverHelpers'
 const page = async () => {
 
     const tickets = await ticketModel.find({}).populate('department').populate('user')
-    console.log('ticketsssssssss', tickets);
-    
-   const user = await authUser()
+    const user = await authUser()
+
     return (
         <>
             <AdminPanelLayout>
                 <BreadCrumb links={[
 
-          { id: 1, title: 'پنل ادمین', href: '/p-admin' },
-          { id: 2, title: 'تماس و پشتیبانی ', href: '/' },
-          { id: 3, title: ' تیکت ها', href: '/p-admin/tickets' },
+                    { id: 1, title: 'پنل ادمین', href: '/p-admin' },
+                    { id: 2, title: 'تماس و پشتیبانی ', href: '/' },
+                    { id: 3, title: ' تیکت ها', href: '/p-admin/tickets' },
 
-        ]} />
-                <TicketTable user={user}  tickets={JSON.parse(JSON.stringify(tickets))} />
+                ]} />
+                <TicketTable user={JSON.parse(JSON.stringify(user))} tickets={JSON.parse(JSON.stringify(tickets))} />
             </AdminPanelLayout>
 
         </>

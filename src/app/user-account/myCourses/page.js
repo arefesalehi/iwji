@@ -15,9 +15,7 @@ const page = async () => {
   const courseRegisteration = await courseRegistrationModel
     .find({ userId: user._id })
     .populate('courseId',
-
-
-    ); // populate فقط courseName
+    ); 
 
   console.log('courseRegisteration==>', JSON.stringify(courseRegisteration, null, 2));
 
@@ -25,8 +23,8 @@ const page = async () => {
 
   return (
     <UserPanelLayout>
-      <TitleComponent title="دوره های من"  />
-
+      <TitleComponent title="دوره های من" />
+      
       <div className="flex px-10 gap-5 flex-wrap">
         {courseRegisteration.map((course) =>
 
@@ -36,15 +34,10 @@ const page = async () => {
             description={course.courseId?.description}
             href={course.courseId?.href}
             shortName={course.courseId.shortName}
-
-
           />
         )
         }
       </div>
-
-
-      {/* <p className='p-10' >جهت دریافت  برنامه درسی و  دسترسی به لینک ها <Link href='/user-account/myCourses/classinfo' className='text-red-800'>اینجا</Link> را کلیک کنید</p> */}
 
     </UserPanelLayout>
   );

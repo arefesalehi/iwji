@@ -3,13 +3,13 @@
 import React, { useState } from 'react'
 import { FaMinusCircle, FaPlusCircle } from 'react-icons/fa'
 import { MdOutlineKeyboardArrowDown } from 'react-icons/md'
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaCloudDownloadAlt } from 'react-icons/fa'
 
 const RecordeAccardion2 = ({ iweRegistration }) => {
   const [openGroups, setOpenGroups] = useState({})
 
   const toggleGroup = (partName) => {
-    setOpenGroups(prev => ({ ...prev, [partName]: !prev[partName] }))
+    setOpenGroups((prev) => ({ ...prev, [partName]: !prev[partName] }))
   }
 
   // اگر هیچ ثبت‌نامی پیدا نشد
@@ -56,13 +56,19 @@ const RecordeAccardion2 = ({ iweRegistration }) => {
             {isOpen && (
               <div className="space-y-4 bg-red-800 p-5 border-gray-100 border-b-2 rounded-xl text-white text-sm">
                 {recordings.map((recording) => (
-                  <div  className='flex justify-between' key={recording._id}>
-                    <span >
-                      {recording.title}
-                    </span>
+                  <div className="flex justify-between" key={recording._id}>
+                    <span>{recording.title}</span>
 
-                    <a className='flex justify-center items-center gap-2' href={recording.url} target="_blank" rel="noreferrer">          <FaCloudDownloadAlt/>دانلود</a>
-           
+                    <a
+                      className="flex justify-center items-center gap-2"
+                      href={recording.url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {' '}
+                      <FaCloudDownloadAlt />
+                      دانلود
+                    </a>
                   </div>
                 ))}
               </div>

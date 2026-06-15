@@ -6,10 +6,13 @@ import { useTranslation } from 'react-i18next'
 import BreadCrumb from '@/components/modules/BreadCrumb'
 
 const WebinarForm = () => {
-  const {t, i18n} = useTranslation('webinar')
+  const { t, i18n } = useTranslation('webinar')
   return (
     <>
-       <BreadCrumb title={t('breadcrumb')} img='/images/site/dom-fou-YRMWVcdyhmI-unsplash.jpg' />
+      <BreadCrumb
+        title={t('breadcrumb')}
+        img="/images/site/dom-fou-YRMWVcdyhmI-unsplash.jpg"
+      />
       <div className="mb-20 pt-20 h-[900px] container">
         <div className="flex">
           <div className="w-full">
@@ -17,28 +20,29 @@ const WebinarForm = () => {
               for="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
-             {t('firstName')}
+              {t('firstName')}
             </label>
             <div className="relative mb-6">
               <div className="absolute inset-y-0 flex items-center ps-3.5 pointer-events-none start-0">
-             
                 <MdPerson className="text-gray-500 dark:text-gray-400" />
               </div>
               <input
                 type="text"
                 id="input-group-1"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder={t('firstNamePH')}
               />
             </div>
           </div>
 
-          <div className={` ${i18n.language==='fa' ? "pr-10" :"pl-10"} w-full`}>
+          <div
+            className={` ${i18n.language === 'fa' ? 'pr-10' : 'pl-10'} w-full`}
+          >
             <label
               for="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
-             {t('lastName')}
+              {t('lastName')}
             </label>
             <div className="relative mb-6">
               <div className="absolute inset-y-0 flex items-center ps-3.5 pointer-events-none start-0">
@@ -47,7 +51,7 @@ const WebinarForm = () => {
               <input
                 type="text"
                 id="input-group-1"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder={t('lastNamePH')}
               />
             </div>
@@ -60,24 +64,24 @@ const WebinarForm = () => {
               for="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
-             {t('phone')}
+              {t('phone')}
             </label>
             <div className="relative mb-6">
               <div className="absolute inset-y-0 flex items-center ps-3.5 pointer-events-none start-0">
-               
-
                 <AiFillPhone className="text-gray-500 dark:text-gray-400" />
               </div>
               <input
                 type="Number"
                 id="input-group-1"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="0912..."
               />
             </div>
           </div>
 
-          <div className={` ${i18n.language==='fa' ? "pr-10" :"pl-10"} w-full`}>
+          <div
+            className={` ${i18n.language === 'fa' ? 'pr-10' : 'pl-10'} w-full`}
+          >
             <label
               for="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
@@ -100,7 +104,7 @@ const WebinarForm = () => {
               <input
                 type="email"
                 id="input-group-1"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="info@iwji.ir"
               />
             </div>
@@ -114,16 +118,48 @@ const WebinarForm = () => {
         <div className="bg-gray-100 mt-20 mb-20 rounded-[10px] w-full h-[400px]">
           <div className="flex flex-col justify-center items-center bg-green-600 rounded-[10px] h-[100px] text-white">
             <p>{t('successTitle')}</p>
-            <p>
-             {t('successDesc')}
-            </p>
+            <p>{t('successDesc')}</p>
           </div>
 
-          <div className='flex flex-col'>
-            <h1 className={`mt-10 mb-5 ${i18n.language==='fa' ? "mr-3" : "ml-3"} text-red-800 text-xl font-bold`}>{t('infoTitle')} </h1>
-            <div className='pt-5 pb-3'><span className={`bg-gray-200 ${i18n.language==='fa' ? "mr-3" : "ml-3"} p-2 w-[100px] font-semibold text-sm`}>{t('fullName')}</span> <span>defgdstg</span> </div>
-            <div className='pt-2 pb-3'><span className={`bg-gray-200 ${i18n.language==='fa' ? "mr-3" : "ml-3"} p-2 font-semibold text-sm`}> {t('phoneLabel')}</span> <span>defgdstg</span></div>
-            <div className='pt-2 pb-3'><span className={`bg-gray-200 ${i18n.language==='fa' ? "mr-3" : "ml-3"} p-2 font-semibold text-sm`}>{t('emailLabel')}</span> <span>defgdstg</span></div>
+          <div className="flex flex-col">
+            <h1
+              className={`mt-10 mb-5 ${
+                i18n.language === 'fa' ? 'mr-3' : 'ml-3'
+              } text-red-800 text-xl font-bold`}
+            >
+              {t('infoTitle')}{' '}
+            </h1>
+            <div className="pt-5 pb-3">
+              <span
+                className={`bg-gray-200 ${
+                  i18n.language === 'fa' ? 'mr-3' : 'ml-3'
+                } p-2 w-[100px] font-semibold text-sm`}
+              >
+                {t('fullName')}
+              </span>{' '}
+              <span>defgdstg</span>{' '}
+            </div>
+            <div className="pt-2 pb-3">
+              <span
+                className={`bg-gray-200 ${
+                  i18n.language === 'fa' ? 'mr-3' : 'ml-3'
+                } p-2 font-semibold text-sm`}
+              >
+                {' '}
+                {t('phoneLabel')}
+              </span>{' '}
+              <span>defgdstg</span>
+            </div>
+            <div className="pt-2 pb-3">
+              <span
+                className={`bg-gray-200 ${
+                  i18n.language === 'fa' ? 'mr-3' : 'ml-3'
+                } p-2 font-semibold text-sm`}
+              >
+                {t('emailLabel')}
+              </span>{' '}
+              <span>defgdstg</span>
+            </div>
           </div>
         </div>
       </div>

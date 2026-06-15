@@ -5,8 +5,8 @@ import TitleContent from '../templates/index/TitleContent'
 import WebinarBox from './WebinarBox'
 import CourseBox from '../templates/index/CourseBox'
 import { useTranslation } from 'react-i18next'
-const NewCourse = ({course, webinar}) => {
-      const { t} = useTranslation('newcourse')
+const NewCourse = ({ course, webinar }) => {
+  const { t } = useTranslation('newcourse')
   if (!course && !webinar) return null
 
   return (
@@ -14,11 +14,14 @@ const NewCourse = ({course, webinar}) => {
       <div className="justify-center items-center w-full h-[600px]">
         <TitleContent title={t('newest')} />
 
-       <div   data-aos="fade-up"
-          data-aos-duration="1000" className='flex justify-between gap-10 mt-5 px-100'>
-        {course && <CourseBox course={course} />}
-        {webinar && <WebinarBox webinar={webinar} />}
-       </div>
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="flex justify-between gap-10 mt-5 px-100"
+        >
+          {course && <CourseBox course={course} />}
+          {webinar && <WebinarBox webinar={webinar} />}
+        </div>
       </div>
 
       <div className="right-[-700px] absolute flex justify-center items-center w-full overflow-hidden">

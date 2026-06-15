@@ -1,58 +1,62 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { Combobox } from '@headlessui/react';
-import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid';
+import { useState } from 'react'
+import { Combobox } from '@headlessui/react'
+import { ChevronUpDownIcon, CheckIcon } from '@heroicons/react/20/solid'
 
 export default function FileUploadBox({ courseOptions, userOptions }) {
-  const [title, setTitle] = useState('');
-  const [file, setFile] = useState(null);
-  const [selectedCourseId, setSelectedCourseId] = useState('');
-  const [selectedUserIds, setSelectedUserIds] = useState([]);
-  const [message, setMessage] = useState('');
+  const [title, setTitle] = useState('')
+  const [file, setFile] = useState(null)
+  const [selectedCourseId, setSelectedCourseId] = useState('')
+  const [selectedUserIds, setSelectedUserIds] = useState([])
+  const [message, setMessage] = useState('')
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
+    e.preventDefault()
+
     if (!file || !title || !selectedCourseId || selectedUserIds.length === 0) {
-      setMessage('لطفاً تمام فیلدها را پر کنید');
-      return;
+      setMessage('لطفاً تمام فیلدها را پر کنید')
+      return
     }
 
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('title', title);
-    formData.append('courseId', selectedCourseId);
-    formData.append('userIds', JSON.stringify(selectedUserIds));
+    const formData = new FormData()
+    formData.append('file', file)
+    formData.append('title', title)
+    formData.append('courseId', selectedCourseId)
+    formData.append('userIds', JSON.stringify(selectedUserIds))
 
     try {
       const res = await fetch('/api/coursefiles', {
         method: 'POST',
         body: formData,
-      });
+      })
 
-      const result = await res.json();
-      
+      const result = await res.json()
+
       if (res.ok) {
-        setMessage('فایل با موفقیت آپلود شد!');
-        setTitle('');
-        setFile(null);
-        setSelectedCourseId('');
-        setSelectedUserIds([]);
+        setMessage('فایل با موفقیت آپلود شد!')
+        setTitle('')
+        setFile(null)
+        setSelectedCourseId('')
+        setSelectedUserIds([])
       } else {
-        setMessage(`خطا: ${result.message || 'خطا در آپلود فایل'}`);
+        setMessage(`خطا: ${result.message || 'خطا در آپلود فایل'}`)
       }
     } catch (err) {
-      setMessage('خطا در ارتباط با سرور');
-      console.error('Network error:', err);
+      setMessage('خطا در ارتباط با سرور')
+      console.error('Network error:', err)
     }
-  };
+  }
 
   return (
     <div className="bg-white shadow mx-auto mt-10 p-6 rounded max-w-lg">
       <h2 className="mb-4 font-bold text-xl">آپلود فایل دوره</h2>
       {message && (
-        <p className={`mb-4 ${message.includes('موفقیت') ? 'text-green-600' : 'text-red-600'}`}>
+        <p
+          className={`mb-4 ${
+            message.includes('موفقیت') ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
           {message}
         </p>
       )}
@@ -97,12 +101,16 @@ export default function FileUploadBox({ courseOptions, userOptions }) {
 
         <div>
           <label className="block mb-1">کاربران مجاز</label>
-          <Combobox value={selectedUserIds} onChange={setSelectedUserIds} multiple>
+          <Combobox
+            value={selectedUserIds}
+            onChange={setSelectedUserIds}
+            multiple
+          >
             <div className="relative mt-1">
               <div className="relative bg-white shadow-md border rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500 w-full overflow-hidden sm:text-sm text-left cursor-default">
                 <div className="flex flex-wrap items-center gap-1 p-1">
                   {selectedUserIds.map((userId) => {
-                    const user = userOptions.find(u => u._id === userId);
+                    const user = userOptions.find((u) => u._id === userId)
                     return (
                       <span
                         key={userId}
@@ -112,12 +120,16 @@ export default function FileUploadBox({ courseOptions, userOptions }) {
                         <button
                           type="button"
                           className="ml-1 text-red-500"
-                          onClick={() => setSelectedUserIds(selectedUserIds.filter(id => id !== userId))}
+                          onClick={() =>
+                            setSelectedUserIds(
+                              selectedUserIds.filter((id) => id !== userId),
+                            )
+                          }
                         >
                           ×
                         </button>
                       </span>
-                    );
+                    )
                   })}
                   <Combobox.Input
                     className="flex-1 p-1 border-none focus:ring-0 text-sm"
@@ -147,7 +159,11 @@ export default function FileUploadBox({ courseOptions, userOptions }) {
                   >
                     {({ selected }) => (
                       <>
-                        <span className={`block truncate ${selected ? 'font-medium' : 'font-normal'}`}>
+                        <span
+                          className={`block truncate ${
+                            selected ? 'font-medium' : 'font-normal'
+                          }`}
+                        >
                           {user.firstName} {user.lastName} ({user.email})
                         </span>
                         {selected && (
@@ -172,5 +188,5 @@ export default function FileUploadBox({ courseOptions, userOptions }) {
         </button>
       </form>
     </div>
-  );
+  )
 }

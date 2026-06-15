@@ -4,8 +4,9 @@ import Gallery from '@/components/templates/p-admin/Gallery'
 import React from 'react'
 import galleryModel from '@/models/gallery'
 import dynamic from 'next/dynamic'
+
 const page = async() => {
-  // const gallery = await galleryModel.find({})
+
 
   return (
     <>

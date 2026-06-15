@@ -6,13 +6,13 @@ import courseRegisterationModel from '@/models/courseRegisteration';
 import CourseModel from '@/models/course';
 
 const page = async () => {
-  // دریافت تمام ثبت‌نام‌ها و populate اطلاعات کاربر و دوره
+
   const courseRegisterations = await courseRegisterationModel.find({})
-    .populate('userId', 'name email') // اطلاعات کاربر
-    .populate('courseId', 'name')    // اطلاعات دوره
+    .populate('userId', 'name email') 
+    .populate('courseId', 'name')   
     .lean();
 
-  // دریافت لیست دوره‌ها برای انتخاب در فرم
+
   const courses = await CourseModel.find({}).lean();
 
   const courseOptions = courses.map((course) => ({

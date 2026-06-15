@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 import BreadCrumb from '@/components/modules/BreadCrumb'
 
 const MembershipForm = ({ user, courseRegister }) => {
-  const {t} = useTranslation('membership')
+  const { t } = useTranslation('membership')
   const [code, setCode] = useState('')
   const [isRegister, setIsRegister] = useState(false)
   const [RegisterData, setRegisterData] = useState(null)
@@ -48,7 +48,7 @@ const MembershipForm = ({ user, courseRegister }) => {
 
   return (
     <>
-       <BreadCrumb title={t('breadcrumb')} />
+      <BreadCrumb title={t('breadcrumb')} />
       <form
         onSubmit={submitHandler}
         className="m-auto py-20 rounded-lg w-[70%]"
@@ -56,7 +56,7 @@ const MembershipForm = ({ user, courseRegister }) => {
         <div className="gap-6 grid md:grid-cols-2 mb-6">
           <div>
             <label className="block mb-3 font-bold text-gray-900 dark:text-white text-sm">
-            {t('nationalId')}
+              {t('nationalId')}
             </label>
             <input
               value={code}
@@ -80,20 +80,24 @@ const MembershipForm = ({ user, courseRegister }) => {
         <div className="bg-gray-100 m-auto mt-10 mb-20 p-5 rounded-[10px] w-[80%] h-auto">
           <div className="flex flex-col justify-center items-center bg-green-600 rounded-[10px] h-[100px] text-white">
             <p>{t('successTitle')}</p>
-            <p>
-             {t('successDesc')}
-            </p>
-            <p>
-               {t('successDesc2')}
-            </p>
+            <p>{t('successDesc')}</p>
+            <p>{t('successDesc2')}</p>
           </div>
           <h1 className="mt-5 mb-3 font-bold text-red-800 text-xl">
-           {t('registeredInfo')}
+            {t('registeredInfo')}
           </h1>
-          <p>{t('name')}: {user.name}</p>
-          <p>{t('phone')}: {user.phone}</p>
-          <p>{t('email')}: {user.email}</p>
-          <p>{t('nationalid')}: {RegisterData.code}</p>
+          <p>
+            {t('name')}: {user.name}
+          </p>
+          <p>
+            {t('phone')}: {user.phone}
+          </p>
+          <p>
+            {t('email')}: {user.email}
+          </p>
+          <p>
+            {t('nationalid')}: {RegisterData.code}
+          </p>
         </div>
       )}
     </>

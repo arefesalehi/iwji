@@ -4,14 +4,11 @@ import Image from 'next/image'
 import React, { useState } from 'react'
 
 const PosterTable = ({ posters }) => {
-    const [currentPage, setCurrentPage] = useState(1)
-    const teamsPerPage = 5
-    const indexOfLastArticle = currentPage * teamsPerPage
-    const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
-    const currentPoster = posters.slice(
-      indexOfFirstArticle,
-      indexOfLastArticle,
-    )
+  const [currentPage, setCurrentPage] = useState(1)
+  const teamsPerPage = 5
+  const indexOfLastArticle = currentPage * teamsPerPage
+  const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
+  const currentPoster = posters.slice(indexOfFirstArticle, indexOfLastArticle)
   return (
     <>
       <div className="relative shadow-md sm:rounded-lg overflow-x-auto">
@@ -71,7 +68,7 @@ const PosterTable = ({ posters }) => {
                     )}
                   </td>
                   <td className="px-6 py-4">
-                     {poster.posterImg_lg ? (
+                    {poster.posterImg_lg ? (
                       <Image
                         src={poster.posterImg_lg}
                         alt="pic"
@@ -135,20 +132,18 @@ const PosterTable = ({ posters }) => {
                     >
                       حذف
                     </a>
-
-                  
                   </td>
                 </tr>
               )
             })}
           </tbody>
         </table>
-          <Pagination
-             currentPage={currentPage}
-            totalItems={posters.length}
-            itemsPerPage={5}
-            onPageChange={setCurrentPage}
-            label="پوستر "
+        <Pagination
+          currentPage={currentPage}
+          totalItems={posters.length}
+          itemsPerPage={5}
+          onPageChange={setCurrentPage}
+          label="پوستر "
         />
       </div>
     </>

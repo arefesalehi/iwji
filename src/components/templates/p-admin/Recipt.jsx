@@ -9,15 +9,15 @@ const isImageFile = (filename) => /\.(jpe?g|png|gif)$/i.test(filename || '')
 const isPdfFile = (filename) => /\.(pdf)$/i.test(filename || '')
 
 const Recipt = ({ courseRegister }) => {
-    const [currentPage, setCurrentPage] = useState(1)
-    const transactionPerPage = 5
-    const indexOfLastArticle = currentPage * transactionPerPage
-    const indexOfFirstArticle = indexOfLastArticle - transactionPerPage
-    const currentTransaction = courseRegister.slice(
-      indexOfFirstArticle,
-      indexOfLastArticle,
-    )
-    
+  const [currentPage, setCurrentPage] = useState(1)
+  const transactionPerPage = 5
+  const indexOfLastArticle = currentPage * transactionPerPage
+  const indexOfFirstArticle = indexOfLastArticle - transactionPerPage
+  const currentTransaction = courseRegister.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle,
+  )
+
   return (
     <div className="relative shadow-md mx-10 mt-40 sm:rounded-lg overflow-x-auto">
       <table className="w-full text-gray-500 dark:text-gray-400 text-sm text-left rtl:text-right">
@@ -36,19 +36,26 @@ const Recipt = ({ courseRegister }) => {
           {currentTransaction.map((user, index) => {
             const receipts = user.receipts || {}
             return (
-              <tr key={user._id} className="bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-600 border-gray-200 dark:border-gray-700 border-b">
-                <th className="px-6 py-4 font-medium text-gray-900 dark:text-white">{index + 1}</th>
+              <tr
+                key={user._id}
+                className="bg-white hover:bg-gray-50 dark:bg-gray-800 dark:hover:bg-gray-600 border-gray-200 dark:border-gray-700 border-b"
+              >
+                <th className="px-6 py-4 font-medium text-gray-900 dark:text-white">
+                  {index + 1}
+                </th>
                 <td className="px-6 py-4">{user.userId?.name || 'نامشخص'}</td>
                 <td className="px-6 py-4">{user.courseId?.name || 'نامشخص'}</td>
 
-           
-                  {RECEIPT_KEYS.map((key) => { 
-
+                {RECEIPT_KEYS.map((key) => {
                   const rec = receipts[key]
                   return (
                     <td key={key} className="px-6 py-4">
                       {rec?.fileUrl ? (
-                        <a href={rec.fileUrl} target="_blank" rel="noopener noreferrer">
+                        <a
+                          href={rec.fileUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           {isImageFile(rec.fileName) ? (
                             <img
                               src={rec.fileUrl}
@@ -57,12 +64,14 @@ const Recipt = ({ courseRegister }) => {
                             />
                           ) : isPdfFile(rec.fileName) ? (
                             <img
-                              src='/images/Capture25.PNG'
+                              src="/images/Capture25.PNG"
                               alt="PDF"
                               className="rounded w-12 h-12 object-cover cursor-pointer"
                             />
                           ) : (
-                            <span className="text-gray-400 text-sm">فرمت ناشناخته</span>
+                            <span className="text-gray-400 text-sm">
+                              فرمت ناشناخته
+                            </span>
                           )}
                         </a>
                       ) : (
@@ -76,13 +85,14 @@ const Recipt = ({ courseRegister }) => {
           })}
         </tbody>
       </table>
-      <Pagination    currentPage={currentPage}
-            totalItems={courseRegister.length}
-            itemsPerPage={5}
-            onPageChange={setCurrentPage}
-            label="رسید"/>
+      <Pagination
+        currentPage={currentPage}
+        totalItems={courseRegister.length}
+        itemsPerPage={5}
+        onPageChange={setCurrentPage}
+        label="رسید"
+      />
     </div>
-
   )
 }
 

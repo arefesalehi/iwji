@@ -1,5 +1,5 @@
 'use client'
-import './i18n'  // اینجا i18n رو ایمپورت کن
+import './i18n'  
 
 export default function RootLayout({ children }) {
   return (

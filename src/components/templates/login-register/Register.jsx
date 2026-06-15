@@ -17,10 +17,14 @@ const Register = ({ ShowLoginForm }) => {
   const hideOtp = () => setIsLoginWithOtp(false)
 
   const passwordHandler = async () => {
-    if (!name.trim()) return showswal('لطفا نام خود را وارد نمایید', 'error', 'تلاش مجدد')
-    if (!validatePhone(phone)) return showswal('شماره تلفن معتبر نمی باشد', 'error', 'تلاش مجدد')
-    if (!validateEmail(email)) return showswal('ایمیل وارد شده معتبر نمی باشد', 'error', 'تلاش مجدد')
-    if (!validatePassword(password)) return showswal('رمز عبور وارد شده قابل حدس است', 'error', 'تلاش مجدد')
+    if (!name.trim())
+      return showswal('لطفا نام خود را وارد نمایید', 'error', 'تلاش مجدد')
+    if (!validatePhone(phone))
+      return showswal('شماره تلفن معتبر نمی باشد', 'error', 'تلاش مجدد')
+    if (!validateEmail(email))
+      return showswal('ایمیل وارد شده معتبر نمی باشد', 'error', 'تلاش مجدد')
+    if (!validatePassword(password))
+      return showswal('رمز عبور وارد شده قابل حدس است', 'error', 'تلاش مجدد')
 
     const newUser = { name, email, password, phone }
     const res = await fetch('/api/auth/signup', {
@@ -30,15 +34,23 @@ const Register = ({ ShowLoginForm }) => {
     })
 
     if (res.status === 201) {
-      swal({ title: 'ثبت نام با موفقیت انجام شد', icon: 'success', buttons: 'ورود به لاگین' })
-        .then(() => ShowLoginForm())
+      swal({
+        title: 'ثبت نام با موفقیت انجام شد',
+        icon: 'success',
+        buttons: 'ورود به لاگین',
+      }).then(() => ShowLoginForm())
     } else if (res.status === 422) {
       showswal('کاربری با این اطلاعات از قبل وجود دارد', 'error', 'تلاش مجدد')
     }
   }
 
   const sendOtp = async () => {
-    if (!validatePhone(phone)) return showswal('شماره تلفن وارد شده معتبر نمی باشد', 'error', 'تلاش مجدد')
+    if (!validatePhone(phone))
+      return showswal(
+        'شماره تلفن وارد شده معتبر نمی باشد',
+        'error',
+        'تلاش مجدد',
+      )
 
     const res = await fetch('/api/auth/sms/send', {
       method: 'POST',
@@ -47,13 +59,19 @@ const Register = ({ ShowLoginForm }) => {
     })
 
     if (res.status === 201) {
-      swal({ title: 'کد با موفقیت پیامک شد', icon: 'success', buttons: 'ok' })
-        .then(() => {
-          setIsLoginWithOtp(true)
-        })
+      swal({
+        title: 'کد با موفقیت پیامک شد',
+        icon: 'success',
+        buttons: 'ok',
+      }).then(() => {
+        setIsLoginWithOtp(true)
+      })
     } else if (res.status === 422) {
-      swal({ title: 'شما قبلا با این شماره تلفن ثبت نام کردید', icon: 'error', buttons: 'لاگین' })
-        .then(() => ShowLoginForm())
+      swal({
+        title: 'شما قبلا با این شماره تلفن ثبت نام کردید',
+        icon: 'error',
+        buttons: 'لاگین',
+      }).then(() => ShowLoginForm())
     }
   }
 
@@ -129,7 +147,11 @@ const Register = ({ ShowLoginForm }) => {
 
                   <button
                     type="button"
-                    onClick={() => { isregisterWithPass ? passwordHandler() : setIsRegisterWithPass(true) }}
+                    onClick={() => {
+                      isregisterWithPass
+                        ? passwordHandler()
+                        : setIsRegisterWithPass(true)
+                    }}
                     className="block dark:bg-gray-700 mb-6 p-2.5 border border-red-800 rounded-lg w-full text-red-800 dark:text-white text-sm"
                   >
                     ثبت نام با رمز عبور
@@ -167,7 +189,13 @@ const Register = ({ ShowLoginForm }) => {
           </div>
         </div>
       ) : (
-        <Sms hideOtp={hideOtp} phone={phone} type="register" name={name} email={email} />
+        <Sms
+          hideOtp={hideOtp}
+          phone={phone}
+          type="register"
+          name={name}
+          email={email}
+        />
       )}
     </>
   )

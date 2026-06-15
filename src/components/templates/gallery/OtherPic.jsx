@@ -4,8 +4,7 @@ import GalleryLightBox from './GalleryLightBox'
 const OtherPic = () => {
   return (
     <div>
-
-      <GalleryLightBox category="other"/>
+      <GalleryLightBox category="other" />
     </div>
   )
 }

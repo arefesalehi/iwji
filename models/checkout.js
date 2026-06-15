@@ -2,14 +2,7 @@ import mongoose from "mongoose";
 
 const checkoutSchema =  mongoose.Schema(
     {
-
-         // user: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "USER",
-  //   required: true,
-  // },
-
-  
+       
   totalPrice: {
     type: Number,
     required: true,

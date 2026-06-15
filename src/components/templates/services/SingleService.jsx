@@ -1,7 +1,16 @@
 import Image from 'next/image'
 import React from 'react'
 
-const SingleService = ({ reverse, title, desc1, desc2, desc3 , img, desc4, desc5}) => {
+const SingleService = ({
+  reverse,
+  title,
+  desc1,
+  desc2,
+  desc3,
+  img,
+  desc4,
+  desc5,
+}) => {
   return (
     <>
       <div className="h-[600px] container">
@@ -24,10 +33,10 @@ const SingleService = ({ reverse, title, desc1, desc2, desc3 , img, desc4, desc5
               <li>
                 <p className="pt-5 leading-[30px]">{desc3} </p>
               </li>
-                 <li>
+              <li>
                 <p className="pt-5 leading-[30px]">{desc4} </p>
               </li>
-               <li>
+              <li>
                 <p className="pt-5 leading-[30px]">{desc5} </p>
               </li>
             </ul>

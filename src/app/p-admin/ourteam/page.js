@@ -1,6 +1,5 @@
 import AdminPanelLayout from '@/components/layouts/AdminPanelLayout'
 import BreadCrumb from '@/components/templates/p-admin/BreadCrumb'
-
 import React from 'react'
 import ourTeamModel from '@/models/ourTeam'
 import OurTeamBox from '@/components/templates/p-admin/OurTeamBox'
@@ -9,8 +8,6 @@ const page =async () => {
 
   return (
     <>
-
-
       <AdminPanelLayout>
         <BreadCrumb  links={[
 

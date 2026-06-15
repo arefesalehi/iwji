@@ -6,14 +6,11 @@ export async function POST(req) {
     const body = await req.json();
     const { question, answer } = body;
 
-   
-   await acardionModel.create({ question, answer });
+    await acardionModel.create({ question, answer });
 
-    return Response.json({message: 'accardion created successfully :)'} , {status:201})
+    return Response.json({ message: 'accardion created successfully :)' }, { status: 201 })
   } catch (error) {
-    return  Response.json({message: message.error} , {status:500})
-    
-
+    return Response.json({ message: message.error }, { status: 500 })
   }
 }
 

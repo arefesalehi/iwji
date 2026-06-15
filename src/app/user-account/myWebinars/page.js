@@ -13,9 +13,7 @@ const page = async () => {
     <>
 
       <UserPanelLayout>
-
         <TitleComponent title='وبینارهای من' />
-
         <div className='flex px-10 gap-5 flex-wrap'>
           {
             webinarRegisteration.map((webinar) => {
@@ -24,10 +22,6 @@ const page = async () => {
               )
             })
           }
-
-
-
-
 
         </div>
       </UserPanelLayout>

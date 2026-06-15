@@ -1,6 +1,5 @@
 'use client'
 import React from 'react'
-import { MdOutlineMapsHomeWork } from 'react-icons/md'
 import { SiLevelsdotfyi } from 'react-icons/si'
 import { FaReadme } from 'react-icons/fa'
 import { MdLanguage } from 'react-icons/md'
@@ -26,13 +25,15 @@ const LeftSide = ({
   recordedCourse,
   language,
 }) => {
-  const { t , i18n} = useTranslation('leftside')
+  const { t, i18n } = useTranslation('leftside')
   return (
     <>
       {/*box 1 info course */}
       <div className="justify-center bg-white mx-5 pt-10 rounded-[10px] w-[95%] h-auto">
         <div className="flex justify-center items-center bg-gray-300 m-auto rounded-[10px] w-[80%] h-[50px]">
-          <p className="text-gray-700 text-sm lg:text-base">4 {t('studentsCount')}</p>
+          <p className="text-gray-700 text-sm lg:text-base">
+            4 {t('studentsCount')}
+          </p>
         </div>
 
         <div className="py-3 text-xs lg:text-sm">
@@ -40,14 +41,26 @@ const LeftSide = ({
             <span className="ml-2">
               <SiLevelsdotfyi />
             </span>
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>{t('level')}</span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {t('level')}
+            </span>
             <span> :{level}</span>
           </div>
           <div className="flex items-center px-10 py-3">
             <span className="ml-2">
               <FaReadme />
             </span>
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>{t('courseType')}</span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {t('courseType')}
+            </span>
             <span> :{courseType}</span>
           </div>
 
@@ -55,7 +68,13 @@ const LeftSide = ({
             <span className="ml-2">
               <MdLanguage />
             </span>
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>{t('language')}</span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {t('language')}
+            </span>
             <span> :{language}</span>
           </div>
 
@@ -63,7 +82,13 @@ const LeftSide = ({
             <span className="ml-2">
               <PiTimerFill />
             </span>
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>{t('courseDuration')}</span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {t('courseDuration')}
+            </span>
             <span> :{courseDuration} </span>
           </div>
 
@@ -71,7 +96,14 @@ const LeftSide = ({
             <span className="ml-2">
               <FaBook />
             </span>
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}> {t('prerequisite')}</span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {' '}
+              {t('prerequisite')}
+            </span>
             <span> :{prerequisite}</span>
           </div>
           <div className="flex items-center px-10 py-3">
@@ -79,7 +111,11 @@ const LeftSide = ({
               <SiSession />
             </span>
 
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
               شامل {NumberOfSessions} جلسه {ClassDuration} ساعته کلاس انلاین
             </span>
           </div>
@@ -89,7 +125,14 @@ const LeftSide = ({
               <IoTimeSharp />
             </span>
 
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}> آموزش توسط اساتید {totalHours} </span>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
+              {' '}
+              آموزش توسط اساتید {totalHours}{' '}
+            </span>
           </div>
 
           <div className="flex items-center px-10 py-3">
@@ -97,14 +140,22 @@ const LeftSide = ({
               <IoMdSave />
             </span>
 
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
               {' '}
               {recordedCourse === true ? 'شامل ضبط دوره' : 'عدم ضبط دوره'}{' '}
             </span>
           </div>
 
           <div className="flex items-center px-10 py-3">
-            <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>
+            <span
+              className={`ml-2 ${
+                i18n.language === 'fa' ? '' : 'mr-2'
+              } font-bold`}
+            >
               <PiCertificateBold />
             </span>
 
@@ -124,7 +175,12 @@ const LeftSide = ({
             <BiSolidCategory />
           </span>
           {/* <span className="ml-2 font-bold"> دسته :</span> */}
-          <span  className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}> {t('newCourses')}</span>
+          <span
+            className={`ml-2 ${i18n.language === 'fa' ? '' : 'mr-2'} font-bold`}
+          >
+            {' '}
+            {t('newCourses')}
+          </span>
         </div>
 
         <div className="flex flex-col justify-center items-center">
@@ -138,14 +194,14 @@ const LeftSide = ({
             href="/courses/international-courses/IWS"
             className="flex justify-center items-center bg-gray-100 mt-5 rounded-[8px] w-[80%] h-[50px]"
           >
-                 {t('iwscourse')}
+            {t('iwscourse')}
           </Link>
 
           <Link
             href="/courses/international-courses/IWT"
             className="flex justify-center items-center bg-gray-100 mt-5 rounded-[8px] w-[80%] h-[50px]"
           >
-                 {t('iwtcourse')}
+            {t('iwtcourse')}
           </Link>
         </div>
       </div>
@@ -158,12 +214,16 @@ const LeftSide = ({
             <BiSolidCategory />
           </span>
           {/* <span className="ml-2 font-bold"> دسته :</span> */}
-          <span className={`ml-2 ${i18n.language ==='fa' ? "" :"mr-2"} font-bold`}>{t('catalogue')}</span>
+          <span
+            className={`ml-2 ${i18n.language === 'fa' ? '' : 'mr-2'} font-bold`}
+          >
+            {t('catalogue')}
+          </span>
         </div>
 
         <div className="flex flex-col justify-center items-center">
           <div className="flex justify-center items-center bg-gray-100 w-[80%] h-[50px]">
-           {t('downloadCatalogue')}
+            {t('downloadCatalogue')}
           </div>
         </div>
       </div>

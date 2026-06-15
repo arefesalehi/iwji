@@ -69,8 +69,6 @@ const Consultingservice = () => {
               <p className="pt-5 leading-[30px]">{t('li4Desc')}</p>
             </li>
           </ul>
-
-     
         </div>
       </div>
     </>

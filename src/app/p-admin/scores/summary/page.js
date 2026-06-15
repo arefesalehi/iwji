@@ -8,12 +8,10 @@ const page = () => {
     <>
     <AdminPanelLayout>
       <BreadCrumb links={[
-
         { id: 1, title: 'پنل ادمین', href: '/p-admin' },
         { id: 2, title: '  دوره ', href: '' },
         { id: 3, title: ' نمره دهی', href: '/p-admin/scores' },
         { id: 4, title: '  لیست نمرات', href: '/p-admin/summary' },
-
 
       ]} />
       <SummaryScore/>

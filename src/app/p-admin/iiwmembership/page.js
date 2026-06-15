@@ -3,8 +3,11 @@ import BreadCrumb from '@/components/templates/p-admin/BreadCrumb'
 import IIWmembershipTable from '@/components/templates/p-admin/IIWmembershipTable'
 import React from 'react'
 import iiwmembershipModel from '@/models/IIWMembership'
+
 const page = async() => {
     const iiwmembership= await iiwmembershipModel.find({}).populate('courseId').populate('userId')
+
+
   return (
     <>
 
@@ -17,8 +20,6 @@ const page = async() => {
         
                 ]}/>
         <IIWmembershipTable iiwmembership={JSON.parse(JSON.stringify(iiwmembership))}/>
-
-
     </AdminPanelLayout>
 
 

@@ -1,25 +1,15 @@
-import ArticleBox from '@/components/modules/ArticleBox'
-
-import Pagination from '@/components/modules/Pagination'
 import React from 'react'
-
 import articleModel from '@/models/article'
 import AllArticle from '@/components/templates/articles/AllArticle'
-const page =async () => {
-    const articles = await articleModel.find({publish:true}).populate('creator')
-    // console.log('articles==>', articles);
-    
+
+
+const page = async () => {
+    const articles = await articleModel.find({ publish: true }).populate('creator')
+
+
     return (
         <>
-          
-
-
-              <AllArticle  articles={JSON.parse(JSON.stringify(articles))}  />
-
-
-
-
-
+            <AllArticle articles={JSON.parse(JSON.stringify(articles))} />
         </>
     )
 }

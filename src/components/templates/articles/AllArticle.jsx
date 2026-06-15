@@ -5,15 +5,12 @@ import React, { useState } from 'react'
 import Pagination from '@/components/modules/p-admin/Pagination'
 import { useTranslation } from 'react-i18next'
 const AllArticle = ({ articles }) => {
-  const {t} =useTranslation('article')
-   const [currentPage, setCurrentPage] = useState(1)
-    const teamsPerPage = 6
-    const indexOfLastArticle = currentPage * teamsPerPage
-    const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
-    const currentarticle = articles.slice(
-      indexOfFirstArticle,
-      indexOfLastArticle,
-    )
+  const { t } = useTranslation('article')
+  const [currentPage, setCurrentPage] = useState(1)
+  const teamsPerPage = 6
+  const indexOfLastArticle = currentPage * teamsPerPage
+  const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
+  const currentarticle = articles.slice(indexOfFirstArticle, indexOfLastArticle)
   return (
     <>
       <BreadCrumb title={t('articles')} />
@@ -25,11 +22,13 @@ const AllArticle = ({ articles }) => {
         </div>
 
         <div className="flex justify-center items-center m-20">
-          <Pagination         currentPage={currentPage}
+          <Pagination
+            currentPage={currentPage}
             totalItems={articles.length}
             itemsPerPage={6}
             onPageChange={setCurrentPage}
-            label={t('articles')}  />
+            label={t('articles')}
+          />
         </div>
       </div>
     </>

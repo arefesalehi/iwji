@@ -1,4 +1,4 @@
-//
+
 
 'use client'
 import React, { useState } from 'react'
@@ -7,18 +7,11 @@ import swal from 'sweetalert'
 import Pagination from '@/components/modules/p-admin/Pagination'
 
 const GalleryTable = ({ gallery, getAll }) => {
-
-    const [currentPage, setCurrentPage] = useState(1)
-    const teamsPerPage = 5
-    const indexOfLastArticle = currentPage * teamsPerPage
-    const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
-    const currentgallery = gallery.slice(
-      indexOfFirstArticle,
-      indexOfLastArticle,
-    )
-
-
-
+  const [currentPage, setCurrentPage] = useState(1)
+  const teamsPerPage = 5
+  const indexOfLastArticle = currentPage * teamsPerPage
+  const indexOfFirstArticle = indexOfLastArticle - teamsPerPage
+  const currentgallery = gallery.slice(indexOfFirstArticle, indexOfLastArticle)
 
   const deleteHandler = async (id) => {
     const confirm = await swal({
@@ -79,7 +72,7 @@ const GalleryTable = ({ gallery, getAll }) => {
               <td className="flex px-6 py-16 text-right">
                 <button
                   onClick={() => deleteHandler(item._id)}
-                      className="bg-red-100 hover:bg-red-200 px-3 py-1 rounded text-red-700 text-sm"
+                  className="bg-red-100 hover:bg-red-200 px-3 py-1 rounded text-red-700 text-sm"
                 >
                   حذف
                 </button>
@@ -89,13 +82,13 @@ const GalleryTable = ({ gallery, getAll }) => {
         </tbody>
       </table>
 
-         <Pagination
-             currentPage={currentPage}
-            totalItems={gallery.length}
-            itemsPerPage={5}
-            onPageChange={setCurrentPage}
-            label="عکس "
-        />
+      <Pagination
+        currentPage={currentPage}
+        totalItems={gallery.length}
+        itemsPerPage={5}
+        onPageChange={setCurrentPage}
+        label="عکس "
+      />
     </div>
   )
 }

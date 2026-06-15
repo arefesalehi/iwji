@@ -27,12 +27,12 @@ const page = async () => {
   })
     .populate({
       path: 'student',
-      populate: { path: 'userId' }   // اینجا یوزر هم بیاد
+      populate: { path: 'userId' } 
     })
     .populate('course')
 
 
-    
+
 
 
 

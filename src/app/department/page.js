@@ -7,8 +7,6 @@ const page = () => {
 
       <Image  src='/images/Capture40.PNG' width={1000} height={600} alt='department'  />
 
-
-
     </div>
   )
 }

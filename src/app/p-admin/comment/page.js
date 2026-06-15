@@ -13,9 +13,6 @@ const page = async () => {
     .populate({ path: "author" })
     .populate({ path: "course" })
     .lean()
-  console.log('commentsssssssssssssssssssssss==>', comments);
-
-
 
   const user = await authUser()
 
@@ -25,7 +22,7 @@ const page = async () => {
       <BreadCrumb links={[
 
         { id: 1, title: 'پنل ادمین', href: '/p-admin' },
-          { id: 2, title: 'کامنت ها و محتواها', href: '' },
+        { id: 2, title: 'کامنت ها و محتواها', href: '' },
         { id: 3, title: ' کامنت ها', href: '/p-admin/comment' },
 
       ]} />

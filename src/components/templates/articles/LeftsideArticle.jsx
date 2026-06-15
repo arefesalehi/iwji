@@ -5,14 +5,13 @@ import Sidepromote from '@/components/modules/Sidepromote'
 import { useTranslation } from 'react-i18next'
 
 const LeftsideArticle = () => {
-    const {t} = useTranslation('article')
+  const { t } = useTranslation('article')
   return (
     <>
-
-   <div className='invisible md:visible justify-center items-center basis-2/5'>
-          <SideArticleBox title={t('related')} />
-          <Sidepromote  />
-        </div>
+      <div className="invisible md:visible justify-center items-center basis-2/5">
+        <SideArticleBox title={t('related')} />
+        <Sidepromote />
+      </div>
     </>
   )
 }

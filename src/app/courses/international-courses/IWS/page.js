@@ -8,25 +8,6 @@ import categoryModel from '@/models/category'
 
 const page = async() => {
 
-// const course = await courseModel
-//   .findOne({ shortName: "IWS" })
-//   .populate({
-//     path: "comments",
-//     populate: {
-//       path: "author",
-//       model: "User",
-//       select: "name email createdAt role",
-//     }
-
-   
-//   })
-//    .populate('categoryID')
-//   .lean();
-
-// console.log("courseeee =>", course);
-
-
-
 const category = await categoryModel.findOne({ name: "IWS" });
 
 if (!category) {
@@ -51,12 +32,7 @@ console.log("دوره‌های دسته 'بین المللی':", course);
 
   return (
     <>
-    {/* <BreadCrumb title='دوره مهندسی بین الملی جوش (IWE)'/> */}
-
     <TopbarCourse  course ={JSON.parse(JSON.stringify(course))} />
-
-     
-     
 
     </>
   )

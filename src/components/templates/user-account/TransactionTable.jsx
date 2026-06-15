@@ -8,18 +8,18 @@ const TransactionTable = () => {
           <thead className="bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-400 text-xs uppercase">
             <tr>
               <th scope="col" className="px-6 py-3">
-               شناسه
+                شناسه
               </th>
               <th scope="col" className="px-6 py-3">
-               شرح تراکنش
+                شرح تراکنش
               </th>
               <th scope="col" className="px-6 py-3">
-               تاریخ
+                تاریخ
               </th>
               <th scope="col" className="px-6 py-3">
                 مبلغ
               </th>
-                <th scope="col" className="px-6 py-3">
+              <th scope="col" className="px-6 py-3">
                 وضعیت
               </th>
               <th scope="col" className="px-6 py-3">

@@ -6,7 +6,6 @@ import React from 'react'
 import courseRegisteration from '@/models/courseRegisteration'
 
 const labels = {
-
   firstName: 'نام',
   lastName: 'نام خانوادگی',
   birthDate: 'تاریخ تولد',
@@ -35,7 +34,6 @@ const columnGroupsDefinition = [
   {
     label: 'اطلاعات فردی',
     fields: [
-
       "firstName",
       'lastName',
       'phoneNumber',
@@ -50,9 +48,6 @@ const columnGroupsDefinition = [
   {
     label: 'اطلاعات کاری',
     fields: [
-
-  
-
       "homeAddress",
       "homePostalCode",
       "workAddress",
@@ -62,7 +57,6 @@ const columnGroupsDefinition = [
   {
     label: ' مدارک شخصی',
     fields: [
-       
       "personalPhoto",
       "birthCertificateImage",
       "passportImage",
@@ -82,14 +76,12 @@ const columnGroupsDefinition = [
 ]
 
 const page = async () => {
-  // populate فقط فیلدهای غیرحساس تا پسورد/توکن وارد رندر نشوند
+
   const raw = await courseRegisteration.find({})
     .populate({ path: 'userId', select: 'name email phone role createdAt updatedAt' })
     .populate({ path: 'courseId', select: 'name shortName img href' })
     .lean();
 
-  // لاگ امن: فقط طول آرایه (نه داده‌های حساس)
-  console.log('courseRegistrations count =>', raw.length);
 
   // base برای تبدیل مسیرهای نسبی تصاویر
   const base = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
@@ -164,7 +156,6 @@ const page = async () => {
     <>
       <AdminPanelLayout>
         <BreadCrumb links={[
-
           { id: 1, title: 'پنل ادمین', href: '/p-admin' },
           { id: 2, title: '  دوره ', href: '' },
           { id: 3, title: ' ثبت نامی های دوره', href: '/p-admin/courses' },

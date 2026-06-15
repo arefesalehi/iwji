@@ -121,9 +121,10 @@ const TransActionForm = ({ userId }) => {
   }
 
   return (
-    
     <div className="bg-white mt-8 p-6 px-8 rounded-lg w-full">
-      <h1 className="mt-10 mb-10 font-bold text-red-800 text-lg">آپلود رسیدهای پرداختی</h1>
+      <h1 className="mt-10 mb-10 font-bold text-red-800 text-lg">
+        آپلود رسیدهای پرداختی
+      </h1>
 
       {/* انتخاب دوره */}
       <div className="mb-4">
@@ -160,7 +161,9 @@ const TransActionForm = ({ userId }) => {
             <div key={key} className="p-4 border border-gray-400 rounded-xl">
               <div className="flex justify-between items-start">
                 <div>
-                  <div className="mb-2 font-bold text-red-800 text-sm">{meta.label}</div>
+                  <div className="mb-2 font-bold text-red-800 text-sm">
+                    {meta.label}
+                  </div>
                   <div className="font-semibold text-gray-600 text-xs">
                     مبلغ: {meta.amount} یورو
                   </div>
@@ -182,15 +185,13 @@ const TransActionForm = ({ userId }) => {
                           className="rounded max-h-28 object-contain"
                         />
                       ) : isPdfFile(existing.fileName || existing.fileUrl) ? (
-                    
-
                         <a
                           href={existing.fileUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                         >
                           <img
-                            src={ '/images/Capture25.PNG'}
+                            src={'/images/Capture25.PNG'}
                             alt={meta.label}
                             className="rounded max-h-28 object-contain cursor-pointer"
                           />
@@ -226,9 +227,7 @@ const TransActionForm = ({ userId }) => {
                   type="file"
                   accept="image/*,application/pdf"
                   onChange={(e) => handleFileChange(e, key)}
-                  
-                                  className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-
+                  className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 />
 
                 <div className="flex gap-2 mt-3">
@@ -258,14 +257,11 @@ const TransActionForm = ({ userId }) => {
                   >
                     پاک کن
                   </button>
-
-
                 </div>
               </div>
             </div>
           )
         })}
-        
       </div>
     </div>
   )

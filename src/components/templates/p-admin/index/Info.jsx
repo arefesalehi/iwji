@@ -8,23 +8,27 @@ import { BsFillTicketDetailedFill } from 'react-icons/bs'
 import { SiCoursera } from 'react-icons/si'
 import Link from 'next/link'
 
-const Info = ({AdminUser, tickets , comments,registercourse, users}) => {
+const Info = ({ AdminUser, tickets, comments, registercourse, users }) => {
   return (
     <>
       <div className="flex m-auto rounded-xl w-[90%] h-[350px]">
         <div className="flex justify-center items-center bg-white rounded-xl basis-[85%]">
           <div className="flex-col bg-white rounded-xl basis-5/6">
             <p className="px-8 py-10 font-bold text-xl">
-            سلام {AdminUser.name} عزیز، خوش آمدید!
+              سلام {AdminUser.name} عزیز، خوش آمدید!
             </p>
             <p className="px-8 font-bold">
               به پنل ادمین موسسه جوش و چسب ایرانیان خوش آمدید
             </p>
             <p className="px-8 py-5 text-gray-500">
-              شما می‌توانید به راحتی به اطلاعات کاربران، دوره‌ها و فعالیت‌های موسسه دسترسی داشته باشید.
+              شما می‌توانید به راحتی به اطلاعات کاربران، دوره‌ها و فعالیت‌های
+              موسسه دسترسی داشته باشید.
             </p>
 
-            <Link href='/p-admin/users' className="bg-blue-500 mx-8 my-8 p-3 rounded-lg text-white text-sm">
+            <Link
+              href="/p-admin/users"
+              className="bg-blue-500 mx-8 my-8 p-3 rounded-lg text-white text-sm"
+            >
               مشاهده کاربران
             </Link>
           </div>

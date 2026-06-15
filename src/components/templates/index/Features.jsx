@@ -5,12 +5,11 @@ import FeaturesBox from './FeaturesBox'
 import { useTranslation } from 'react-i18next'
 
 const Features = () => {
-    const {t}= useTranslation('features')
+  const { t } = useTranslation('features')
   return (
     <>
       <div className="bg-gray-900 mt-7 pb-10 sm:pb-5 w-full h-auto">
         <TitleContent title={t('features')} />
-
 
         <FeaturesBox
           title={t('vision')}

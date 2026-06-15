@@ -9,8 +9,6 @@ const page = () => {
    <BreadCrumb title='گالری تصاویر' />
   <Gallery/>
 
-
-
     </>
   )
 }

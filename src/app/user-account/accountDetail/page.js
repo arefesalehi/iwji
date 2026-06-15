@@ -4,14 +4,14 @@ import TitleComponent from '@/components/templates/user-account/TitleComponent'
 import { authUser } from '@/utils/serverHelpers'
 import React from 'react'
 
-const page = async() => {
+const page = async () => {
   const user = await authUser()
   return (
     <>
 
       <UserPanelLayout>
         <TitleComponent title='جزئیات حساب' />
-      <AccountDetail  user={JSON.parse(JSON.stringify(user))} />
+        <AccountDetail user={JSON.parse(JSON.stringify(user))} />
       </UserPanelLayout>
 
 

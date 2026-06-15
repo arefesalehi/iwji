@@ -9,11 +9,7 @@ const InfoBox = ({ title, chart, icon, count }) => {
             <span className="">{icon}</span>
           </span>
           <span>
-
-            <div className="text-white">
-              {chart}
-            </div>
-
+            <div className="text-white">{chart}</div>
           </span>
         </div>
         <div className="p-3">

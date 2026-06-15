@@ -1,17 +1,12 @@
 'use client'
 import React, { useState } from 'react'
-import { IoLocationSharp } from "react-icons/io5";
+import { IoLocationSharp } from 'react-icons/io5'
 import { AiFillPhone } from 'react-icons/ai'
 import { IoTimeSharp } from 'react-icons/io5'
 import { MdAttachEmail } from 'react-icons/md'
 import BreadCrumb from '@/components/modules/BreadCrumb'
 import Image from 'next/image'
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaTelegram,
-  FaWhatsapp,
-} from 'react-icons/fa'
+import { FaInstagram, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa'
 import swal from 'sweetalert'
 import Map from './Map'
 import { useTranslation } from 'react-i18next'
@@ -20,37 +15,38 @@ const FormContact = () => {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [body, setBody] = useState('')
-const {t} = useTranslation('contactus')
+  const { t } = useTranslation('contactus')
 
-  const clickHandler=async(e)=>{
-
+  const clickHandler = async (e) => {
     e.preventDefault()
 
-    const newContact={
-      username, email, phone, body
+    const newContact = {
+      username,
+      email,
+      phone,
+      body,
     }
     const res = await fetch('/api/contact', {
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      body:JSON.stringify(newContact)
+      body: JSON.stringify(newContact),
     })
 
-    console.log('res contact=>', res);
-  if(res.ok){
-    swal({
-      title:'پیام شما با موفقیت ثبت شد',
-      icon:'success',
-      buttons:'ok'
-    })
-  }
-    
+    console.log('res contact=>', res)
+    if (res.ok) {
+      swal({
+        title: 'پیام شما با موفقیت ثبت شد',
+        icon: 'success',
+        buttons: 'ok',
+      })
+    }
   }
 
   return (
     <>
-       <BreadCrumb title={t('breadcrumb')}/>
+      <BreadCrumb title={t('breadcrumb')} />
       <div className="pb-20 h-auto container">
         <div
           data-aos="fade-up"
@@ -72,7 +68,10 @@ const {t} = useTranslation('contactus')
               <IoTimeSharp className="w-[25px] h-[25px]" />
             </div>
             <div className="flex flex-col">
-              <p className="mb-2 font-bold text-md"> {t('contactInfotitle2')}</p>
+              <p className="mb-2 font-bold text-md">
+                {' '}
+                {t('contactInfotitle2')}
+              </p>
               <p className="text-sm">{t('contactInfolines2')}</p>
             </div>
           </div>
@@ -81,7 +80,10 @@ const {t} = useTranslation('contactus')
               <AiFillPhone className="w-[25px] h-[25px]" />
             </div>
             <div className="flex flex-col">
-              <p className="mb-2 font-bold text-md"> {t('contactInfotitle3')}</p>
+              <p className="mb-2 font-bold text-md">
+                {' '}
+                {t('contactInfotitle3')}
+              </p>
               <p className="text-sm"> {t('contactInfolines3')}</p>
             </div>
           </div>
@@ -111,11 +113,13 @@ const {t} = useTranslation('contactus')
 
           {/*  form */}
           <div className="px-5 pt-20 lg:basis-1/2 basis-full">
-            <h1 className="mb-10 font-bold text-2xl text-center lg:text-start">{t('title')}</h1>
+            <h1 className="mb-10 font-bold text-2xl text-center lg:text-start">
+              {t('title')}
+            </h1>
 
             <div className="flex flex-col">
               <label htmlFor="" className="font-bold text-[14px]">
-               {t('nameLabel')}
+                {t('nameLabel')}
               </label>
               <input
                 value={username}
@@ -127,7 +131,7 @@ const {t} = useTranslation('contactus')
 
             <div className="flex flex-col">
               <label htmlFor="" className="mt-5 font-bold text-[14px]">
-             {t('emailLabel')}
+                {t('emailLabel')}
               </label>
               <input
                 value={email}
@@ -139,7 +143,7 @@ const {t} = useTranslation('contactus')
 
             <div className="flex flex-col">
               <label htmlFor="" className="mt-5 font-bold text-[14px]">
-                 {t('phoneLabel')}
+                {t('phoneLabel')}
               </label>
               <input
                 value={phone}
@@ -151,7 +155,7 @@ const {t} = useTranslation('contactus')
 
             <div className="flex flex-col">
               <label htmlFor="" className="mt-5 font-bold text-[14px]">
-               {t('messageLabel')}
+                {t('messageLabel')}
               </label>
               <textarea
                 value={body}
@@ -160,13 +164,14 @@ const {t} = useTranslation('contactus')
               />
             </div>
 
-            <button onClick={clickHandler} className="flex justify-center items-center bg-red-800 mt-10 p-3 rounded-[10px] w-full text-[14px] text-white">
+            <button
+              onClick={clickHandler}
+              className="flex justify-center items-center bg-red-800 mt-10 p-3 rounded-[10px] w-full text-[14px] text-white"
+            >
               <p> {t('submitBtn')}</p>
             </button>
 
-            <h1 className="mt-16 font-bold text-lg">
-             {t('socialTitle')}
-            </h1>
+            <h1 className="mt-16 font-bold text-lg">{t('socialTitle')}</h1>
 
             <div className="flex justify-between items-center mt-5 w-[250px]">
               <span className="flex justify-center items-center bg-gray-800 rounded-[10px] w-[50px] h-[50px] text-white hover:text-red-800">
@@ -188,11 +193,12 @@ const {t} = useTranslation('contactus')
 
         {/* map */}
         <h1 className="mt-20 text-2xl">{t('mapTitle')}</h1>
-        <div className="bg-yellow-200 mt-5 w-full h-[320px]"><Map/></div>
+        <div className="bg-yellow-200 mt-5 w-full h-[320px]">
+          <Map />
+        </div>
       </div>
     </>
   )
 }
 
 export default FormContact
-

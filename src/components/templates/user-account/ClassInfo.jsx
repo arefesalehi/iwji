@@ -10,8 +10,6 @@ const ClassInfo = ({ registerCourse }) => {
   
       <TitleComponent title="اطلاعات ورود به کلاس" />
       <ClassInfoTable registerCourse={registerCourse} />
-
-
       <TitleComponent title="  لینک ضبط کلاس ها " />
       <RecordeAccardion  registerCourse={registerCourse}/>
      

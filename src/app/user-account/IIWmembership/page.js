@@ -11,9 +11,6 @@ const page = async () => {
 
     const IIWRegister = await iiwMembershipModel.findOne({ userId: user._id })
 
-
-
-
     return (
         <>
 
@@ -21,7 +18,6 @@ const page = async () => {
                 {
                     IIWRegister ? <MembershipBox /> : "ندارد"
                 }
-
 
             </UserPanelLayout>
 

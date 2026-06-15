@@ -1,6 +1,5 @@
 
 import React from 'react'
-
 import ArticleBody from '@/components/templates/articles/ArticleBody'
 import articleModel from '@/models/article'
 import ConnectToDB from '@/configs/db'
@@ -9,13 +8,8 @@ import LeftsideArticle from '@/components/templates/articles/LeftsideArticle'
 
 const page = async ({ params }) => {
   await ConnectToDB()
-
   const articleID = params.id
-
   const article = await articleModel.findOne({ _id: articleID })
-  //  console.log('articleeeeeeeee=>', article);
-
-
 
 
   return (
@@ -23,9 +17,7 @@ const page = async ({ params }) => {
 
       <div className='container  h-auto  md:flex  block  '>
         <ArticleBody article={JSON.parse(JSON.stringify(article))} />
-
         <LeftsideArticle />
-
       </div>
 
 

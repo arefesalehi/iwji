@@ -18,7 +18,12 @@ export default function EditArticle() {
   const [isFetching, setIsFetching] = useState(true)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { register, handleSubmit, setValue, formState: { errors } } = useForm()
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm()
 
   // دریافت مقاله و دسته‌بندی‌ها
   useEffect(() => {
@@ -42,7 +47,6 @@ export default function EditArticle() {
 
         const categoriesRes = await axios.get('/api/category')
         setCategories(categoriesRes.data || [])
-
       } catch (err) {
         console.error(err)
         toast.error('خطا در دریافت اطلاعات مقاله')
@@ -76,7 +80,7 @@ export default function EditArticle() {
       }
 
       const response = await axios.put(`/api/articles/${id}`, formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
+        headers: { 'Content-Type': 'multipart/form-data' },
       })
 
       if (response.status === 200) {
@@ -96,7 +100,7 @@ export default function EditArticle() {
   if (isFetching || !id) {
     return (
       <div className="mx-auto p-4 py-10 max-w-4xl text-center">
-        <div className="mx-auto border-t-2 border-b-2 border-blue-500 rounded-full w-12 h-12 animate-spin"></div>
+        <div className="mx-auto border-blue-500 border-t-2 border-b-2 rounded-full w-12 h-12 animate-spin"></div>
         <p className="mt-4 text-gray-600">در حال بارگیری مقاله...</p>
       </div>
     )
@@ -107,7 +111,10 @@ export default function EditArticle() {
     return (
       <div className="mx-auto p-4 py-10 max-w-4xl text-center">
         <p className="text-red-500">مقاله مورد نظر یافت نشد</p>
-        <button onClick={() => router.push('/p-admin/articles')} className="bg-blue-600 hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white">
+        <button
+          onClick={() => router.push('/p-admin/articles')}
+          className="bg-blue-600 hover:bg-blue-700 mt-4 px-4 py-2 rounded text-white"
+        >
           بازگشت به لیست مقالات
         </button>
       </div>
@@ -122,25 +129,52 @@ export default function EditArticle() {
         {/* عنوان */}
         <div>
           <label className="block mb-2 font-medium">عنوان *</label>
-          <input type="text" {...register('title', { required: 'عنوان الزامی است' })} className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full" />
-          {errors.title && <p className="mt-1 text-red-500 text-sm">{errors.title.message}</p>}
+          <input
+            type="text"
+            {...register('title', { required: 'عنوان الزامی است' })}
+            className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"
+          />
+          {errors.title && (
+            <p className="mt-1 text-red-500 text-sm">{errors.title.message}</p>
+          )}
         </div>
 
         {/* توضیح کوتاه */}
         <div>
           <label className="block mb-2 font-medium">توضیح کوتاه *</label>
-          <textarea rows={3} {...register('description', { required: 'توضیح کوتاه الزامی است' })} className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"></textarea>
-          {errors.description && <p className="mt-1 text-red-500 text-sm">{errors.description.message}</p>}
+          <textarea
+            rows={3}
+            {...register('description', { required: 'توضیح کوتاه الزامی است' })}
+            className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"
+          ></textarea>
+          {errors.description && (
+            <p className="mt-1 text-red-500 text-sm">
+              {errors.description.message}
+            </p>
+          )}
         </div>
 
         {/* دسته‌بندی */}
         <div>
           <label className="block mb-2 font-medium">دسته‌بندی *</label>
-          <select {...register('categoryID', { required: 'انتخاب دسته‌بندی الزامی است' })} className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full">
+          <select
+            {...register('categoryID', {
+              required: 'انتخاب دسته‌بندی الزامی است',
+            })}
+            className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"
+          >
             <option value="">انتخاب دسته‌بندی</option>
-            {categories.map(c => <option key={c._id} value={c._id}>{c.name}</option>)}
+            {categories.map((c) => (
+              <option key={c._id} value={c._id}>
+                {c.name}
+              </option>
+            ))}
           </select>
-          {errors.categoryID && <p className="mt-1 text-red-500 text-sm">{errors.categoryID.message}</p>}
+          {errors.categoryID && (
+            <p className="mt-1 text-red-500 text-sm">
+              {errors.categoryID.message}
+            </p>
+          )}
         </div>
 
         {/* محتوای مقاله */}
@@ -149,24 +183,44 @@ export default function EditArticle() {
           <div className="border rounded overflow-hidden">
             <CkeditorWrapper value={content} onChange={setContent} />
           </div>
-          {!content && <p className="mt-1 text-red-500 text-sm">محتوای مقاله الزامی است</p>}
+          {!content && (
+            <p className="mt-1 text-red-500 text-sm">محتوای مقاله الزامی است</p>
+          )}
         </div>
 
         {/* نامک */}
         <div>
           <label className="block mb-2 font-medium">نامک *</label>
-          <input type="text" {...register('shortName', {
-            required: 'نامک الزامی است',
-            pattern: { value: /^[a-z0-9-]+$/, message: 'فقط حروف کوچک، عدد و خط تیره مجاز است' }
-          })} className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full" />
-          {errors.shortName && <p className="mt-1 text-red-500 text-sm">{errors.shortName.message}</p>}
+          <input
+            type="text"
+            {...register('shortName', {
+              required: 'نامک الزامی است',
+              pattern: {
+                value: /^[a-z0-9-]+$/,
+                message: 'فقط حروف کوچک، عدد و خط تیره مجاز است',
+              },
+            })}
+            className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"
+          />
+          {errors.shortName && (
+            <p className="mt-1 text-red-500 text-sm">
+              {errors.shortName.message}
+            </p>
+          )}
         </div>
 
         {/* تصویر */}
         <div>
           <label className="block mb-2 font-medium">تصویر اصلی</label>
-          <input type="file" accept="image/jpeg,image/png" {...register('img')} className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full" />
-          <p className="mt-1 text-gray-500 text-sm">JPEG یا PNG، حداکثر ۵ مگابایت</p>
+          <input
+            type="file"
+            accept="image/jpeg,image/png"
+            {...register('img')}
+            className="p-2 border rounded focus:ring-2 focus:ring-blue-500 w-full"
+          />
+          <p className="mt-1 text-gray-500 text-sm">
+            JPEG یا PNG، حداکثر ۵ مگابایت
+          </p>
         </div>
 
         {/* نمایش تصویر فعلی */}
@@ -180,16 +234,37 @@ export default function EditArticle() {
 
         {/* انتشار */}
         <div className="flex items-center">
-          <input type="checkbox" {...register('publish')} id="publish" className="rounded focus:ring-blue-500 w-4 h-4 text-blue-600" />
-          <label htmlFor="publish" className="mr-2 text-gray-700">انتشار مقاله</label>
+          <input
+            type="checkbox"
+            {...register('publish')}
+            id="publish"
+            className="rounded focus:ring-blue-500 w-4 h-4 text-blue-600"
+          />
+          <label htmlFor="publish" className="mr-2 text-gray-700">
+            انتشار مقاله
+          </label>
         </div>
 
         {/* دکمه‌ها */}
         <div className="flex gap-3">
-          <button type="submit" disabled={isLoading} className={`px-6 py-2 rounded text-white ${isLoading ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}>
+          <button
+            type="submit"
+            disabled={isLoading}
+            className={`px-6 py-2 rounded text-white ${
+              isLoading
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-blue-600 hover:bg-blue-700'
+            }`}
+          >
             {isLoading ? 'در حال ذخیره...' : 'ذخیره تغییرات'}
           </button>
-          <button type="button" onClick={() => router.push('/p-admin/articles')} className="bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded text-gray-700">لغو</button>
+          <button
+            type="button"
+            onClick={() => router.push('/p-admin/articles')}
+            className="bg-gray-200 hover:bg-gray-300 px-6 py-2 rounded text-gray-700"
+          >
+            لغو
+          </button>
         </div>
       </form>
     </div>

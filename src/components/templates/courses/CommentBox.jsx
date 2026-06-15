@@ -30,17 +30,17 @@ const CummentBox = ({author, date, body, score }) => {
         <span className="flex mr-3">
                {new Array(score).fill(0).map((item, index) => {
                 return (
-                   <>
+                   
                     <FaStar key={index} className="text-yellow-400" />
-                  </>
+                  
                  )
                })}
 
                {new Array(5 - score).fill(0).map((item, index) => {
                  return (
-                   <>
+                   
                      <AiOutlineStar key={index} className="text-yellow-400" />
-                   </>
+                   
                  )
                })}
              </span>

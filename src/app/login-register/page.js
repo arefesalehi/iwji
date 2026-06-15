@@ -1,14 +1,13 @@
 'use client'
-
 import Login from '@/components/templates/login-register/Login'
 import Register from '@/components/templates/login-register/Register'
 import React, { useState } from 'react'
 import { authType } from '@/utils/constant'
 
-
 const page = () => {
-    const [type, setType] = useState(authType.LOGIN)
 
+
+    const [type, setType] = useState(authType.LOGIN)
 
     const ShowLoginForm = () => {
         setType(authType.LOGIN)
@@ -24,7 +23,7 @@ const page = () => {
 
             {
                 type === authType.LOGIN ?
-                    (<Login  ShowRegisterForm={ShowRegisterForm} />)
+                    (<Login ShowRegisterForm={ShowRegisterForm} />)
                     : (<Register ShowLoginForm={ShowLoginForm} />)
             }
 

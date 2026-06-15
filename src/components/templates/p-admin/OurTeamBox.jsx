@@ -23,50 +23,50 @@ const OurTeamBox = ({ ourteams }) => {
     getAll()
   }, [])
 
- const deleteUser = async (teamId) => {
-  // تایید حذف
-  const result = await swal({
-    title: 'آیا از حذف اطمینان دارید؟',
-    icon: 'warning',
-    buttons: ["خیر", "بله"]
-  });
+  const deleteUser = async (teamId) => {
+    // تایید حذف
+    const result = await swal({
+      title: 'آیا از حذف اطمینان دارید؟',
+      icon: 'warning',
+      buttons: ['خیر', 'بله'],
+    })
 
-  if (result) {
-    try {
-      const res = await fetch('/api/ourteam', {
-        method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: teamId })
-      });
+    if (result) {
+      try {
+        const res = await fetch('/api/ourteam', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: teamId }),
+        })
 
-      if (res.ok) {
-        await swal({
-          title: 'با موفقیت حذف شد',
-          icon: 'success',
-          button: 'OK'
-        });
-        // بروزرسانی جدول
-        getAll();
-      } else {
-        const data = await res.json();
+        if (res.ok) {
+          await swal({
+            title: 'با موفقیت حذف شد',
+            icon: 'success',
+            button: 'OK',
+          })
+          // بروزرسانی جدول
+          getAll()
+        } else {
+          const data = await res.json()
+          swal({
+            title: 'خطا',
+            text: data.message,
+            icon: 'error',
+            button: 'OK',
+          })
+        }
+      } catch (err) {
+        console.error(err)
         swal({
           title: 'خطا',
-          text: data.message,
+          text: err.message,
           icon: 'error',
-          button: 'OK'
-        });
+          button: 'OK',
+        })
       }
-    } catch (err) {
-      console.error(err);
-      swal({
-        title: 'خطا',
-        text: err.message,
-        icon: 'error',
-        button: 'OK'
-      });
     }
   }
-}
 
   const clickHandler = async (e) => {
     e.preventDefault()
@@ -89,15 +89,10 @@ const OurTeamBox = ({ ourteams }) => {
           title: 'فرد با موفقیت پست شد',
           icon: 'success',
           buttons: 'ok',
-        }).then(()=>getAll())
+        }).then(() => getAll())
       }
     })
   }
-
-
-
-
-  
 
   return (
     <>
@@ -115,7 +110,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -130,7 +125,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={position}
                 onChange={(e) => setPosition(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -145,7 +140,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -160,7 +155,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={shortDesc}
                 onChange={(e) => setShortDesc(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -176,7 +171,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -190,7 +185,7 @@ const OurTeamBox = ({ ourteams }) => {
               <input
                 onChange={(e) => setImg(e.target.files[0])}
                 type="file"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="123-45-678"
                 pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
               />
@@ -206,7 +201,7 @@ const OurTeamBox = ({ ourteams }) => {
                 value={longDesc}
                 onChange={(e) => setLongDesc(e.target.value)}
                 type="text"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -218,7 +213,7 @@ const OurTeamBox = ({ ourteams }) => {
             ثبت
           </button>
         </form>
-        <OurteamTable ourteams={all} deleteUser={deleteUser}  />
+        <OurteamTable ourteams={all} deleteUser={deleteUser} />
       </div>
     </>
   )

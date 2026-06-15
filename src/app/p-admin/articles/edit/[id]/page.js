@@ -11,7 +11,7 @@ const page = () => {
       <BreadCrumb links={[
 
         { id: 1, title: 'پنل ادمین', href: '/p-admin' },
-                      { id: 2, title: 'کامنت ها و محتوا', href:'' },
+        { id: 2, title: 'کامنت ها و محتوا', href:'' },
         { id: 3, title: 'مقالات', href: '/p-admin/articles' },
         { id: 4, title: 'ویرایش مقاله', href: '/p-admin/articles/edit' },
       ]}/>

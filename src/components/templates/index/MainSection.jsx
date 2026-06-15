@@ -12,9 +12,8 @@ import { MdSource } from 'react-icons/md'
 import Link from 'next/link'
 import { useTranslation } from 'react-i18next'
 
-
 const MainSection = () => {
-  const { t , i18n } = useTranslation('mainsection')
+  const { t, i18n } = useTranslation('mainsection')
   return (
     <>
       <div className="bg-gray-100 w-full h-[1950px] md:h-[840px] lg:h-[730px]">
@@ -51,9 +50,11 @@ const MainSection = () => {
               <h1 className="mb-5 font-bold text-red-800 md:text-xl lg:text-2xl">
                 {t('aboutUs')}
               </h1>
-              <p className={` ${i18n?.language === 'fa' ? "pl-5" :"pr-5"}  mb-8  md:text-sm lg:text-base text-justify`} >
-             
-
+              <p
+                className={` ${
+                  i18n?.language === 'fa' ? 'pl-5' : 'pr-5'
+                }  mb-8  md:text-sm lg:text-base text-justify`}
+              >
                 {t('aboutUsDesc')}
               </p>
               <Link

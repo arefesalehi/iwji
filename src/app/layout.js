@@ -1,8 +1,5 @@
 import "./globals.css";
 import 'leaflet/dist/leaflet.css'
-import Navbar from "@/components/modules/Navbar";
-import Topbar from "@/components/modules/Topbar";
-import Footer from "@/components/modules/Footer";
 import AosInt from "@/utils/aos";
 import { authUser } from "@/utils/serverHelpers";
 import ScrollToTop from "@/utils/ScrollToTop";
@@ -45,8 +42,6 @@ console.log('layout user==>', user);
         {children}
         <ScrollToTop/>
         <FooterClient />
-
-
       </body>
     </html>
   );

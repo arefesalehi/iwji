@@ -37,58 +37,50 @@ const Educationalservice = ({ gallery }) => {
           <ul className="pt-10 text-md text-justify">
             <li>
               <p className="font-bold text-red-800 leading-[30px]">
-               {t('title1')}
+                {t('title1')}
               </p>
             </li>
             <li>
-              <p className="pt-5 leading-[30px]">
-                  {t('desc1')}
-              </p>
+              <p className="pt-5 leading-[30px]">{t('desc1')}</p>
             </li>
             <li>
               <p className="pt-5 font-bold text-red-800 leading-[30px]">
-                    {t('title2')}
+                {t('title2')}
               </p>
             </li>
 
             <li>
-              <p className="pt-5 leading-[30px]">
-                    {t('desc2')}
-              </p>
+              <p className="pt-5 leading-[30px]">{t('desc2')}</p>
             </li>
 
             <li>
               <p className="pt-5 font-bold text-red-800 leading-[30px]">
-                     {t('title3')}
+                {t('title3')}
               </p>
             </li>
 
             <li>
-              <p className="pt-5 leading-[30px]">
-                    {t('desc3')}
-              </p>
+              <p className="pt-5 leading-[30px]">{t('desc3')}</p>
             </li>
 
             <li>
               <p className="pt-5 font-bold text-red-800 leading-[30px]">
-                   {t('title4')}
+                {t('title4')}
               </p>
             </li>
 
             <li>
-              <p className="pt-5 leading-[30px]">
-                              {t('desc4')}
-              </p>
+              <p className="pt-5 leading-[30px]">{t('desc4')}</p>
             </li>
           </ul>
 
           <div className="flex lg:flex-row flex-col">
             <div className="mt-5 lg:mt-20 w-full basis-2/5">
               <p className="font-bold text-red-800 leading-[30px]">
-                    {t('title5')}
+                {t('title5')}
               </p>
               <p className="pt-5 pl-5 text-justify leading-[30px]">
-                  {t('desc5')}
+                {t('desc5')}
               </p>
             </div>
             <div className="basis-3/5">
@@ -105,7 +97,7 @@ const Educationalservice = ({ gallery }) => {
           </div>
 
           <p className="mb-20 pt-5 leading-[30px]">
-          {t('contact')}
+            {t('contact')}
             <p>📧 {t('email')}</p>
           </p>
         </div>

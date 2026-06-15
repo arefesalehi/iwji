@@ -1,6 +1,3 @@
-
-
-
 'use client'
 
 import { ArrowLeftIcon } from '@heroicons/react/24/solid'
@@ -11,7 +8,6 @@ import { MdShoppingCartCheckout } from 'react-icons/md'
 import Link from 'next/link'
 import Image from 'next/image'
 import { IoMenu } from 'react-icons/io5'
-import { IoIosArrowForward } from 'react-icons/io'
 import { MdKeyboardArrowLeft } from 'react-icons/md'
 import swal from 'sweetalert'
 import { useRouter } from 'next/navigation'
@@ -19,7 +15,6 @@ import i18n from '@/i18n'
 import { useTranslation } from 'react-i18next'
 
 const Navbar = ({ isLogin }) => {
-
   const [langCode, setLangCode] = useState('fa')
   const [lng, setLng] = useState('زبان')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -47,31 +42,34 @@ const Navbar = ({ isLogin }) => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [])
 
-//   مقداردهی اولیه زبان
-useEffect(() => {
-  try {
-    // اول از localStorage بخون
-    const savedLang =
-      typeof window !== 'undefined' ? localStorage.getItem('NEXT_LOCALE') : null
+  //   مقداردهی اولیه زبان
+  useEffect(() => {
+    try {
+      // اول از localStorage بخون
+      const savedLang =
+        typeof window !== 'undefined'
+          ? localStorage.getItem('NEXT_LOCALE')
+          : null
 
-    // اگر نبود از i18n بخون، اگر نبود دیفالت fa
-    const current = savedLang || i18nextInstance.language || 'fa'
-    const code = current.startsWith('en') ? 'en' : 'fa'
+      // اگر نبود از i18n بخون، اگر نبود دیفالت fa
+      const current = savedLang || i18nextInstance.language || 'fa'
+      const code = current.startsWith('en') ? 'en' : 'fa'
 
-    // تغییر زبان i18n
-    i18nextInstance.changeLanguage(code)
+      // تغییر زبان i18n
+      i18nextInstance.changeLanguage(code)
 
-    setLangCode(code)
-    setLng(code === 'fa' ? (t('persian') || 'فارسی') : (t('english') || 'English'))
-    applyDirection(code)
-  } catch (err) {
-    console.error('init lang error:', err)
-  }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+      setLangCode(code)
+      setLng(
+        code === 'fa' ? t('persian') || 'فارسی' : t('english') || 'English',
+      )
+      applyDirection(code)
+    } catch (err) {
+      console.error('init lang error:', err)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-
- const applyDirection = (code) => {
+  const applyDirection = (code) => {
     const dir = code === 'fa' ? 'rtl' : 'ltr'
     try {
       document.documentElement.lang = code
@@ -80,8 +78,12 @@ useEffect(() => {
       document.body.classList.remove('rtl', 'ltr')
       document.body.classList.add(dir)
       // ذخیره انتخاب کاربر
-      try { localStorage.setItem('NEXT_LOCALE', code) } catch (e) {}
-      document.cookie = `NEXT_LOCALE=${code}; path=/; max-age=${60 * 60 * 24 * 365}`
+      try {
+        localStorage.setItem('NEXT_LOCALE', code)
+      } catch (e) {}
+      document.cookie = `NEXT_LOCALE=${code}; path=/; max-age=${
+        60 * 60 * 24 * 365
+      }`
     } catch (err) {
       // در SSR یا حالت‌های خاص ممکن است خطا بیاید — نادیده گرفته می‌شود
     }
@@ -93,8 +95,10 @@ useEffect(() => {
     try {
       await i18n.changeLanguage(code)
       setLangCode(code)
- 
-      setLng(code === 'fa' ? (t('persian') || 'فارسی') : (t('english') || 'English'))
+
+      setLng(
+        code === 'fa' ? t('persian') || 'فارسی' : t('english') || 'English',
+      )
 
       applyDirection(code)
       setShowLng(false)
@@ -102,9 +106,6 @@ useEffect(() => {
       console.error('changeLanguage error', err)
     }
   }
-
-
-
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -158,7 +159,6 @@ useEffect(() => {
   }
 
   // اعمال جهت (dir) و lang روی document
- 
 
   return (
     <>
@@ -246,7 +246,13 @@ useEffect(() => {
             )}
 
             {/* Desktop menu */}
-            <ul className={` ${ i18n?.dir && i18n.dir() === 'rtl'? '2xl:text-base  text-sm' : 'ltr 2xl:text-sm text-xs'} hidden lg:flex justify-center items-center  `}>
+            <ul
+              className={` ${
+                i18n?.dir && i18n.dir() === 'rtl'
+                  ? '2xl:text-base  text-sm'
+                  : 'ltr 2xl:text-sm text-xs'
+              } hidden lg:flex justify-center items-center  `}
+            >
               {/* Home */}
               <li className="px-3">
                 <a href="/" className="hover:text-gray-300 transition-colors">
@@ -257,7 +263,7 @@ useEffect(() => {
               {/* Courses - Fixed structure */}
               <li className="group relative px-3">
                 <span className="flex justify-center items-center hover:text-gray-300 transition-colors cursor-pointer">
-                   {t('courses')} <MdKeyboardArrowDown className="mr-1" />
+                  {t('courses')} <MdKeyboardArrowDown className="mr-1" />
                 </span>
 
                 {/* Course submenu */}
@@ -265,7 +271,7 @@ useEffect(() => {
                   {/* International courses */}
                   <div className="group/sub relative py-2">
                     <span className="flex justify-between items-center text-sm cursor-pointer">
-                     {t('internationalCourses')}
+                      {t('internationalCourses')}
                       <MdKeyboardArrowLeft className="ml-1" />
                     </span>
 
@@ -275,19 +281,19 @@ useEffect(() => {
                         href="/courses/international-courses/IWE"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                            {t('IWE')}
+                        {t('IWE')}
                       </Link>
                       <Link
                         href="/courses/international-courses/IWS"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                            {t('IWS')}
+                        {t('IWS')}
                       </Link>
                       <Link
                         href="/courses/international-courses/IWT"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                           {t('IWT')}
+                        {t('IWT')}
                       </Link>
                     </div>
                   </div>
@@ -314,7 +320,7 @@ useEffect(() => {
                     href="/certificates"
                     className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                   >
-                   { t('certificates')}
+                    {t('certificates')}
                   </Link>
                 </div>
               </li>
@@ -335,7 +341,7 @@ useEffect(() => {
                     href="#"
                     className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                   >
-                   {t('webinarArchive')}
+                    {t('webinarArchive')}
                   </a>
                 </div>
               </li>
@@ -353,7 +359,8 @@ useEffect(() => {
               {/* Services */}
               <li className="group relative px-3">
                 <span className="flex justify-center items-center hover:text-gray-300 transition-colors cursor-pointer">
-                   {t('servicesProjects')}<MdKeyboardArrowDown className="mr-1" />
+                  {t('servicesProjects')}
+                  <MdKeyboardArrowDown className="mr-1" />
                 </span>
                 <div className="invisible group-hover:visible top-[35px] right-0 z-50 absolute bg-gray-400 opacity-0 group-hover:opacity-100 px-5 py-2 rounded-[10px] w-[240px] transition-all translate-y-2 group-hover:translate-y-0 duration-300 transform">
                   {/* Services submenu */}
@@ -366,13 +373,13 @@ useEffect(() => {
                         href="/services/educational-services"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                      { t('educationalServices')}
+                        {t('educationalServices')}
                       </Link>
                       <Link
                         href="/services/technical-services"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                       {t('technicalServices')}
+                        {t('technicalServices')}
                       </Link>
                       <Link
                         href="/services/consulting-services"
@@ -386,7 +393,8 @@ useEffect(() => {
                   {/* Activities submenu */}
                   <div className="group/sub relative py-2">
                     <span className="flex justify-between items-center text-sm cursor-pointer">
-                        {t('industrialActivities')} <MdKeyboardArrowLeft className="ml-1" />
+                      {t('industrialActivities')}{' '}
+                      <MdKeyboardArrowLeft className="ml-1" />
                     </span>
                     <div className="invisible group-hover/sub:visible top-0 right-full z-50 absolute bg-gray-400 opacity-0 group-hover/sub:opacity-100 px-5 py-2 rounded-[10px] w-[300px] transition-all translate-x-2 group-hover/sub:translate-x-0 duration-300 transform">
                       <Link
@@ -399,13 +407,13 @@ useEffect(() => {
                         href="/activities/automotive"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                       {t('automotiveIndustry')}
+                        {t('automotiveIndustry')}
                       </Link>
                       <Link
                         href="/activities/rail"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                       >
-                       {t('railVehicles')}
+                        {t('railVehicles')}
                       </Link>
                     </div>
                   </div>
@@ -436,14 +444,15 @@ useEffect(() => {
               {/* About Us */}
               <li className="group relative px-3">
                 <span className="flex justify-center items-center hover:text-gray-300 transition-colors cursor-pointer">
-                {t('aboutUs')}<MdKeyboardArrowDown className="mr-1" />
+                  {t('aboutUs')}
+                  <MdKeyboardArrowDown className="mr-1" />
                 </span>
                 <div className="invisible group-hover:visible top-[35px] right-0 z-50 absolute bg-gray-400 opacity-0 group-hover:opacity-100 px-5 py-2 rounded-[10px] w-[240px] transition-all translate-y-2 group-hover:translate-y-0 duration-300 transform">
                   <Link
                     href="/about-us"
                     className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                   >
-                   {t('companyIntro')}
+                    {t('companyIntro')}
                   </Link>
                   <Link
                     href="/contact-us"
@@ -464,14 +473,14 @@ useEffect(() => {
                     className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                     href="/gallery"
                   >
-                   {t('gallery')}
+                    {t('gallery')}
                   </Link>
 
-                     <Link
+                  <Link
                     className="block hover:bg-red-400 px-2 py-3 rounded-[10px] text-sm"
                     href="/department"
                   >
-                   {t('department')}
+                    {t('department')}
                   </Link>
                 </div>
               </li>
@@ -548,7 +557,7 @@ useEffect(() => {
                         href="/user-account"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px]"
                       >
-                       {t('dashboard')}
+                        {t('dashboard')}
                       </Link>
                       <Link
                         href="/user-account/tickets"
@@ -560,19 +569,19 @@ useEffect(() => {
                         href="/user-account/myCourses"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px]"
                       >
-                       { t('myCourses')}
+                        {t('myCourses')}
                       </Link>
                       <Link
                         href="/user-account/accountDetail"
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px]"
                       >
-                       {t('accountDetails')}
+                        {t('accountDetails')}
                       </Link>
                       <a
                         onClick={logout}
                         className="block hover:bg-red-400 px-2 py-3 rounded-[10px]"
                       >
-                       {t('logout')}
+                        {t('logout')}
                       </a>
                     </div>
                   </div>

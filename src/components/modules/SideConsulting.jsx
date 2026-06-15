@@ -5,12 +5,19 @@ import { AiFillPhone } from 'react-icons/ai'
 import { useTranslation } from 'react-i18next'
 
 const SideConsulting = () => {
-    const { t , i18n} = useTranslation('consultingservice')
+  const { t, i18n } = useTranslation('consultingservice')
   return (
     <>
       <div className="invisible md:visible flex flex-col items-center bg-gray-100 mt-20 mb-20 pb-5 rounded-[10px] w-[90%] h-auto">
-        <div className={`flex ${i18n.language==='fa' ? "pr-10" :"pl-5"} items-center bg-red-800  rounded-t-[10px] w-full h-[50px] text-2xl`}>
-          <p className="text-white text-base lg:text-lg"> {t('consulttitle')}</p>
+        <div
+          className={`flex ${
+            i18n.language === 'fa' ? 'pr-10' : 'pl-5'
+          } items-center bg-red-800  rounded-t-[10px] w-full h-[50px] text-2xl`}
+        >
+          <p className="text-white text-base lg:text-lg">
+            {' '}
+            {t('consulttitle')}
+          </p>
         </div>
 
         <div className="pt-10 w-[80%]">
@@ -20,18 +27,16 @@ const SideConsulting = () => {
                 for="input-group-1"
                 className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
               >
-              {t('name')}
+                {t('name')}
               </label>
               <div className="relative mb-6">
                 <div className="absolute inset-y-0 flex items-center ps-3.5 pointer-events-none start-0">
-               
                   <MdPerson className="text-gray-500 dark:text-gray-400" />
                 </div>
                 <input
                   type="text"
                   id="input-group-1"
-                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-                
+                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 />
               </div>
             </div>
@@ -43,19 +48,16 @@ const SideConsulting = () => {
                 for="input-group-1"
                 className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
               >
-               {t('phone')}
+                {t('phone')}
               </label>
               <div className="relative mb-6">
                 <div className="absolute inset-y-0 flex items-center ps-3.5 pointer-events-none start-0">
-        
-
                   <AiFillPhone className="text-gray-500 dark:text-gray-400" />
                 </div>
                 <input
                   type="Number"
                   id="input-group-1"
-                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-          
+                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 />
               </div>
             </div>
@@ -83,8 +85,7 @@ const SideConsulting = () => {
                 <input
                   type="email"
                   id="input-group-1"
-                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
-                
+                  className="block bg-white dark:bg-gray-700 p-2.5 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 />
               </div>
             </div>
@@ -94,7 +95,7 @@ const SideConsulting = () => {
               for="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
-             {t('comment')}
+              {t('comment')}
             </label>
             <textarea className="bg-white border border-gray-300 rounded-[10px] w-full h-[200px]" />
           </div>

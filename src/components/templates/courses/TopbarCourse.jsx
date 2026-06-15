@@ -58,6 +58,7 @@ const {t , i18n}= useTranslation('topbarcourse')
                           src="/images/Ginger-Autumn-Just-Living-Photo-Collage-Facebook-Cover-1024x443.webp"
                           width={1000}
                           height={1000}
+                          alt='pic'
                           className="rounded-r-[10px] w-full h-[500px]"
                         />{' '}
                       </SwiperSlide>
@@ -67,6 +68,7 @@ const {t , i18n}= useTranslation('topbarcourse')
                           width={1000}
                           height={1000}
                           className="w-full h-[500px]"
+                            alt='pic'
                         />{' '}
                       </SwiperSlide>
                    
@@ -123,7 +125,7 @@ const {t , i18n}= useTranslation('topbarcourse')
                        {t('registerCourse')}
                       </Link>
                       <Link
-                        href="/"
+                        href=""
                         className="bg-red-900 px-5 py-2 rounded-[10px] text-white text-sm"
                       >
                        {t('registerGuide')}
@@ -137,7 +139,6 @@ const {t , i18n}= useTranslation('topbarcourse')
 
         {/* box 2   course info */}
      
-      
         <div className="flex lg:flex-row flex-col justify-center items-center lg:items-start h-auto container">
           <div className="w-full sm:w-5/6 xl:w-4/6 text-sm">
             <div className="flex justify-center items-center bg-white p-10 rounded-[10px] w-full h-[150px] text-gray-800">

@@ -8,7 +8,7 @@ export default function FooterClient() {
 
   const hideFooterOnPaths = ['/p-admin', '/p-admin/anything']
 
-  if (hideFooterOnPaths.some(path => pathname.startsWith(path))) return null
+  if (hideFooterOnPaths.some((path) => pathname.startsWith(path))) return null
 
   return <Footer />
 }

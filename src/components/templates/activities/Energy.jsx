@@ -14,7 +14,11 @@ const Energy = () => {
         <div className="flex lg:flex-row flex-col">
           <div className="mt-20 w-full basis-1/2">
             <p className="font-bold text-red-800 leading-[30px]"></p>
-            <p className={`mb-3  text-justify leading-[30px] ${i18n.language==='fa' ? "pl-5" :"pr-5"}`}>
+            <p
+              className={`mb-3  text-justify leading-[30px] ${
+                i18n.language === 'fa' ? 'pl-5' : 'pr-5'
+              }`}
+            >
               {t('hydroCapacity')}
             </p>
           </div>
@@ -45,7 +49,11 @@ const Energy = () => {
           </div>
           <div className="mt-[-150px] sm:mt-5 md:mt-20 w-full basis-1/2">
             <p className="font-bold text-red-800 leading-[30px]"></p>
-            <p className={`mb-3  text-justify leading-[30px] ${i18n.language==='fa' ? "pr-5" :"pl-5"}`}>
+            <p
+              className={`mb-3  text-justify leading-[30px] ${
+                i18n.language === 'fa' ? 'pr-5' : 'pl-5'
+              }`}
+            >
               {t('turbineDevelopment')}
             </p>
           </div>

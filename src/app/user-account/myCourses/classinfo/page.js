@@ -6,11 +6,9 @@ import courseRegistrationModel from '@/models/courseRegisteration'
 
 
 const page = async () => {
-    const registerCourse = await courseRegistrationModel.find({})
-        .populate('courseId')
 
+    const registerCourse = await courseRegistrationModel.find({}).populate('courseId')
 
-    console.log('registerCourse==>', registerCourse);
 
     return (
         <>

@@ -7,10 +7,6 @@ import Pagination from '@/components/modules/p-admin/Pagination'
 
 const ContactTable = ({contacts}) => {
   const [currentPage, setCurrentPage] = useState(1)
-
-
-
-  
   const [all, setAll] = useState([])
   const teamsPerPage = 5
   const indexOfLastArticle = currentPage * teamsPerPage
@@ -58,9 +54,9 @@ const ContactTable = ({contacts}) => {
     <>
       <div className="bg-white m-auto rounded-lg w-[90%]">
         <div className="relative shadow-md sm:rounded-lg overflow-x-auto">
-          <div className="flex md:flex-row flex-column flex-wrap justify-between items-center space-y-4 md:space-y-0 bg-white dark:bg-gray-900 px-5 py-10 pb-4">
+          <div className="flex md:flex-row flex-wrap flex-column justify-between items-center space-y-4 md:space-y-0 bg-white dark:bg-gray-900 px-5 py-10 pb-4">
         
-            <label for="table-search" className="sr-only">
+            <label htmlFor="table-search" className="sr-only">
               Search
             </label>
             <div className="relative">
@@ -75,7 +71,7 @@ const ContactTable = ({contacts}) => {
                   <path
                     stroke="currentColor"
                     strokeLinecap="round"
-                    stroke-linejoin="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                   />
@@ -86,7 +82,7 @@ const ContactTable = ({contacts}) => {
                 // onChange={(e) => setInputValue(e.target.value)}
                 type="text"
                 id="table-search-users"
-                className="block bg-gray-50 dark:bg-gray-700 p-2 ps-10 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-80 text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2 ps-10 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-80 text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 placeholder="Search for users"
               />
             </div>

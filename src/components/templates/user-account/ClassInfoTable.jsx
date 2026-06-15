@@ -4,7 +4,6 @@ import React from 'react'
 const ClassInfoTable = ({ registerCourse }) => {
   return (
     <>
- 
       <div className="relative shadow-md sm:rounded-lg overflow-x-auto">
         <table className="w-full text-gray-500 dark:text-gray-400 text-sm text-left rtl:text-right">
           <thead className="bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-400 text-xs uppercase">
@@ -44,10 +43,21 @@ const ClassInfoTable = ({ registerCourse }) => {
                     return (
                       <>
                         <td className="px-6 py-4">{course2.title}</td>
-                        <td className="px-6 py-4"><Link href={course2.url} className='bg-blue-700 p-2 rounded-lg text-white'> لینک ورود </Link></td>
-                        <td className="px-6 py-4 font-semibold text-green-600" >{course2.username}</td>
-                          <td className="px-6 py-4 font-semibold text-green-600">{course2.password}</td>
-                      
+                        <td className="px-6 py-4">
+                          <Link
+                            href={course2.url}
+                            className="bg-blue-700 p-2 rounded-lg text-white"
+                          >
+                            {' '}
+                            لینک ورود{' '}
+                          </Link>
+                        </td>
+                        <td className="px-6 py-4 font-semibold text-green-600">
+                          {course2.username}
+                        </td>
+                        <td className="px-6 py-4 font-semibold text-green-600">
+                          {course2.password}
+                        </td>
                       </>
                     )
                   })}

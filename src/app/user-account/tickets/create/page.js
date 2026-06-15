@@ -6,7 +6,6 @@ import CreateTicket from '@/components/templates/user-account/CreateTicket'
 import departmentModel from '@/models/department'
 const page = async() => {
 
-
     const departments = await departmentModel.find({})
     return (
         <>
@@ -16,11 +15,7 @@ const page = async() => {
                     <Link href='/user-account/tickets' className='ml-10 text-sm bg-gray-200  p-2 text-black rounded-[10px]' > بازگشت</Link>
                 </div>
 
-
                 <CreateTicket departments={JSON.parse(JSON.stringify(departments))}/>
-
-
-
             </UserPanelLayout>
 
         </>

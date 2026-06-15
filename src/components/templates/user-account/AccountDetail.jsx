@@ -2,10 +2,10 @@
 import React from 'react'
 import { useState } from 'react'
 const AccountDetail = ({ user }) => {
-  const [name, setName] = useState(user.name)
-  const [phone, setPhone] = useState(user.phone)
-  const [email, setEmail] = useState(user.email)
-  const [password, setPassword] = useState(user.password)
+  const [name, setName] = useState(user?.name)
+  const [phone, setPhone] = useState(user?.phone)
+  const [email, setEmail] = useState(user?.email)
+  const [password, setPassword] = useState(user?.password)
   return (
     <>
       <div className="px-10 text-gray-600 text-xs">

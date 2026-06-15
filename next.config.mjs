@@ -12,6 +12,7 @@
 
 /** @type {import('next').NextConfig} */
 const appUrl = process.env.NEXT_PUBLIC_APP_URL || process.env.APP_URL
+const bucketUrl = process.env.LIARA_BUCKET_URL
 const remotePatterns = [
   {
     protocol: 'http',
@@ -42,8 +43,22 @@ if (appUrl) {
     // ignore invalid NEXT_PUBLIC_APP_URL at build time
   }
 }
+if (bucketUrl) {
+  try {
+    const u = new URL(bucketUrl)
+    remotePatterns.push({
+      protocol: u.protocol.replace(':', '') === 'http' ? 'http' : 'https',
+      hostname: u.hostname,
+      ...(u.port ? { port: u.port } : {}),
+      pathname: '/**',
+    })
+  } catch {
+    // ignore invalid LIARA_BUCKET_URL at build time
+  }
+}
 
 const nextConfig = {
+  output: 'standalone',
   serverExternalPackages: ['mongoose'],
   images: {
     unoptimized: true,

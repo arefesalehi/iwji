@@ -3,15 +3,15 @@ import React, { useState } from 'react'
 import Recipt from './Recipt'
 import Pagination from '@/components/modules/p-admin/Pagination'
 
-const TransactionTable = ({courseRegister}) => {
-      const [currentPage, setCurrentPage] = useState(1)
-      const transactionPerPage = 5
-      const indexOfLastArticle = currentPage * transactionPerPage
-      const indexOfFirstArticle = indexOfLastArticle - transactionPerPage
-      const currentTransaction = courseRegister.slice(
-        indexOfFirstArticle,
-        indexOfLastArticle,
-      )
+const TransactionTable = ({ courseRegister }) => {
+  const [currentPage, setCurrentPage] = useState(1)
+  const transactionPerPage = 5
+  const indexOfLastArticle = currentPage * transactionPerPage
+  const indexOfFirstArticle = indexOfLastArticle - transactionPerPage
+  const currentTransaction = courseRegister.slice(
+    indexOfFirstArticle,
+    indexOfLastArticle,
+  )
   return (
     <>
       <div className="bg-white m-auto py-20 rounded-lg w-[90%]">
@@ -52,14 +52,15 @@ const TransactionTable = ({courseRegister}) => {
               </tr>
             </tbody>
           </table>
-          <Pagination currentPage={currentPage}
+          <Pagination
+            currentPage={currentPage}
             totalItems={courseRegister.length}
             itemsPerPage={5}
             onPageChange={setCurrentPage}
-            label="تراکنش"/>
-       
+            label="تراکنش"
+          />
         </div>
-           <Recipt courseRegister={courseRegister}/>
+        <Recipt courseRegister={courseRegister} />
       </div>
     </>
   )

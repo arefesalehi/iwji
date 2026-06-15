@@ -13,12 +13,12 @@ const Page = async () => {
 
   return (
     <UserPanelLayout>
-      <TitleComponent title='تراکنش ها'/>
+      <TitleComponent title='تراکنش ها' />
       <div className=''>
-        <TransactionTable/>
-        <TransActionForm  
-          userId={user?._id || ""} 
-          courses={JSON.parse(JSON.stringify(courses || []))} 
+        <TransactionTable />
+        <TransActionForm
+          userId={user?._id?.toString() || ""}
+          courses={JSON.parse(JSON.stringify(courses || []))}
         />
       </div>
     </UserPanelLayout>

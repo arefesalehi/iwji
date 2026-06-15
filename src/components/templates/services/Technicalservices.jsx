@@ -1,7 +1,5 @@
 'use client'
 import React from 'react'
-import BreadCrumb from '@/components/modules/BreadCrumb'
-
 import SideComponent from '@/components/modules/SideComponent'
 import SideGallery from '@/components/modules/SideGallery'
 import Sidepromote from '@/components/modules/Sidepromote'
@@ -108,9 +106,7 @@ const Technicalservices = ({ gallery }) => {
                 {t('desc4')}
                 <ul>
                   <li>{t('hx1')}</li>
-                  <li>
-                   {t('hx2')}
-                  </li>
+                  <li>{t('hx2')}</li>
                   <li>{t('hx3')}</li>
                 </ul>
               </p>
@@ -119,9 +115,11 @@ const Technicalservices = ({ gallery }) => {
 
           <div className="flex md:flex-row flex-col">
             <div className="mt-5 md:mt-20 w-full basis-2/5">
-              <p className="font-bold text-red-800 leading-[30px]">{t('conclusionTitle')}</p>
+              <p className="font-bold text-red-800 leading-[30px]">
+                {t('conclusionTitle')}
+              </p>
               <p className="pt-5 pl-5 text-justify leading-[30px]">
-               {t('conclusionDesc')}
+                {t('conclusionDesc')}
               </p>
             </div>
             <div className="basis-3/5">
@@ -138,7 +136,7 @@ const Technicalservices = ({ gallery }) => {
           </div>
 
           <p className="mb-20 pt-5 leading-[30px]">
-          {t('contact')}
+            {t('contact')}
             <p>📧{t('email')}</p>
           </p>
         </div>

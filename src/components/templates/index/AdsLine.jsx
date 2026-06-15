@@ -6,13 +6,11 @@ import { FaPhoneVolume } from 'react-icons/fa6'
 import { MdEmail } from 'react-icons/md'
 
 const AdsLine = () => {
-  const {t}=useTranslation('adsline')
+  const { t } = useTranslation('adsline')
   return (
     <div className="items-center bg-white w-full h-[120px]">
       <div className="flex items-center h-full container">
-
-
-        <div  className="flex justify-between items-center h-full basis-1/3">
+        <div className="flex justify-between items-center h-full basis-1/3">
           <div className="flex items-center text-white hover:text-red-800">
             <div className="bg-red-800 hover:bg-white p-5 rounded-[10px]">
               <FaPhoneVolume className="w-[20px] h-[20px]" />
@@ -36,9 +34,11 @@ const AdsLine = () => {
           </div>
         </div>
 
-
-
-        <div data-aos="fade-up" data-aos-duration="1000" className="flex justify-between basis-2/3">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="flex justify-between basis-2/3"
+        >
           <Image
             src="/images/https___logosource.ir_wp-content_uploads_2017_01_Amirkabir-e1625125874104.png"
             className="mx-30 h-[90px] basis-1/3"
@@ -61,8 +61,6 @@ const AdsLine = () => {
             alt="pic"
           />
         </div>
-
-
       </div>
     </div>
   )

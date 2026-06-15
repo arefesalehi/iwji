@@ -1,11 +1,9 @@
-
-
 'use client'
 
 import React, { useEffect, useState } from 'react'
 import CourseCreateTable from './CourseCreateTable'
 
-const CreateCourse = ({ categories = [], allCourses  }) => {
+const CreateCourse = ({ categories = [], allCourses }) => {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [img, setImg] = useState(null)
@@ -33,60 +31,59 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState(null)
   const [successMessage, setSuccessMessage] = useState(null)
-   const [all, setAll] = useState([])
-   
-  
-    const getAll = async () => {
-      const res = await fetch('/api/course')
-      const data = await res.json()
-      setAll(data)
-    }
-  
-    useEffect(() => {
-      getAll()
-    }, [])
-  
-   const deleteCourse = async (courseId) => {
+  const [all, setAll] = useState([])
+
+  const getAll = async () => {
+    const res = await fetch('/api/course')
+    const data = await res.json()
+    setAll(data)
+  }
+
+  useEffect(() => {
+    getAll()
+  }, [])
+
+  const deleteCourse = async (courseId) => {
     // تایید حذف
     const result = await swal({
       title: 'آیا از حذف اطمینان دارید؟',
       icon: 'warning',
-      buttons: ["خیر", "بله"]
-    });
-  
+      buttons: ['خیر', 'بله'],
+    })
+
     if (result) {
       try {
         const res = await fetch('/api/course', {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: courseId })
-        });
-  
+          body: JSON.stringify({ id: courseId }),
+        })
+
         if (res.ok) {
           await swal({
             title: 'با موفقیت حذف شد',
             icon: 'success',
-            button: 'OK'
-          });
+            button: 'OK',
+          })
           // بروزرسانی جدول
-          getAll();
+          getAll()
         } else {
-          const data = await res.json();
+          const data = await res.json()
           swal({
             title: 'خطا',
             text: data.message,
             icon: 'error',
-            button: 'OK'
-          });
+            button: 'OK',
+          })
         }
       } catch (err) {
-        console.error(err);
+        console.error(err)
         swal({
           title: 'خطا',
           text: err.message,
           icon: 'error',
-          button: 'OK'
-        });
+          button: 'OK',
+        })
       }
     }
   }
@@ -129,7 +126,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
       formData.append('recordedCourse', recordedCourseValue)
       formData.append('certificate', certificateValue)
       formData.append('language', language)
-  formData.append('img', img)
+      formData.append('img', img)
       const res = await fetch('/api/course', {
         method: 'POST',
         body: formData,
@@ -184,12 +181,13 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
     }
   }
 
-
-
   return (
     <>
       <div className="bg-white m-auto rounded-lg w-[90%]">
-        <form onSubmit={handleSubmit} className="m-auto py-20 rounded-lg w-[90%]">
+        <form
+          onSubmit={handleSubmit}
+          className="m-auto py-20 rounded-lg w-[90%]"
+        >
           <div className="gap-6 grid md:grid-cols-3 mb-6">
             <div>
               <label
@@ -203,7 +201,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setName(e.target.value)}
                 type="text"
                 id="name"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -219,7 +217,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setDescription(e.target.value)}
                 type="text"
                 id="description"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -233,9 +231,8 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
               <input
                 onChange={(e) => setImg(e.target.files[0] || null)}
                 type="file"
-                
                 accept="image/*"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -250,7 +247,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={support}
                 onChange={(e) => setSupport(e.target.value)}
                 id="support"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value=""> پشتیانی را انتخاب کنید</option>
                 <option value="تلگرام">تلگرام</option>
@@ -271,7 +268,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setShortName(e.target.value)}
                 type="text"
                 id="shortName"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -288,7 +285,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setPrice(e.target.value)}
                 type="number"
                 id="price"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
@@ -304,7 +301,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={isComplete}
                 onChange={(e) => setIsComplete(e.target.value)}
                 id="isComplete"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value="">انتخاب کنید</option>
                 <option value="true">بله</option>
@@ -323,7 +320,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
                 id="status"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value=""> انتخاب کنید </option>
                 <option value="در حال برگزاری">در حال برگزاری</option>
@@ -343,7 +340,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setStartTime(e.target.value)}
                 type="text"
                 id="startTime"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -359,7 +356,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setScheduledTime(e.target.value)}
                 type="text"
                 id="ScheduledTime"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -375,7 +372,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setDiscount(e.target.value)}
                 type="text"
                 id="discount"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -391,7 +388,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setEventFormat(e.target.value)}
                 type="text"
                 id="EventFormat"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -407,7 +404,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setLevel(e.target.value)}
                 type="text"
                 id="level"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -423,7 +420,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setCourseType(e.target.value)}
                 type="text"
                 id="courseType"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -439,7 +436,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setCourseDuration(e.target.value)}
                 type="text"
                 id="courseDuration"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -455,7 +452,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setPrerequisite(e.target.value)}
                 type="text"
                 id="prerequisite"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -471,7 +468,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setNumberOfSessions(e.target.value)}
                 type="text"
                 id="NumberOfSessions"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -487,7 +484,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setClassDuration(e.target.value)}
                 type="text"
                 id="ClassDuration"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -503,7 +500,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setTotalHours(e.target.value)}
                 type="text"
                 id="totalHours"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -518,7 +515,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={recordedCourse}
                 onChange={(e) => setRecordedCourse(e.target.value)}
                 id="recordedCourse"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value=""> آیا ضبط دوره دارد؟</option>
                 <option value="true">دارد</option>
@@ -537,7 +534,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={certificate}
                 onChange={(e) => setCertificate(e.target.value)}
                 id="certificate"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value=""> آیا مدرک دوره دارد؟</option>
                 <option value="true">دارد</option>
@@ -557,7 +554,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setLanguage(e.target.value)}
                 type="text"
                 id="language"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               />
             </div>
 
@@ -572,7 +569,7 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 value={categoryID}
                 onChange={(e) => setCategoryID(e.target.value)}
                 id="categoryID"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
               >
                 <option value="">انتخاب کنید</option>
                 {categories.map((category) => {
@@ -597,12 +594,12 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setHref(e.target.value)}
                 type="text"
                 id="href"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div>
 
-                {/* <div>
+            {/* <div>
               <label
                 htmlFor="href"
                 className="block mb-3 font-bold text-gray-900 dark:text-white text-sm"
@@ -614,14 +611,16 @@ const CreateCourse = ({ categories = [], allCourses  }) => {
                 onChange={(e) => setImg(e.target.files[0])}
                 type="file"
                 id="img"
-                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
+                className="block bg-gray-50 dark:bg-gray-700 p-2.5 border border-gray-300 focus:border-blue-500 dark:border-gray-600 dark:focus:border-blue-500 rounded-lg focus:ring-blue-500 dark:focus:ring-blue-500 w-full text-gray-900 dark:text-white text-sm dark:placeholder-gray-400"
                 required
               />
             </div> */}
           </div>
 
           {error && <p className="mb-3 text-red-600">{error}</p>}
-          {successMessage && <p className="mb-3 text-green-600">{successMessage}</p>}
+          {successMessage && (
+            <p className="mb-3 text-green-600">{successMessage}</p>
+          )}
 
           <button
             type="submit"

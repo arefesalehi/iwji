@@ -6,11 +6,11 @@ import ticketModel from '@/models/ticket'
 import Link from 'next/link'
 import React from 'react'
 
-const page =async () => {
+const page = async () => {
     const user = await authUser()
-    const tickets = await ticketModel.find({user:user._id ,isAnswer: false }).populate('department')
+    const tickets = await ticketModel.find({ user: user._id, isAnswer: false }).populate('department')
     console.log('tickets=>', tickets);
-    
+
     return (
         <>
             <UserPanelLayout>
@@ -21,7 +21,6 @@ const page =async () => {
                 </div>
 
                 <TicketBox tickets={JSON.parse(JSON.stringify(tickets))} />
-
 
             </UserPanelLayout>
 

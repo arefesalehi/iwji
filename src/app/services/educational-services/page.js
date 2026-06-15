@@ -13,8 +13,8 @@ const page = async () => {
         <Image src='/images/White And Blue Modern Welding Services Banner.png' className='w-full h-[450px]' width={1000} height={400} alt='pic' />
       </div>
 
-   <Educationalservice  gallery={JSON.parse(JSON.stringify(gallery))} />
-  
+      <Educationalservice gallery={JSON.parse(JSON.stringify(gallery))} />
+
 
     </>
   )

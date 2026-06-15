@@ -9,7 +9,7 @@ import { Autoplay, Pagination } from 'swiper/modules'
 import { useTranslation } from 'react-i18next'
 
 const Projects = ({ cooperation }) => {
-  const {t}=useTranslation('coorporation')
+  const { t } = useTranslation('coorporation')
   const items = Array.isArray(cooperation) ? cooperation.filter(Boolean) : []
 
   if (!items.length) return null
@@ -19,10 +19,14 @@ const Projects = ({ cooperation }) => {
       <div className="relative w-full h-[500px]">
         <TitleContent title={t('coorporations')} />
 
-        <div data-aos="fade-up" data-aos-duration="1000" className="flex justify-between container">
+        <div
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          className="flex justify-between container"
+        >
           <Swiper
             autoplay={{
-              delay:2000
+              delay: 2000,
             }}
             loop={true}
             rewind={true}
@@ -31,40 +35,38 @@ const Projects = ({ cooperation }) => {
             // pagination={{
             //   clickable: true,
             // }}
-          breakpoints={{
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 40,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 50,
-          },
-            1400: {
-            slidesPerView: 4,
-            spaceBetween: 50,
-          },
-        }}
-            modules={[Pagination , Autoplay]}
+            breakpoints={{
+              640: {
+                slidesPerView: 2,
+                spaceBetween: 20,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 40,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+              },
+              1400: {
+                slidesPerView: 4,
+                spaceBetween: 50,
+              },
+            }}
+            modules={[Pagination, Autoplay]}
             className="mt-5 mySwiper"
           >
             {items.map((cooperate) => {
               return (
                 <>
-                  <SwiperSlide key={cooperate._id} >
-                    <ImageBox   {...cooperate}/>
-                  
+                  <SwiperSlide key={cooperate._id}>
+                    <ImageBox {...cooperate} />
                   </SwiperSlide>
                 </>
               )
             })}
           </Swiper>
         </div>
-
       </div>
       <div className="right-[-700px] absolute flex justify-center items-center w-full overflow-hidden">
         <svg

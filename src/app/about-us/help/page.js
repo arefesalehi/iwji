@@ -7,13 +7,10 @@ const page = async () => {
 
   return (
     <>
-    
 
      <div className='mb-40'>
        <Accardion Accardions={JSON.parse(JSON.stringify(Accardions))} />
      </div>
-
-
 
     </>
   )

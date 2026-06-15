@@ -1,7 +1,4 @@
 
-
-
-
 import ConnectToDB from '@/configs/db';
 import Article from '@/models/article';
 import { authUser } from '@/utils/serverHelpers';
@@ -12,11 +9,11 @@ import { rm } from 'fs/promises';
 
 export const config = { api: { bodyParser: false } };
 
-// دریافت یک مقاله
+
 export async function GET(req, { params }) {
   try {
     await ConnectToDB();
-    const { id } = params;
+    const { id } =await params;
     const article = await Article.findById(id)
       .populate('creator', 'name email')
       .populate('categoryID', 'name')
@@ -81,7 +78,7 @@ export async function PUT(req, { params }) {
 }
 
 
-// حذف مقاله
+
 export async function DELETE(req, { params }) {
   try {
     await ConnectToDB();

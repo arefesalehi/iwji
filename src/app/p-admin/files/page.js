@@ -1,6 +1,5 @@
 import AdminPanelLayout from '@/components/layouts/AdminPanelLayout';
 import BreadCrumb from '@/components/templates/p-admin/BreadCrumb';
-
 import courseRegisterationModel from '@/models/courseRegisteration';
 import CourseModel from '@/models/course';
 import FileUploadBox from '@/components/templates/p-admin/FileUploadBox';
