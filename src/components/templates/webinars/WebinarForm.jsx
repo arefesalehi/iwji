@@ -17,7 +17,7 @@ const WebinarForm = () => {
         <div className="flex">
           <div className="w-full">
             <label
-              for="input-group-1"
+              htmlFor="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
               {t('firstName')}
@@ -39,7 +39,7 @@ const WebinarForm = () => {
             className={` ${i18n.language === 'fa' ? 'pr-10' : 'pl-10'} w-full`}
           >
             <label
-              for="input-group-1"
+              htmlFor="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
               {t('lastName')}
@@ -61,7 +61,7 @@ const WebinarForm = () => {
         <div className="flex">
           <div className="w-full">
             <label
-              for="input-group-1"
+              htmlFor="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
               {t('phone')}
@@ -83,7 +83,7 @@ const WebinarForm = () => {
             className={` ${i18n.language === 'fa' ? 'pr-10' : 'pl-10'} w-full`}
           >
             <label
-              for="input-group-1"
+              htmlFor="input-group-1"
               className="block mb-2 font-bold text-gray-900 dark:text-white text-sm"
             >
               {t('email')}

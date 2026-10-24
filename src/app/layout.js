@@ -2,6 +2,7 @@ import "./globals.css";
 import 'leaflet/dist/leaflet.css'
 import AosInt from "@/utils/aos";
 import { authUser } from "@/utils/serverHelpers";
+import { cookies } from "next/headers";
 import ScrollToTop from "@/utils/ScrollToTop";
 import NavbarClient from "@/components/modules/NavbarClient";
 import FooterClient from "@/components/modules/FooterClient";
@@ -30,15 +31,18 @@ export default async  function RootLayout({ children }) {
   
 
 const user = await authUser()
+const cookieStore = await cookies()
+const locale = cookieStore.get('NEXT_LOCALE')?.value === 'en' ? 'en' : 'fa'
+const dir = locale === 'fa' ? 'rtl' : 'ltr'
 console.log('layout user==>', user);
 
 
   return (
-    <html lang="fa" dir='rtl' >
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       <body className="antialiased">
         <AosInt />
         <TopbarClient />
-        <NavbarClient   isLogin={user ? true : false} />
+        <NavbarClient isLogin={user ? true : false} initialLocale={locale} />
         {children}
         <ScrollToTop/>
         <FooterClient />

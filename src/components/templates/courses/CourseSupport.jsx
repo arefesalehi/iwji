@@ -35,6 +35,7 @@ const CourseSupport = () => {
           width={800}
           height={200}
           className=""
+          alt='pic'
         />
       </div>
     </>

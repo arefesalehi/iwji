@@ -3,12 +3,12 @@
 import { usePathname } from 'next/navigation'
 import Navbar from '@/components/modules/Navbar'
 
-export default function NavbarClient({ isLogin }) {
+export default function NavbarClient({ isLogin, initialLocale = 'fa' }) {
   const pathname = usePathname()
   const hideNavbarOnPaths = ['/p-admin', '/p-admin/anything']
   const showNavbar = !hideNavbarOnPaths.some(path => pathname.startsWith(path))
 
   if (!showNavbar) return null
 
-  return <Navbar isLogin={isLogin} wishes={[]} />
+  return <Navbar isLogin={isLogin} initialLocale={initialLocale} wishes={[]} />
 }

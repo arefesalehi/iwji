@@ -14,8 +14,9 @@ import { useRouter } from 'next/navigation'
 import i18n from '@/i18n'
 import { useTranslation } from 'react-i18next'
 
-const Navbar = ({ isLogin }) => {
-  const [langCode, setLangCode] = useState('fa')
+const Navbar = ({ isLogin, initialLocale = 'fa' }) => {
+  const normalizedInitialLocale = initialLocale === 'en' ? 'en' : 'fa'
+  const [langCode, setLangCode] = useState(normalizedInitialLocale)
   const [lng, setLng] = useState('زبان')
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [iscourseOpen, setIsCourseOpen] = useState(false)
@@ -52,7 +53,7 @@ const Navbar = ({ isLogin }) => {
           : null
 
       // اگر نبود از i18n بخون، اگر نبود دیفالت fa
-      const current = savedLang || i18nextInstance.language || 'fa'
+      const current = savedLang || normalizedInitialLocale || 'fa'
       const code = current.startsWith('en') ? 'en' : 'fa'
 
       // تغییر زبان i18n
