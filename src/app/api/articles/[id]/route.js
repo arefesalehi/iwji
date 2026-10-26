@@ -1,104 +1,201 @@
 
-import ConnectToDB from '@/configs/db';
-import Article from '@/models/article';
-import { authUser } from '@/utils/serverHelpers';
-import formidable from 'formidable';
-import fs from 'fs';
-import path from 'path';
-import { rm } from 'fs/promises';
+// import ConnectToDB from '@/configs/db';
+// import Article from '@/models/article';
+// import { authUser } from '@/utils/serverHelpers';
+// import formidable from 'formidable';
+// import fs from 'fs';
+// import path from 'path';
+// import { rm } from 'fs/promises';
 
-export const config = { api: { bodyParser: false } };
+// export const config = { api: { bodyParser: false } };
 
+
+// export async function GET(req, { params }) {
+//   try {
+//     await ConnectToDB();
+//     const { id } =await params;
+//     const article = await Article.findById(id)
+//       .populate('creator', 'name email')
+//       .populate('categoryID', 'name')
+//       .select('-__v')
+//       .lean();
+//     if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
+//     return new Response(JSON.stringify(article), { status: 200 });
+//   } catch (err) {
+//     console.error(err);
+//     return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+//   }
+// }
+
+
+// export async function PUT(req, { params }) {
+//   try {
+//     await ConnectToDB();
+//     const user = await authUser();
+//     if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 });
+
+//     const formData = await req.formData();
+//     const title = formData.get('title');
+//     const description = formData.get('description');
+//     const categoryID = formData.get('categoryID');
+//     const articlebody = formData.get('articlebody');
+//     const shortName = formData.get('shortName');
+//     const publish = formData.get('publish') === 'true';
+//     const imgFile = formData.get('img');
+
+//     let updateData = { title, description, categoryID, articlebody, shortName, publish };
+
+//     // آپلود تصویر
+//     if (imgFile && imgFile.size > 0) {
+//       const folderName = Date.now().toString();
+//       const uploadDir = path.join(process.cwd(), 'public', 'articles', folderName);
+//       await mkdir(uploadDir, { recursive: true });
+
+//       const fileName = `cover-${folderName}${path.extname(imgFile.name)}`;
+//       const buffer = Buffer.from(await imgFile.arrayBuffer());
+//       await writeFile(path.join(uploadDir, fileName), buffer);
+
+//       updateData.img = `/articles/${folderName}/${fileName}`;
+//       updateData.folderName = folderName;
+
+//       // حذف تصویر قبلی اگر وجود دارد
+//       const existingArticle = await Article.findById(params.id);
+//       if (existingArticle?.folderName) {
+//         const oldFolder = path.join(process.cwd(), 'public', 'articles', existingArticle.folderName);
+//         await rm(oldFolder, { recursive: true, force: true });
+//       }
+//     }
+
+//     const updatedArticle = await Article.findByIdAndUpdate(params.id, updateData, { new: true });
+//     if (!updatedArticle) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
+
+//     return new Response(JSON.stringify({ message: 'مقاله بروز شد', data: updatedArticle }), { status: 200 });
+
+//   } catch (err) {
+//     console.error('PUT Article error:', err);
+//     return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+//   }
+// }
+
+
+
+// export async function DELETE(req, { params }) {
+//   try {
+//     await ConnectToDB();
+//     const user = await authUser();
+//     if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 });
+
+//     const { id } = params;
+//     const article = await Article.findById(id);
+//     if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
+
+//     if (article.folderName) {
+//       const folderPath = path.join(process.cwd(), 'public', 'articles', article.folderName);
+//       await rm(folderPath, { recursive: true, force: true });
+//     }
+
+//     await Article.findByIdAndDelete(id);
+//     return new Response(JSON.stringify({ message: 'مقاله حذف شد' }), { status: 200 });
+//   } catch (err) {
+//     console.error(err);
+//     return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+//   }
+// }
+
+import ConnectToDB from '@/configs/db'
+import Article from '@/models/article'
+import { authUser } from '@/utils/serverHelpers'
+import { put, del } from '@vercel/blob'
 
 export async function GET(req, { params }) {
   try {
-    await ConnectToDB();
-    const { id } =await params;
+    await ConnectToDB()
+    const { id } = await params
     const article = await Article.findById(id)
       .populate('creator', 'name email')
       .populate('categoryID', 'name')
       .select('-__v')
-      .lean();
-    if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
-    return new Response(JSON.stringify(article), { status: 200 });
+      .lean()
+    if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 })
+    return new Response(JSON.stringify(article), { status: 200 })
   } catch (err) {
-    console.error(err);
-    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+    console.error(err)
+    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 })
   }
 }
-
 
 export async function PUT(req, { params }) {
   try {
-    await ConnectToDB();
-    const user = await authUser();
-    if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 });
+    await ConnectToDB()
+    const user = await authUser()
+    if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 })
 
-    const formData = await req.formData();
-    const title = formData.get('title');
-    const description = formData.get('description');
-    const categoryID = formData.get('categoryID');
-    const articlebody = formData.get('articlebody');
-    const shortName = formData.get('shortName');
-    const publish = formData.get('publish') === 'true';
-    const imgFile = formData.get('img');
+    const { id } = await params
+    const formData = await req.formData()
+    const title = formData.get('title')
+    const description = formData.get('description')
+    const categoryID = formData.get('categoryID')
+    const articlebody = formData.get('articlebody')
+    const shortName = formData.get('shortName')
+    const publish = formData.get('publish') === 'true'
+    const imgFile = formData.get('img')
 
-    let updateData = { title, description, categoryID, articlebody, shortName, publish };
+    const updateData = { title, description, categoryID, articlebody, shortName, publish }
 
-    // آپلود تصویر
-    if (imgFile && imgFile.size > 0) {
-      const folderName = Date.now().toString();
-      const uploadDir = path.join(process.cwd(), 'public', 'articles', folderName);
-      await mkdir(uploadDir, { recursive: true });
+    if (imgFile && typeof imgFile !== 'string' && imgFile.size > 0) {
+      const existingArticle = await Article.findById(id)
 
-      const fileName = `cover-${folderName}${path.extname(imgFile.name)}`;
-      const buffer = Buffer.from(await imgFile.arrayBuffer());
-      await writeFile(path.join(uploadDir, fileName), buffer);
+      const folderName = Date.now().toString()
+      const ext = imgFile.name.includes('.') ? imgFile.name.slice(imgFile.name.lastIndexOf('.')) : ''
+      const blob = await put(`articles/${folderName}/cover-${folderName}${ext}`, imgFile, {
+        access: 'public',
+      })
 
-      updateData.img = `/articles/${folderName}/${fileName}`;
-      updateData.folderName = folderName;
+      updateData.img = blob.url
+      updateData.folderName = folderName
 
-      // حذف تصویر قبلی اگر وجود دارد
-      const existingArticle = await Article.findById(params.id);
-      if (existingArticle?.folderName) {
-        const oldFolder = path.join(process.cwd(), 'public', 'articles', existingArticle.folderName);
-        await rm(oldFolder, { recursive: true, force: true });
+      // حذف عکس قبلی از Blob (فقط اگر آدرس Blob باشد)
+      if (existingArticle?.img && existingArticle.img.startsWith('https://')) {
+        try {
+          await del(existingArticle.img)
+        } catch (e) {
+          console.error('delete old image failed:', e.message)
+        }
       }
     }
 
-    const updatedArticle = await Article.findByIdAndUpdate(params.id, updateData, { new: true });
-    if (!updatedArticle) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
+    const updatedArticle = await Article.findByIdAndUpdate(id, updateData, { new: true })
+    if (!updatedArticle) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 })
 
-    return new Response(JSON.stringify({ message: 'مقاله بروز شد', data: updatedArticle }), { status: 200 });
-
+    return new Response(JSON.stringify({ message: 'مقاله بروز شد', data: updatedArticle }), { status: 200 })
   } catch (err) {
-    console.error('PUT Article error:', err);
-    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+    console.error('PUT Article error:', err)
+    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 })
   }
 }
-
-
 
 export async function DELETE(req, { params }) {
   try {
-    await ConnectToDB();
-    const user = await authUser();
-    if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 });
+    await ConnectToDB()
+    const user = await authUser()
+    if (!user) return new Response(JSON.stringify({ message: 'وارد نشده‌اید' }), { status: 401 })
 
-    const { id } = params;
-    const article = await Article.findById(id);
-    if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 });
+    const { id } = await params
+    const article = await Article.findById(id)
+    if (!article) return new Response(JSON.stringify({ message: 'مقاله یافت نشد' }), { status: 404 })
 
-    if (article.folderName) {
-      const folderPath = path.join(process.cwd(), 'public', 'articles', article.folderName);
-      await rm(folderPath, { recursive: true, force: true });
+    if (article.img && article.img.startsWith('https://')) {
+      try {
+        await del(article.img)
+      } catch (e) {
+        console.error('delete image failed:', e.message)
+      }
     }
 
-    await Article.findByIdAndDelete(id);
-    return new Response(JSON.stringify({ message: 'مقاله حذف شد' }), { status: 200 });
+    await Article.findByIdAndDelete(id)
+    return new Response(JSON.stringify({ message: 'مقاله حذف شد' }), { status: 200 })
   } catch (err) {
-    console.error(err);
-    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 });
+    console.error(err)
+    return new Response(JSON.stringify({ message: 'خطای سرور' }), { status: 500 })
   }
 }
-
