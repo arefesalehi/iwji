@@ -14,7 +14,7 @@ const CourseBox = ({ course }) => {
           <img
             className="rounded-t-lg w-full h-[220px]"
             src={course.img || '/images/rob-lambert-9Q_pLLP_jmA-unsplash.jpg'}
-            alt=""
+            alt="PICO"
           />
         </a>
         <div className="p-5">

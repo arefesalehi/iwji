@@ -106,7 +106,8 @@ import ConnectToDB from '@/configs/db'
 import Article from '@/models/article'
 import { authUser } from '@/utils/serverHelpers'
 import { put, del } from '@vercel/blob'
-
+import '@/models/category'
+import '@/models/user'
 export async function GET(req, { params }) {
   try {
     await ConnectToDB()
