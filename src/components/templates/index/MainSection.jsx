@@ -59,13 +59,13 @@ const MainSection = () => {
               </p>
               <Link
                 href="/about-us"
-                className="flex items-center bg-red-800 p-3 rounded-[10px] w-[180px] text-white md:text-sm lg:text-sm"
+                className="flex items-center bg-red-800 p-3 rounded-[10px] w-[160px] text-white md:text-sm lg:text-sm"
               >
                 {t('readMore')}
                 {i18n?.language === 'fa' ? (
-                  <ArrowLeftIcon className="mr-2" />
+                  <ArrowLeftIcon className="mr-2 w-[25px]" />
                 ) : (
-                  <ArrowRightIcon className="ml-2" />
+                  <ArrowRightIcon className="ml-2 w-[25px]" />
                 )}
               </Link>
             </div>

@@ -59,7 +59,7 @@ const ArticleTable = ({ articles }) => {
 
     if (result) {
       try {
-        const res = await fetch('/api/articles', {
+        const res = await fetch(`/api/articles/`, {
           method: 'DELETE',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: articleID }),
@@ -134,7 +134,7 @@ const ArticleTable = ({ articles }) => {
           </Link>
         </div>
         <div className="relative shadow-md sm:rounded-lg overflow-x-auto">
-          <div className="flex md:flex-row flex-column flex-wrap justify-between items-center space-y-4 md:space-y-0 bg-white dark:bg-gray-900 px-5 py-10 pb-4"></div>
+          <div className="flex md:flex-row flex-wrap flex-column justify-between items-center space-y-4 md:space-y-0 bg-white dark:bg-gray-900 px-5 py-10 pb-4"></div>
           <table className="m-auto w-[98%] text-gray-500 dark:text-gray-400 text-sm text-left rtl:text-right">
             <thead className="bg-gray-50 dark:bg-gray-700 text-gray-700 dark:text-gray-400 text-xs uppercase">
               <tr>
