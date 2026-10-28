@@ -63,9 +63,9 @@ const MainSection = () => {
               >
                 {t('readMore')}
                 {i18n?.language === 'fa' ? (
-                  <ArrowLeftIcon className="mr-2 w-[25px]" />
+                  <ArrowLeftIcon className="mr-2 w-[20px]" />
                 ) : (
-                  <ArrowRightIcon className="ml-2 w-[25px]" />
+                  <ArrowRightIcon className="ml-2 w-[20px]" />
                 )}
               </Link>
             </div>

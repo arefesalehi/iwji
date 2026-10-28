@@ -44,7 +44,7 @@ const OurTeam = ({ ourTeam }) => {
               },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 40,
+                spaceBetween: 50,
               },
               1024: {
                 slidesPerView: 3,
@@ -61,7 +61,7 @@ const OurTeam = ({ ourTeam }) => {
             {items.map((team) => {
               return (
                 <>
-                  <SwiperSlide key={team._id}>
+                  <SwiperSlide key={team._id} className="!flex !justify-center">
                     <TeamBox {...team} />
                   </SwiperSlide>
                 </>

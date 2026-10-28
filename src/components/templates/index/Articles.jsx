@@ -28,9 +28,9 @@ const Articles = ({ articles }) => {
           >
             {t('viewAllPosts')}{' '}
             {i18n.language === 'fa' ? (
-              <IoMdArrowDropleft />
+              <IoMdArrowDropleft className="mr-2 w-[20px]" />
             ) : (
-              <IoMdArrowDropright />
+              <IoMdArrowDropright className="ml-2 w-[20px]" />
             )}
           </Link>
         </div>
