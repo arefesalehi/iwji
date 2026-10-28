@@ -57,6 +57,15 @@
 // export default ArticleBox
 
 
+
+'use client'
+import { ArrowLeftIcon, ArrowRightIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
+import Link from 'next/link'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
+import { IoMdTime } from 'react-icons/io'
+
 const ArticleBox = ({ title, createdAt, _id, creator }) => {
   const { t, i18n } = useTranslation('article')
   return (
